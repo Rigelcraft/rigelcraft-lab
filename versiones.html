@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Versiones Web | Rigelcraft Studio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Angkor&display=swap');
+        
+        body {
+            background-image: url("versiones.png");
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        
+        hr {
+            border: none;
+            width: 100%; 
+            height: 3px;           
+            background: linear-gradient(90deg, #FFAA00, #FFFF00); 
+            box-shadow: 0 0 10px #ffa600, 0 0 10px #ffa600;
+            margin: 30px 0;
+        }
+
+        .breadcrumb {
+            text-align: left;
+            width: 100%;
+            margin: 20px 0 40px 2%; 
+            color: #EFB810;
+            font-size: 20px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+            margin-left: 2%;
+        }
+
+        .contenedor-mega-titulo {
+            text-align: left;
+            width: 100%;
+            margin: 20px 0 20px 2%; 
+        }
+
+        p {
+            color: #e6edf3;
+            font-size: 22px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+            margin-left: 2%;
+            text-align: left;
+        }
+
+        .mega-titulo {
+            font-family:  'Angkor','Anton', Arial, sans-serif;
+            font-size: clamp(40px, 8vw, 130px);
+            font-weight: bold;
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            margin: 0;
+            line-height: 1;
+            background-image: url('https://i.pinimg.com/736x/c5/2f/82/c52f82c509b9fc39090624170b289b8d.jpg'); 
+            background-size: 250px;
+            background-repeat: repeat;
+            background-position: center;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent; 
+            -webkit-text-stroke: 1.5px #754E00; 
+            filter: 
+                drop-shadow(0 0 10px #D49E00)
+                drop-shadow(0 0 20px #D49E00);
+                max-width: 95%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            display: inline-block;
+            padding-right: 10px;
+            box-sizing: border-box;
+        }
+
+        h3 {
+            color: #e6edf3;
+            font-size: 25px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+            margin-left: 2%;
+            text-align: left;
+        }
+
+        h2 {
+            color: #EFB810;
+            font-size: 50px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+            margin-left: 2%;
+            text-align: left;
+        }
+
+        span {
+            color: #EFB810;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            text-shadow: 0 0 5px #000;
+        }
+
+        a {
+            color: #EFB810;
+            text-decoration: underline;
+            font-weight: bold;
+            transition: 0.3s;
+            text-shadow: 0 0 5px #000;
+        }
+
+        a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px #EFB810, 0 0 20px #EFB810;
+        }
+
+        ul {
+            color: #e6edf3;
+            font-size: 22px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+            margin-left: 2%;            
+            padding-left: 0;            
+            list-style-position: inside;
+            text-align: left;
+        }
+
+        .t {
+        text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+        }
+
+        @media (max-width: 600px) {
+            body { 
+                background-attachment: scroll; 
+                overflow-x: hidden; 
+            }
+
+            body::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+                background-image: url("fondo.png");
+                background-size: cover;
+                background-position: center;
+            }
+            .mega-titulo {
+                font-size: clamp(35px, 11vw, 70px) !important;
+                -webkit-text-stroke: 1px #424242;
+                text-align: center;
+                margin-right: 5%;
+                line-height: 1.4;
+            }
+            p, h3, ul {
+                font-size: 18px !important; 
+                margin-left: 4% !important;
+                margin-right: 4% !important;
+            }
+
+            h2 {
+                font-size: 32px !important; 
+                margin-left: 4% !important;
+                margin-right: 4% !important;
+            }
+            
+            .contenedor-mega-titulo {
+                margin-left: 2%;
+            }
+        }
+    </style>
+</head>
+<body>
+        <hr>
+    <div class="breadcrumb">
+        <a href="index.html">Inicio</a><span> / Versiones</span>
+    </div>
+    <div class="contenedor-mega-titulo">
+        <h1 class="mega-titulo">VERSIONES DE LA WEB</h1>
+    </div>
+    <hr>
+    <h3>Bitácora de desarrollo de Rigelcraft Studio</h3>
+    <p>En esta sección documentamos la evolución de nuestra plataforma. Desde los primeros días en WordPress hasta la optimización total con código puro y hasta las últimas versiones.</p>
+    <p><strong>Versión:</strong><span class="t" style="color: #00FF00;"> 2.1.0</span> – Optimización completa para dispositivos móviles y apertura del sistema de historial de versiones.</p>
+    <hr>
+    <h2><strong><i>V: 2.1.0 - La Actualización de Movilidad</i>
+    </strong></h2>
+<p>Optimización completa para dispositivos móviles y apertura del sistema de historial de versiones.</p>
+<ul>
+        <li>📱 <strong>Adaptabilidad:</strong> La interfaz ahora se ajusta automáticamente a celulares y tablets.</li>
+        <li>📜 <strong>Historial Abierto:</strong> Se añade esta nueva sección para que la comunidad siga el progreso técnico de la web.</li>
+        <li>🚀 <strong>Rendimiento:</strong> Eliminación de residuos de código para una carga más veloz.</li>
+    </ul>
+    <hr>
+    <h2><strong><i>V: 2.0.0 - El Salto al Código Puro</i>
+    </strong></h2>
+<p>La gran migración técnica.</p>
+<ul>
+        <li>💻 <strong>Adiós WordPress:</strong> Reconstrucción total de la web desde cero usando únicamente HTML5 y CSS3.</li>
+        <li>🎨 <strong>Interfaz Personalizada:</strong> Control absoluto sobre el diseño, permitiendo efectos visuales imposibles en la versión anterior.</li>
+        <li>⚡ <strong>Optimización Estructural:</strong> Limpieza de código para eliminar la pesadez de los plugins y mejorar la estabilidad.</li>
+    </ul>
+    <hr>
+    <h2><strong><i>V: 1.0.0 - El Inicio en WordPress</i>
+    </strong></h2>
+<p>El origen de la plataforma.</p>
+<ul>
+        <li>🌐 <strong>Lanzamiento Oficial:</strong> Primera versión de Rigelcraft Studio disponible para el público.</li>
+        <li>📂 <strong>Contenido Base:</strong> Implementación inicial de las secciones de Galería, Guiones y Preestrenos.</li>
+        <li>🛠️ <strong>Gestión CMS:</strong> Uso de herramientas de WordPress para establecer la estructura inicial del sitio.</li>
+    </ul>
+    <hr>
+    <div class="breadcrumb">
+        <a href="index.html">Inicio</a><span> / Versiones</span>
+</div>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+</html>

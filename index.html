@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rigelcraft Studio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+        body {
+            background-image: url("fondo.png");
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        hr {
+            border: none;
+            width: 100%; 
+            height: 3px;           
+            background: linear-gradient(90deg, #00ccff, #2600ff, #ba00f3); 
+            box-shadow: 0 0 10px #0051ff, 0 0 10px #0051ff;
+            margin: 30px 0;
+        }
+
+        .contenedor-mega-titulo {
+            text-align: left;
+            width: 100%;
+            margin: 20px 0 20px 2%; 
+        }
+
+        .mega-titulo {
+            font-family: 'Anton', Arial, sans-serif; 
+            font-size: clamp(40px, 12vw, 130px);
+            font-weight: bold;
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            margin: 0;
+            line-height: 1;
+            background-image: url('https://i.pinimg.com/736x/93/e2/16/93e216160b8ac0382f8fa6ed0101d528.jpg'); 
+            background-size: 500px;
+            background-repeat: repeat;
+            background-position: center;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent; 
+            -webkit-text-stroke: 1.5px #424242; 
+            filter: 
+                drop-shadow(0 0 10px #00ccff)
+                drop-shadow(0 0 20px #0044ff);
+        }
+
+        p {
+            color: #e6edf3;
+            font-size: 22px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+            margin-left: 2%;
+            text-align: left;
+        }
+
+        h3 {
+            color: #e6edf3;
+            font-size: 30px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+            margin-left: 2%;
+            text-align: left;
+        }
+
+       ul {
+            color: #e6edf3;
+            font-size: 22px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+            margin-left: 2%;            
+            padding-left: 0;            
+            list-style-position: inside;
+            text-align: left;
+        }
+        h2.titulo-buzon {
+            color: #ffe600;
+            font-size: 40px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+            margin-left: 2%;
+            text-align: left;
+        }
+
+        h2.titulo-video {
+            color: #f10000;
+            font-size: 40px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+            margin-left: 2%;
+            text-align: left;
+        }
+
+        iframe {
+            margin-left: 2%;
+            display: block;
+            border: 5px solid #ff0000;
+            width: 96%;
+            max-width: 1500px;
+            aspect-ratio: 16 / 9;
+        }
+
+        form {
+            color: #e6edf3;
+            font-size: 15px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+            text-align: left;
+            margin-right: 5%;
+            margin-left: 2%;
+        }
+
+        a {
+            color: #58a6ff;
+            text-decoration: underline;
+            font-weight: bold;
+            transition: 0.3s;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+        }
+
+        a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px #58a6ff, 0 0 20px #58a6ff;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-size: 18px;
+            color: #fffb00;
+        }
+
+        input[type="text"], select, textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: rgba(0, 0, 0, 0.8); 
+            border: 1.5px solid #00d9ff; 
+            border-radius: 8px;
+            color: #00d9ff;
+            box-sizing: border-box;
+            outline: none;
+            transition: 0.4s;
+        }
+
+        button[type="submit"] {
+            margin-top: 20px;
+            padding: 12px 30px;
+            background-color: #58a6ff;
+            color: #00154e;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #ffe600;
+            box-shadow: 0 0 15px #ffe600;
+        }
+        button[type="submit"], #nuevo-mensaje {
+            margin-bottom: 20px;
+        }
+        @media (max-width: 600px) {
+            body { 
+                background-attachment: scroll; 
+                overflow-x: hidden; 
+            }
+
+            body::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+                background-image: url("fondo.png");
+                background-size: cover;
+                background-position: center;
+            }
+            .mega-titulo {
+                font-size: clamp(35px, 18vw, 70px) !important;
+                -webkit-text-stroke: 1px #424242;
+                text-align: center;
+                margin-right: 5%;
+                line-height: 1.4;
+            }
+            p, h3, ul {
+                font-size: 18px !important; 
+                margin-left: 4% !important;
+                margin-right: 4% !important;
+            }
+            h2.titulo-buzon, h2.titulo-video { 
+                font-size: 26px !important; 
+                margin-left: 4% !important;
+            }
+
+            input[type="text"], select, textarea {
+                font-size: 16px !important;
+                padding: 10px;
+            }
+
+            button[type="submit"] {
+                width: 92%;
+                margin-left: 4%;
+                padding: 15px;
+                font-size: 18px;
+            }
+            iframe {
+                margin: 0 auto !important;
+                width: 92%;
+                display: block;
+                border-width: 3px;
+            }
+            form { 
+                margin-left: 5% !important; 
+                margin-right: 5% !important;
+            }
+            button[type="submit"] {
+                height: 55px;
+                font-size: 20px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <hr>
+    <div class="contenedor-mega-titulo">
+        <h1 class="mega-titulo">RIGELCRAFT STUDIO</h1>
+    </div>
+    <hr>
+
+    <h3>BIENVENIDO A LA CENTRAL DE PRODUCCIÓN</h3>
+    <p>En este espacio podrás seguir de cerca cada paso de mis proyectos. Rigelcraft Studio es más que videos; es el proceso de creación detrás de cada historia.</p>
+    
+    <p><strong>Aquí encontrarás:</strong></p>
+    <ul>
+        <li><strong>🎬 Pre-estrenos:</strong> Adelantos exclusivos de algunos segundos de mis próximos videos antes de su estreno oficial.</li>
+        <li><strong>📝 Guion de la Serie:</strong> Fragmentos y notas de las historias que estoy construyendo.</li>
+        <li><strong>🖼️ Galería de la Serie:</strong> Renders, capturas de pantalla y arte conceptual de los episodios.</li>
+        <li><strong>📊 Informe de Avance:</strong> El estado real de producción de cada capítulo, desde la idea hasta la edición final.</li>
+    </ul>
+
+    <hr>
+    <h2 class="titulo-video"><strong><em>ÚLTIMO VIDEO DEL CANAL</em></strong></h2>
+    <iframe src="https://www.youtube.com/embed/TDN3ApDdt-A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <hr>
+
+    <ul>
+        <li><a href="preestrenos.html">🚀 VER PREESTRENOS</a></li>
+        <li><a href="guiones.html">📄 GUIONES DE LA SERIE</a></li>
+        <li><a href="galeria.html">📸 ADELANTOS DE LA SERIE</a></li>
+        <li><a href="info.html">📊 INFORME DE AVANCE</a></li>
+	    <li><a href="versiones.html">📂 VERSIONES DE LA WEB</a></li>
+	</ul>
+
+    <hr>
+    <h2 class="titulo-buzon"><strong><em>BUZÓN DE SUGERENCIAS</em></strong></h2>
+    <p>¡Tu opinión construye el universo de Rigelcraft! 🚀 Usa este buzón para enviarnos tus ideas sobre la serie o sugerencias para mejorar nuestra plataforma web.</p>
+    
+    <form id="buzon-rigelcraft">
+        <label><strong>Nombre o Nickname</strong> (obligatorio)</label>
+        <input type="text" name="usuario" placeholder="Ej: ElGamerPro123" required>
+
+        <label><strong>¿Sobre qué es tu sugerencia?</strong> (obligatorio)</label>
+        <select name="tema" required>
+            <option value="" disabled selected>Seleccionar una opción</option>
+            <option value="web">Sugerencia para la página web 🌐</option>
+            <option value="serie">Idea para la serie (Rigelcraft) 🚀</option>
+            <option value="bug">Reporte de error / Bug 🛠️</option>
+        </select>
+
+        <label><strong>Mensaje</strong> (obligatorio)</label>
+        <textarea name="comentario" rows="4" placeholder="Describe tu sugerencia..." required></textarea>
+
+        <button type="submit">Enviar a Rigelcraft</button>
+        <button type="button" id="nuevo-mensaje" style="display: none; margin-top: 10px; background-color: #ffe600; color: #000;">Enviar nueva solicitud 🚀</button>
+    </form>
+
+    <hr>
+    <p>Suscríbete para no perderte los estrenos</p>
+    <p><a href="https://www.youtube.com/@Rigelcraft" target="_blank">https://www.youtube.com/@Rigelcraft</a></p>
+    
+    <hr>
+    <p>Únete a nuestro server en Discord</p>
+    <p><a href="https://discord.gg/qnhHeuUFTk" target="_blank">https://discord.gg/qnhHeuUFTk</a></p>
+
+    <hr>
+    <p><strong>RIGELCRAFT STUDIO:</strong> <em>Creando historias entre las estrellas. 🚀</em></p>
+    <p>© 2026 – Todos los derechos reservados.</p>
+	<p style="color: #00FF00;"><strong>Versión Actual:</strong> <span style="color: #00FF00;">2.1.0</span></p>
+
+    <script>
+        const form = document.getElementById("buzon-rigelcraft");
+        const btnNuevo = document.getElementById("nuevo-mensaje");
+        const btnEnviar = form.querySelector('button[type="submit"]');
+
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            const data = new FormData(form);
+            
+            const response = await fetch("https://formspree.io/f/meevyarp", {
+                method: "POST",
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                alert("🚀 ¡Recibido en la Central de Rigelcraft!");
+                form.reset();
+                btnEnviar.style.display = "none";
+                btnNuevo.style.display = "block";
+            }
+        });
+
+        btnNuevo.addEventListener("click", () => {
+            btnNuevo.style.display = "none";
+            btnEnviar.style.display = "block";
+        });
+    </script>
+</body>
+</html>

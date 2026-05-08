@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía de la Serie | Rigelcraft Studio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Angkor&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url("info.png");
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: 'Arial', sans-serif;
+            padding-bottom: 50px;
+        }
+
+        hr {
+            border: none;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #01ff0e, #00ffb3);
+            box-shadow: 0 0 10px #00ff22, 0 0 10px #00ff40;
+            margin: 30px 0;
+        }
+
+        .breadcrumb {
+            text-align: left;
+            width: 100%;
+            margin: 20px 0 40px 2%;
+            font-size: 20px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+        }
+
+        .breadcrumb a {
+            color: #00ff15;
+            text-decoration: underline;
+            font-weight: bold;
+            transition: 0.3s;
+            text-shadow: 0 0 5px #000;
+        }
+
+        .breadcrumb a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px #00ff22, 0 0 20px #00ff0d;
+        }
+
+        .breadcrumb span {
+            color: #33ff00;
+            text-decoration: none;
+            font-weight: bold;
+            text-shadow: 0 0 5px #000;
+        }
+
+        .contenedor-mega-titulo {
+            text-align: left;
+            width: 100%;
+            margin: 20px 0 20px 2%;
+            max-width: 98%;
+            overflow-x: visible;
+        }
+
+        .mega-titulo {
+            font-family: 'Angkor', 'Anton', Arial, sans-serif;
+            font-size: clamp(40px, 8vw, 130px);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+            line-height: 1;
+            background-image: url('https://static.vecteezy.com/system/resources/previews/031/974/702/non_2x/illustration-of-binary-encoding-green-light-glowing-with-digits-background-screen-digital-hacker-cyberspace-algorithm-binary-encryption-web-hud-interface-computer-monitor-information-data-code-free-photo.jpg');
+            background-size: 400px;
+            background-repeat: repeat;
+            background-position: center;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            -webkit-text-stroke: 1.5px #06ad00;
+            filter: drop-shadow(0 0 10px #1a5a00) drop-shadow(0 0 20px #006310);
+            max-width: 95%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            display: block;
+            padding-right: 2px;
+            box-sizing: border-box;
+        }
+
+        h3 {
+            color: #e6edf3;
+            font-size: 25px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+            margin-left: 2%;
+            text-align: left;
+        }
+
+        p {
+            color: #e6edf3;
+            font-size: 22px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+            margin-left: 2%;
+            text-align: left;
+            margin-top: 25px;
+        }
+
+        .infografia-container {
+            max-width: 80%  ;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .titulo-infografia {
+            font-family: 'Angkor', cursive;
+            font-size: clamp(30px, 8vw, 60px);
+            text-align: center;
+            color: #00ccff;
+            text-shadow: 0 0 10px #00ccff, 0 0 20px #0066aa;
+            margin: 30px 0;
+        }
+
+        .episodio {
+            margin-bottom: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .episodio-header {
+            padding: 18px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.85);
+            border-radius: 15px;
+            transition: 0.3s;
+            border-left: 5px solid;
+        }
+
+        .episodio-header:hover {
+            background: rgba(0, 204, 255, 0.15);
+        }
+
+        .episodio-titulo {
+            font-size: clamp(18px, 5vw, 24px);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .episodio-numero {
+            color: #00ccff;
+        }
+
+        .episodio-emoji {
+            font-size: 28px;
+        }
+
+        .episodio-estado {
+            font-size: 14px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .flecha {
+            font-size: 24px;
+            transition: transform 0.3s;
+            color: #00ccff;
+        }
+
+        .episodio.abierto .flecha {
+            transform: rotate(180deg);
+        }
+
+        .episodio-contenido {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 0 0 15px 15px;
+            margin-top: 5px;
+        }
+
+        .episodio.abierto .episodio-contenido {
+            max-height: 1200px;
+            padding: 20px;
+        }
+
+        .categorias {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .categoria {
+            display: grid;
+            grid-template-columns: 140px 1fr 60px;
+            align-items: center;
+            gap: 0;
+        }
+
+        .categoria-nombre {
+            font-size: 14px;
+            font-weight: bold;
+            color: #ddd;
+            white-space: normal;
+            word-break: break-word;
+            line-height: 1.3;
+        }
+
+        .categoria-barra {
+            background-color: #333;
+            border-radius: 20px;
+            height: 25px;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .categoria-lleno {
+            height: 100%;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            font-size: 12px;
+            line-height: 25px;
+            font-weight: bold;
+            transition: width 0.5s;
+            white-space: nowrap;
+            padding: 0 8px;
+        }
+
+        .categoria-porcentaje {
+            text-align: right;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .total-container {
+            margin: 20px 0;
+            padding-top: 15px;
+            border-top: 2px solid rgba(0,204,255,0.3);
+        }
+
+        .total-label {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            color: white;
+        }
+
+        .total-barra-fondo {
+            background-color: #333;
+            border-radius: 25px;
+            height: 35px;
+            overflow: hidden;
+        }
+
+        .total-barra-lleno {
+            height: 100%;
+            border-radius: 25px;
+            text-align: center;
+            color: white;
+            font-size: 16px;
+            line-height: 35px;
+            font-weight: bold;
+            transition: width 0.5s;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            margin-top: 20px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            border: 2px solid #00ccff;
+        }
+
+        .mensaje-video {
+            margin-top: 20px;
+            padding: 15px;
+            text-align: center;
+            background: rgba(0,0,0,0.5);
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .mensaje-video.terminado {
+            color: #00c853;
+            border: 4px solid #00c853;
+        }
+
+        .mensaje-video.proceso {
+            color: #F57F17;
+            border: 4px solid #F57F17;
+        }
+
+        .mensaje-video.proximo {
+            color: #D50000;
+            border: 4px solid #D50000;
+        }
+
+        @media (max-width: 600px) {
+            .infografia-container {
+                padding: 10px;
+            }
+            .episodio-header {
+                padding: 12px 15px;
+            }
+            .episodio.abierto .episodio-contenido {
+                padding: 12px;
+            }
+            .categoria {
+                grid-template-columns: 110px 1fr 50px;
+                gap: 8px;
+            }
+            .categoria-nombre {
+                font-size: 11px;
+            }
+            .categoria-lleno {
+                font-size: 10px;
+                white-space: nowrap;
+            }
+            .categoria-porcentaje {
+                font-size: 11px;
+            }
+        }
+        @media (max-width: 600px) {
+            body { 
+                background-attachment: fixed; 
+				background-position: 50% center !important;
+            }
+            .mega-titulo {
+				font-size: clamp(25px, 12vw, 50px) !important; 
+		        -webkit-text-stroke: 1px #150050;
+		        text-align: center !important;
+		        margin: 0 auto !important;
+		        display: block;
+				background-size: 250px;
+		        width: 90%;
+            }
+            .breadcrumb {
+                font-size: 16px !important;
+                margin-left: 4% !important;
+            }
+            p, h3, .texto {
+                font-size: 18px !important;
+                margin-left: 5% !important;
+                margin-right: 5% !important;
+            }
+            .slider-wrapper {
+                width: 95%;
+            }
+            .flecha {
+                font-size: 25px;
+                padding: 5px 12px;
+            }
+            .flecha-izquierda {
+                left: 2px;
+            }
+            .flecha-derecha {
+                right: 2px;
+            }
+        }
+    </style>
+</head>
+<body>
+<hr>
+    <div class="breadcrumb">
+        <a href="index.html">Inicio</a><span> / Avances</span>
+    </div>
+    <div class="contenedor-mega-titulo">
+        <h1 class="mega-titulo">INFORME DE AVANCE</h1>
+    </div>
+<hr>
+<h3>Mantente al tanto del progreso de nuestra producción principal. En esta sección publicamos actualizaciones periódicas sobre el estado de RIGELCRAFT: LA SERIE.</h3>
+<p>Aquí detallamos en qué fase nos encontramos: desde la finalización de guiones y grabación de voces, hasta el porcentaje de renderizado y edición final de cada episodio. Nuestro objetivo es la transparencia total con nuestra comunidad sobre el tiempo y esfuerzo dedicado a cada minuto de animación.</p>
+<p><strong>Nota importante:</strong> Las fechas y porcentajes son estimaciones de producción y están sujetos a cambios dependiendo de la complejidad técnica de cada escena.</p>
+<p><strong>Última modificación: 05 / Mayo / 2026</strong></p>
+<hr>
+<div class="infografia-container">
+    <div id="episodios-container"></div>
+</div>
+<hr>
+<div class="breadcrumb">
+        <a href="index.html">Inicio</a><span> / Avances</span>
+    </div>
+<script>
+    const PESOS = {
+        guion: 10,
+        voces: 10,
+        animacion: 60,
+        edicion: 15,
+        miniatura: 5
+    };
+    function getColorPorPorcentaje(porcentaje) {
+        if (porcentaje >= 100) return "#00c853";   
+        if (porcentaje >= 91) return "#2e7b30";    
+        if (porcentaje >= 66) return "#F57F17";    
+        if (porcentaje >= 26) return "#E65100";    
+        return "#D50000";                          
+    }
+
+    function getEmojiPorPorcentaje(porcentaje) {
+        if (porcentaje >= 100) return "✅";  
+        if (porcentaje >= 91) return "🟢";   
+        if (porcentaje >= 66) return "🟡";   
+        if (porcentaje >= 26) return "🟠";   
+        if (porcentaje > 0) return "🔴";     
+        return "🔴";                         
+    }
+
+    function getEstadoEpisodio(porcentaje) {
+        if (porcentaje === 0) return "PRÓXIMAMENTE";
+        if (porcentaje >= 100) return "TERMINADO";
+        return "EN PROCESO";
+    }
+
+    function getMensajeVideo(porcentaje, videoId) {
+        const estado = getEstadoEpisodio(porcentaje);
+        
+        if (porcentaje >= 100 && videoId && videoId !== "") {
+            return null; // null significa que hay que mostrar el video
+        }
+        
+        if (porcentaje >= 100 && (!videoId || videoId === "")) {
+            return { texto: "🎬 POR ESTRENARSE", clase: "proximo" };
+        }
+        
+        if (estado === "EN PROCESO") {
+            return { texto: "⚙️ EN PROCESO", clase: "proceso" };
+        }
+        
+        return { texto: "⏳ PRÓXIMAMENTE", clase: "proximo" };
+    }
+
+    function getVideoHTML(videoId, porcentaje) {
+        const mensajeConfig = getMensajeVideo(porcentaje, videoId);
+        
+        // Si hay que mostrar un mensaje en lugar del video
+        if (mensajeConfig) {
+            return `
+                <div class="mensaje-video ${mensajeConfig.clase}">
+                    ${mensajeConfig.texto}
+                </div>
+            `;
+        }
+        
+        // Si llegamos aquí, el video se puede mostrar (100% y con videoId)
+        return `
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
+            </div>
+        `;
+    }
+
+    function calcularTotalPonderado(ep) {
+        const total = (ep.guion * PESOS.guion +
+                       ep.voces * PESOS.voces +
+                       ep.animacion * PESOS.animacion +
+                       ep.edicion * PESOS.edicion +
+                       ep.miniatura * PESOS.miniatura) / 100;
+        return Math.round(total);
+    }
+
+    function crearBarraCategoria(porcentaje, nombre, icono) {
+        const color = porcentaje === 0 ? "#D50000" : getColorPorPorcentaje(porcentaje);
+        const textoPorcentaje = porcentaje === 0 ? "0%" : `${porcentaje}%`;
+        
+        return `
+            <div class="categoria">
+                <span class="categoria-nombre">${icono} ${nombre}:</span>
+                <div class="categoria-barra">
+                    <div class="categoria-lleno" style="width: ${porcentaje}%; background-color: ${color};">
+                        ${porcentaje > 8 ? textoPorcentaje : ''}
+                    </div>
+                </div>
+                <span class="categoria-porcentaje" style="color: ${color};">${textoPorcentaje}</span>
+            </div>
+        `;
+    }
+
+    function generarEpisodioHTML(ep, index) {
+        const total = calcularTotalPonderado(ep);
+        const colorTotal = getColorPorPorcentaje(total);
+        const emoji = getEmojiPorPorcentaje(total);
+        const estadoTexto = getEstadoEpisodio(total);
+        
+        // Determinar texto del título
+        let tituloEpisodio = `EPISODIO ${ep.numero}: ${ep.titulo}`;
+        
+        // Categorías con iconos
+        const categoriasHTML = `
+            ${crearBarraCategoria(ep.guion, "Guión", "📝")}
+            ${crearBarraCategoria(ep.voces, "Voces", "🎙️")}
+            ${crearBarraCategoria(ep.animacion, "Animación", "🎬")}
+            ${crearBarraCategoria(ep.edicion, "Edición", "✂️")}
+            ${crearBarraCategoria(ep.miniatura, "Miniatura", "🖼️")}
+        `;
+        
+        let totalHTML = '';
+        if (total === 0) {
+            totalHTML = `
+                <div class="total-container">
+                    <div class="total-label">
+                        <span>🏆 Porcentaje Total del Episodio:</span>
+                        <span style="color: ${colorTotal};">${total}%</span>
+                    </div>
+                    <div style="text-align: center; padding: 15px; background: rgba(0,0,0,0.3); border-radius: 10px; color: #FFD700;">
+                        ⏳ Próximamente
+                    </div>
+                </div>
+            `;
+        } else {
+            totalHTML = `
+                <div class="total-container">
+                    <div class="total-label">
+                        <span>🏆 Porcentaje Total del Episodio:</span>
+                        <span style="color: ${colorTotal};">${total}%</span>
+                    </div>
+                    <div class="total-barra-fondo">
+                        <div class="total-barra-lleno" style="width: ${total}%; background-color: ${colorTotal};">
+                            ${total > 12 ? total + '% Completado' : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        const videoHTML = getVideoHTML(ep.videoId, total);
+        
+        return `
+            <div class="episodio" data-episodio="${ep.numero}">
+                <div class="episodio-header" style="border-left-color: ${colorTotal};">
+                    <div class="episodio-titulo">
+                        <span class="episodio-numero">${tituloEpisodio}</span>
+                        <span class="episodio-emoji">${emoji}</span>
+                        <span class="episodio-estado" style="color: ${colorTotal};">${estadoTexto}</span>
+                    </div>
+                    <span class="flecha">▼</span>
+                </div>
+                <div class="episodio-contenido">
+                    <div class="categorias">
+                        ${categoriasHTML}
+                    </div>
+                    ${totalHTML}
+                    ${videoHTML}
+                </div>
+            </div>
+        `;
+    }
+
+    const episodios = [
+        {
+            numero: 1,
+            titulo: "",
+            guion: 100,
+            voces: 100,
+            animacion: 100,
+            edicion: 100,
+            miniatura: 100,
+            videoId: "M1Pz25Jv9Tg"
+        },
+        {
+            numero: 2,
+            titulo: "",
+            guion: 100,
+            voces: 100,
+            animacion: 100,
+            edicion: 100,
+            miniatura: 100,
+            videoId: "xE1_MIma-QY"
+        },
+        {
+            numero: 3,
+            titulo: "",
+            guion: 100,
+            voces: 100,
+            animacion: 100,
+            edicion: 100,
+            miniatura: 100,
+            videoId: ""
+        },
+        {
+            numero: 4,
+            titulo: "",
+            guion: 100,
+            voces: 44,
+            animacion: 0,
+            edicion:0,
+            miniatura: 0,
+            videoId: ""
+        },
+        {
+            numero: 5,
+            titulo: "",
+            guion: 100,
+            voces: 0,
+            animacion: 0,
+            edicion: 0,
+            miniatura: 0,
+            videoId: ""
+        },
+        {
+            numero: 6,
+            titulo: "",
+            guion: 0,
+            voces: 0,
+            animacion: 0,
+            edicion: 0,
+            miniatura: 0,
+            videoId: ""
+        },
+       {
+            numero: 7,
+            titulo: "",
+            guion: 0,
+            voces: 0,
+            animacion: 0,
+            edicion: 0,
+            miniatura: 0,
+            videoId: ""
+        },
+       {
+            numero: 8,
+            titulo: "",
+            guion: 0,
+            voces: 0,
+            animacion: 0,
+            edicion: 0,
+            miniatura: 0,
+            videoId: ""
+        },
+       {
+            numero: 9,
+            titulo: "",
+            guion: 0,
+            voces: 0,
+            animacion: 0,
+            edicion: 0,
+            miniatura: 0,
+            videoId: ""
+        },
+       {
+            numero: 10,
+            titulo: "",
+            guion: 0,
+            voces: 0,
+            animacion: 0,
+            edicion: 0,
+            miniatura: 0,
+            videoId: ""
+        },
+       {
+            numero: 11,
+            titulo: "",
+            guion: 0,
+            voces: 0,
+            animacion: 0,
+            edicion: 0,
+            miniatura: 0,
+            videoId: ""
+        },
+       {
+            numero: 12,
+            titulo: "",
+            guion: 0,
+            voces: 0,
+            animacion: 0,
+            edicion: 0,
+            miniatura: 0,
+            videoId: ""
+        }
+    ];
+
+    function renderizarEpisodios() {
+        const container = document.getElementById('episodios-container');
+        if (!container) return;
+        
+        let html = '';
+        episodios.forEach((ep, i) => {
+            html += generarEpisodioHTML(ep, i);
+        });
+        
+        container.innerHTML = html;
+        
+        // Eventos para acordeón
+        document.querySelectorAll('.episodio-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const episodio = header.closest('.episodio');
+                episodio.classList.toggle('abierto');
+            });
+        });
+    }
+
+    renderizarEpisodios();
+</script>
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+</html>
