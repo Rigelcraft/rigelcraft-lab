@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador Enigma | Rigelcraft Studio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Angkor&display=swap');
+        
+        body {
+            background-image: url("preestrenos.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        
+        hr {
+            border: none;
+            width: 100%; 
+            height: 3px;           
+            background: linear-gradient(90deg, #ff8800, #ff0000, #f30096); 
+            box-shadow: 0 0 10px #ffa600, 0 0 10px #ffa600;
+            margin: 30px 0;
+        }
+
+        .breadcrumb {
+            text-align: left;
+            width: 100%;
+            margin: 20px 0 40px 2%; 
+            color: #e6edf3;
+            font-size: 20px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+            margin-left: 2%;
+        }
+
+        .contenedor-mega-titulo {
+            text-align: left;
+            width: 100%;
+            margin: 20px 0 20px 2%; 
+        }
+
+        p {
+            color: #e6edf3;
+            font-size: 22px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+            margin-left: 2%;
+            margin-right: 5%;
+            text-align: left;
+        }
+
+        .mega-titulo {
+            font-family: 'Angkor', Arial, sans-serif;
+            font-size: clamp(32px, 7vw, 110px);
+            font-weight: bold;
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            margin: 0;
+            line-height: 1.1;
+            background-image: url('https://img.freepik.com/vector-premium/textura-transparente-prominencias-solares-rio-lava-volcan-o-vista-superior-superficie-magma-brillante_314759-1137.jpg'); 
+            background-size: 350px;
+            background-repeat: repeat;
+            background-position: center;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent; 
+            -webkit-text-stroke: 1.5px #570000; 
+            filter: 
+                drop-shadow(0 0 10px #ff7b00)
+                drop-shadow(0 0 20px #ff7b00);
+            max-width: 95%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            display: block;
+            padding-right: 10px;
+            box-sizing: border-box;
+        }
+
+        h3 {
+            color: #e6edf3;
+            font-size: 25px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+            margin-left: 2%;
+            margin-right: 5%;
+            text-align: left;
+        }
+
+        h2 {
+            color: #ff9100;
+            font-size: 45px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+            margin-left: 2%;
+            margin-right: 5%;
+            text-align: left;
+        }
+
+        a {
+            color: #ff9100;
+            text-decoration: underline;
+            font-weight: bold;
+            transition: 0.3s;
+            text-shadow: 0 0 5px #000;
+        }
+
+        span {
+            color: #ff9100;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            text-shadow: 0 0 5px #000;
+        }
+
+        a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px #ff9100, 0 0 20px #ff9100;
+        }
+
+        /* CONTROLES */
+        .control-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-left: 2%;
+            margin-right: 5%;
+            margin-bottom: 25px;
+            box-sizing: border-box;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #fffb00;
+            text-shadow: 0 0 4px #000;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            background-color: rgba(0, 0, 0, 0.85); 
+            border: 2px solid #ff8800; 
+            border-radius: 8px;
+            color: #ffd900;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 22px;
+            box-sizing: border-box;
+            outline: none;
+            transition: 0.4s;
+            box-shadow: inset 0 0 8px rgba(255, 136, 0, 0.2);
+        }
+
+        input:focus {
+            border-color: #00d9ff;
+            box-shadow: 0 0 12px #00d9ff, inset 0 0 8px rgba(0,217,255,0.2);
+            color: #00d9ff;
+        }
+
+        /* GRILLA DE SALIDAS ALTERADA A 4 COLUMNAS EN ESCRITORIO */
+        .grid-outputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 20px;
+            margin-left: 2%;
+            margin-right: 5%;
+            box-sizing: border-box;
+        }
+
+        .card {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            text-align: center;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        
+        .card:hover {
+            border-color: #00d9ff;
+        }
+
+        .card-label {
+            font-size: 18px;
+            color: #fffb00;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-shadow: 0 0 4px #000;
+        }
+
+        .card-value {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 2px;
+            text-shadow: 0 0 8px rgba(255,255,255,0.3);
+        }
+
+        /* CONSOLA */
+        .console-container {
+            margin-left: 2%;
+            margin-right: 5%;
+            box-sizing: border-box;
+        }
+
+        .console {
+            background-color: rgba(5, 5, 5, 0.95);
+            padding: 25px;
+            border-left: 5px solid #ffa600;
+            border-top: 1px solid #222;
+            border-right: 1px solid #222;
+            border-bottom: 1px solid #222;
+            border-radius: 0 10px 10px 0;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        #out-plugboard {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.6rem;
+            letter-spacing: 3px;
+            font-weight: bold;
+            color: #00ff22;
+            word-break: break-word;
+            text-align: center;
+            line-height: 1.6;
+            text-shadow: 0 0 5px rgba(0,255,34,0.5);
+        }
+
+        .info-pares {
+            font-size: 1rem;
+            color: #888;
+            margin-top: 10px;
+            text-shadow: 0 0 3px #000;
+        }
+
+        .btn-copy {
+            margin-top: 20px;
+            padding: 12px 30px;
+            background-color: transparent;
+            color: #00d9ff;
+            border: 2px solid #00d9ff;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: auto;
+            text-transform: uppercase;
+        }
+
+        .btn-copy:hover {
+            background-color: #00d9ff;
+            color: #000;
+            box-shadow: 0 0 15px #00d9ff;
+        }
+
+        @media (max-width: 600px) {
+            body { 
+                background-position: 35% center !important;
+            }
+            
+            .mega-titulo {
+                font-size: clamp(24px, 8vw, 45px) !important;
+                -webkit-text-stroke: 1px #400000;
+                text-align: center !important;
+                margin: 0 auto !important;
+                display: block;
+                padding: 0 5px;
+                background-size: 180px;
+            }
+
+            .contenedor-mega-titulo {
+                text-align: center !important;
+                margin-left: 0 !important;
+                width: 100% !important;
+            }
+
+            .breadcrumb {
+                font-size: 16px !important;
+                text-align: center !important;
+                margin: 15px 0 !important;
+                width: 100% !important;
+            }
+            
+            p {
+                font-size: 16px !important;
+                margin-left: 4% !important;
+                margin-right: 4% !important;
+                text-align: justify;
+            }
+
+            h3 {
+                font-size: 18px !important;
+                margin-left: 4% !important;
+                margin-right: 4% !important;
+                text-align: center;
+            }
+            
+            h2 {
+                font-size: 26px !important; 
+                margin-left: 4% !important;
+                margin-right: 4% !important;
+                text-align: center;
+            }
+
+            .control-panel {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                margin-left: 4% !important;
+                margin-right: 4% !important;
+            }
+
+            input {
+                font-size: 16px !important;
+                padding: 10px;
+            }
+
+            /* Las 4 tarjetas se apilan limpiamente en vertical */
+            .grid-outputs {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                margin-left: 4% !important;
+                margin-right: 4% !important;
+            }
+
+            .card {
+                padding: 15px;
+            }
+
+            .card-label {
+                font-size: 16px;
+            }
+
+            .card-value {
+                font-size: 1.4rem !important; /* Forzado y aumentado en móviles */
+                font-family: 'Share Tech Mono', monospace !important;
+            }
+
+            .console-container {
+                margin-left: 4% !important;
+                margin-right: 4% !important;
+            }
+
+            .console {
+                padding: 20px 15px;
+            }
+
+            #out-plugboard {
+                font-size: 1.2rem;
+                letter-spacing: 2px;
+                font-family: 'Share Tech Mono', monospace !important;
+            }
+
+            .btn-copy {
+                width: 90%;
+                margin: 20px auto 0 auto;
+                display: block;
+                padding: 12px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="breadcrumb">
+        <a href="index.html">Inicio</a><span> / Generador Enigma</span>
+    </div>
+
+    <div class="contenedor-mega-titulo">
+        <h1 class="mega-titulo">GENERADOR ENIGMA</h1>
+    </div>
+    <hr>
+
+    <h3>HOJA DE CLAVES DETERMINISTA</h3>
+    <p>Esta terminal sincroniza la configuración de rotores, reflectores, posiciones iniciales, anillos y clavijas de la máquina Enigma utilizando criptografía simétrica basada en la fecha actual y tu frase de seguridad.</p>
+    
+    <hr>
+
+    <h2><strong><i>PARÁMETROS DE ENTRADA</i></strong></h2>
+    
+    <div class="control-panel">
+        <div>
+            <label for="fecha">Fecha de Operación:</label>
+            <input type="date" id="fecha" oninput="generarConfiguracionEnigma()">
+        </div>
+        <div>
+            <label for="salt">Llave Secreta (Salt):</label>
+            <input type="text" id="salt" value="Rigelcraft" oninput="generarConfiguracionEnigma()" placeholder="Frase secreta...">
+        </div>
+    </div>
+
+    <hr>
+
+    <h2><strong><i>CONFIGURACIÓN DEL SISTEMA</i></strong></h2>
+    <div class="grid-outputs">
+        <div class="card">
+            <div class="card-label">Rotores (Orden)</div>
+            <div class="card-value" id="out-rotores">- - - -</div>
+        </div>
+        <div class="card">
+            <div class="card-label">Reflector</div>
+            <div class="card-value" id="out-reflector">-</div>
+        </div>
+        <div class="card">
+            <div class="card-label">Posición Inicial (Start)</div>
+            <div class="card-value" id="out-posicion">- - - -</div>
+        </div>
+        <div class="card">
+            <div class="card-label">Anillos (Ring Settings)</div>
+            <div class="card-value" id="out-anillos">- - - -</div>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2><strong><i>CONEXIONES DEL PLUGBOARD (CLAVIJERO)</i></strong></h2>
+    <div class="console-container">
+        <div class="console">
+            <div id="out-plugboard">- - -</div>
+            <div id="out-info-pares" class="info-pares"></div>
+            <button class="btn-copy" onclick="copiarPlugboard()">Copiar Conexiones</button>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="breadcrumb">
+        <a href="index.html">Inicio</a><span> / Generador Enigma</span>
+    </div>
+
+    <script>
+        window.onload = function() {
+            document.getElementById('fecha').value = new Date().toISOString().split('T')[0];
+            generarConfiguracionEnigma();
+        }
+
+        async function sha256(texto) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(texto);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        let textoPlugboardCopiar = "";
+
+        async function generarConfiguracionEnigma() {
+            const fecha = document.getElementById('fecha').value;
+            const salt = document.getElementById('salt').value;
+
+            if (!fecha || !salt) {
+                document.getElementById('out-rotores').innerText = "- - - -";
+                document.getElementById('out-reflector').innerText = "-";
+                document.getElementById('out-posicion').innerText = "- - - -";
+                document.getElementById('out-anillos').innerText = "- - - -";
+                document.getElementById('out-plugboard').innerText = "ESPERANDO DATOS...";
+                document.getElementById('out-info-pares').innerText = "";
+                textoPlugboardCopiar = "";
+                return;
+            }
+
+            const cadenaBase = `${fecha}_${salt}`;
+            const hash = await sha256(cadenaBase);
+
+            // 1. CÁLCULO DE ROTORES (4 Rotores)
+            const primerHex = parseInt(hash[0], 16);
+            const rotorGriego = (primerHex % 2 === 0) ? 'β' : 'γ';
+
+            let poolRotores = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII'];
+            let rotoresElegidos = [];
+            
+            for (let i = 0; i < 3; i++) {
+                const hexChar = parseInt(hash[i + 1], 16);
+                const indexValido = hexChar % poolRotores.length;
+                rotoresElegidos.push(poolRotores[indexValido]);
+                poolRotores.splice(indexValido, 1);
+            }
+            document.getElementById('out-rotores').innerText = `${rotorGriego} ${rotoresElegidos.join(' ')}`;
+
+            // 2. DETERMINACIÓN DEL REFLECTOR (B o C)
+            const hexReflector = parseInt(hash[15], 16);
+            const reflectorElegido = (hexReflector % 2 === 0) ? 'B' : 'C';
+            document.getElementById('out-reflector').innerText = reflectorElegido;
+
+            // 3. CÁLCULO DE LA POSICIÓN INICIAL (01 al 26)
+            let posicionInicialNumeros = [];
+            for (let i = 0; i < 4; i++) {
+                const charHex = parseInt(hash[18 + i], 16);
+                const numeroRotor = (charHex % 26) + 1;
+                posicionInicialNumeros.push(String(numeroRotor).padStart(2, '0'));
+            }
+            document.getElementById('out-posicion').innerText = posicionInicialNumeros.join(' ');
+
+            // 4. CÁLCULO DE ANILLOS (Ring Settings)
+            let anillos = [];
+            for (let i = 0; i < 4; i++) {
+                const parHex = hash.substring(10 + (i * 2), 12 + (i * 2));
+                const valorDecimal = parseInt(parHex, 16);
+                const numeroAnillo = (valorDecimal % 26) + 1;
+                anillos.push(String(numeroAnillo).padStart(2, '0'));
+            }
+            document.getElementById('out-anillos').innerText = anillos.join(' ');
+
+            // 5. DETERMINACIÓN DEL PLUGBOARD (Fisher-Yates corregido con bytes completos)
+            let alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
+            
+            // Consumimos el hash de dos en dos caracteres (bytes completos de 0 a 255)
+            for (let i = alfabeto.length - 1; i > 0; i--) {
+                // Tomamos un par indexado dinámicamente para no repetir valores fijos
+                const byteOffset = (i * 2) % (hash.length - 2);
+                const hexByte = hash.substring(byteOffset, byteOffset + 2);
+                const valorDecimal = parseInt(hexByte, 16);
+                
+                // Rango restrictivo estricto de Fisher-Yates (0 hasta i)
+                const j = valorDecimal % (i + 1);
+                
+                // Intercambio seguro
+                let temp = alfabeto[i];
+                alfabeto[i] = alfabeto[j];
+                alfabeto[j] = temp;
+            }
+
+            // Generamos las 10 parejas reglamentarias
+            let parejas = [];
+            for (let i = 0; i < 20; i += 2) {
+                parejas.push(`${alfabeto[i]}${alfabeto[i+1]}`);
+            }
+
+            textoPlugboardCopiar = parejas.join(' ');
+            document.getElementById('out-plugboard').innerText = textoPlugboardCopiar;
+            document.getElementById('out-info-pares').innerText = "10 Cables conectados activos.";
+        }
+
+        function copiarPlugboard() {
+            if (!textoPlugboardCopiar) {
+                alert("No hay conexiones calculadas para copiar.");
+                return;
+            }
+            
+            navigator.clipboard.writeText(textoPlugboardCopiar).then(() => {
+                alert("🔑 ¡Copiado con éxito!: " + textoPlugboardCopiar);
+            }).catch(err => {
+                console.error('Error al usar el portapapeles: ', err);
+            });
+        }
+    </script>
+</body>
+</html>

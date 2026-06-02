@@ -250,7 +250,7 @@
 
     <hr>
     <h2 class="titulo-video"><strong><em>ÚLTIMO VIDEO DEL CANAL</em></strong></h2>
-    <iframe src="https://www.youtube.com/embed/TDN3ApDdt-A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/NOw6lm5oFf0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     <hr>
 
     <ul>
@@ -260,7 +260,12 @@
         <li><a href="info.html">📊 INFORME DE AVANCE</a></li>
 	    <li><a href="versiones.html">📂 VERSIONES DE LA WEB</a></li>
 	</ul>
-
+    <hr>
+    <h2 class="titulo-video"><strong><em>Codigos secretos</em></strong></h2>
+    <ul>
+        <li><a href="enigma.html">🔎 CODIGO ENIGMA</a></li>
+        <li><a href="contraseñas.html">🔑 CLAVES SECRETAS</a></li>
+    </ul>
     <hr>
     <h2 class="titulo-buzon"><strong><em>BUZÓN DE SUGERENCIAS</em></strong></h2>
     <p>¡Tu opinión construye el universo de Rigelcraft! 🚀 Usa este buzón para enviarnos tus ideas sobre la serie o sugerencias para mejorar nuestra plataforma web.</p>
@@ -325,43 +330,5 @@
             btnEnviar.style.display = "block";
         });
     </script>
-<!-- Code injected by live-server -->
-<script>
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
-</script>
 </body>
 </html>

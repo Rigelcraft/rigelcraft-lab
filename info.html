@@ -396,7 +396,7 @@
 <h3>Mantente al tanto del progreso de nuestra producción principal. En esta sección publicamos actualizaciones periódicas sobre el estado de RIGELCRAFT: LA SERIE.</h3>
 <p>Aquí detallamos en qué fase nos encontramos: desde la finalización de guiones y grabación de voces, hasta el porcentaje de renderizado y edición final de cada episodio. Nuestro objetivo es la transparencia total con nuestra comunidad sobre el tiempo y esfuerzo dedicado a cada minuto de animación.</p>
 <p><strong>Nota importante:</strong> Las fechas y porcentajes son estimaciones de producción y están sujetos a cambios dependiendo de la complejidad técnica de cada escena.</p>
-<p><strong>Última modificación: 05 / Mayo / 2026</strong></p>
+<p><strong>Última modificación: 27 / Mayo / 2026</strong></p>
 <hr>
 <div class="infografia-container">
     <div id="episodios-container"></div>
@@ -599,14 +599,14 @@
             animacion: 100,
             edicion: 100,
             miniatura: 100,
-            videoId: ""
+            videoId: "qK-lEr2ykP8"
         },
         {
             numero: 4,
             titulo: "",
             guion: 100,
-            voces: 44,
-            animacion: 0,
+            voces: 100,
+            animacion: 56,
             edicion:0,
             miniatura: 0,
             videoId: ""
@@ -615,7 +615,7 @@
             numero: 5,
             titulo: "",
             guion: 100,
-            voces: 0,
+            voces: 9,
             animacion: 0,
             edicion: 0,
             miniatura: 0,
@@ -714,45 +714,6 @@
     }
 
     renderizarEpisodios();
-</script>
-
-<!-- Code injected by live-server -->
-<script>
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
 </script>
 </body>
 </html>

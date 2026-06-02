@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sección Secreta | Rigelcraft Studio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Angkor&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url("info.png");
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: 'Arial', sans-serif;
+            padding-bottom: 50px;
+        }
+
+        hr {
+            border: none;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #01ff0e, #00ffb3);
+            box-shadow: 0 0 10px #00ff22, 0 0 10px #00ff40;
+            margin: 30px 0;
+        }
+
+        .breadcrumb {
+            text-align: left;
+            width: 100%;
+            margin: 20px 0 40px 2%;
+            font-size: 20px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+        }
+
+        .breadcrumb a {
+            color: #00ff15;
+            text-decoration: underline;
+            font-weight: bold;
+            transition: 0.3s;
+            text-shadow: 0 0 5px #000;
+        }
+
+        .breadcrumb a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px #00ff22, 0 0 20px #00ff0d;
+        }
+
+        .breadcrumb span {
+            color: #33ff00;
+            text-decoration: none;
+            font-weight: bold;
+            text-shadow: 0 0 5px #000;
+        }
+
+        .contenedor-mega-titulo {
+            text-align: left;
+            width: 100%;
+            margin: 20px 0 20px 2%;
+            max-width: 98%;
+            overflow-x: visible;
+        }
+
+        .mega-titulo {
+            font-family: 'Angkor', 'Anton', Arial, sans-serif;
+            font-size: clamp(40px, 8vw, 130px);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+            line-height: 1;
+            background-image: url('https://static.vecteezy.com/system/resources/previews/031/974/702/non_2x/illustration-of-binary-encoding-green-light-glowing-with-digits-background-screen-digital-hacker-cyberspace-algorithm-binary-encryption-web-hud-interface-computer-monitor-information-data-code-free-photo.jpg');
+            background-size: 400px;
+            background-repeat: repeat;
+            background-position: center;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            -webkit-text-stroke: 1.5px #06ad00;
+            filter: drop-shadow(0 0 10px #1a5a00) drop-shadow(0 0 20px #006310);
+            max-width: 95%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            display: block;
+            padding-right: 2px;
+            box-sizing: border-box;
+        }
+
+        h3 {
+            color: #e6edf3;
+            font-size: 25px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+            margin-left: 2%;
+            text-align: left;
+        }
+
+        p {
+            color: #e6edf3;
+            font-size: 22px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+            margin-left: 2%;
+            text-align: left;
+            margin-top: 25px;
+        }@import url('https://fonts.googleapis.com/css2?family=Angkor&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url("info.png");
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: 'Arial', sans-serif;
+            padding-bottom: 50px;
+        }
+
+        hr {
+            border: none;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #01ff0e, #00ffb3);
+            box-shadow: 0 0 10px #00ff22, 0 0 10px #00ff40;
+            margin: 30px 0;
+        }
+
+        .breadcrumb {
+            text-align: left;
+            width: 100%;
+            margin: 20px 0 40px 2%;
+            font-size: 20px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+        }
+
+        .breadcrumb a {
+            color: #00ff15;
+            text-decoration: underline;
+            font-weight: bold;
+            transition: 0.3s;
+            text-shadow: 0 0 5px #000;
+        }
+
+        .breadcrumb a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px #00ff22, 0 0 20px #00ff0d;
+        }
+
+        .breadcrumb span {
+            color: #33ff00;
+            text-decoration: none;
+            font-weight: bold;
+            text-shadow: 0 0 5px #000;
+        }
+
+        .contenedor-mega-titulo {
+            text-align: left;
+            width: 100%;
+            margin: 20px 0 20px 2%;
+            max-width: 98%;
+            overflow-x: visible;
+        }
+
+        .mega-titulo {
+            font-family: 'Angkor', 'Anton', Arial, sans-serif;
+            font-size: clamp(40px, 8vw, 130px);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+            line-height: 1;
+            background-image: url('https://static.vecteezy.com/system/resources/previews/031/974/702/non_2x/illustration-of-binary-encoding-green-light-glowing-with-digits-background-screen-digital-hacker-cyberspace-algorithm-binary-encryption-web-hud-interface-computer-monitor-information-data-code-free-photo.jpg');
+            background-size: 400px;
+            background-repeat: repeat;
+            background-position: center;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            -webkit-text-stroke: 1.5px #06ad00;
+            filter: drop-shadow(0 0 10px #1a5a00) drop-shadow(0 0 20px #006310);
+            max-width: 95%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            display: block;
+            padding-right: 2px;
+            box-sizing: border-box;
+        }
+
+        h3 {
+            color: #e6edf3;
+            font-size: 25px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+            margin-left: 2%;
+            text-align: left;
+        }
+
+        p {
+            color: #e6edf3;
+            font-size: 22px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+            margin-left: 2%;
+            text-align: left;
+            margin-top: 25px;
+        }
+
+        h3.instruccion {
+            color: #e6edf3;
+            font-size: 25px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+            margin-left: 2%;
+            margin-bottom: 30px;
+        }
+
+        .seccion-claves-container {
+            max-width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .space-container {
+            margin-bottom: 25px;
+            background: rgba(0, 0, 0, 0.85);
+            border-radius: 15px;
+            padding: 20px;
+            border-left: 5px solid #06ad00;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .space-container h4 {
+            font-family: 'Angkor', sans-serif;
+            color: #00ccff;
+            font-size: 22px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 8px rgba(0, 204, 255, 0.6);
+        }
+
+        .input-grupo {
+            display: flex;
+            gap: 15px;
+            width: 100%;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 12px 15px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid #333;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #01ff0e;
+            box-shadow: 0 0 10px rgba(1, 255, 14, 0.5);
+        }
+
+        button {
+            padding: 12px 25px;
+            background: linear-gradient(90deg, #06ad00, #16a34a);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        button:hover {
+            background: linear-gradient(90deg, #01ff0e, #00ffb3);
+            box-shadow: 0 0 12px #00ff22;
+            color: #000;
+        }
+
+        /* --- CONTENIDOS SECRETOS REVELADOS --- */
+        .secret-content {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0, 200, 83, 0.15);
+            border: 2px solid #00c853;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 200, 83, 0.2);
+        }
+
+        .secret-content p {
+            color: #e6edf3;
+            font-size: 18px;
+            margin: 0;
+            text-shadow: 0 0 4px #000;
+        }
+
+        .secret-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 15px;
+            border: 2px solid #00ccff;
+            cursor: zoom-in;
+            transition: 0.2s;
+        }
+
+        .secret-content img:hover {
+            transform: scale(1.01);
+            box-shadow: 0 0 15px #00ccff;
+        }
+
+        /* --- VENTANA MODAL (LIGHTBOX ZOOM) --- */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            padding-top: 60px; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.95);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 90%;
+            max-width: 850px;
+            border-radius: 8px;
+            border: 2px solid #00ffb3;
+            box-shadow: 0 0 25px #00ff22;
+            touch-action: pinch-zoom; 
+        }
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #00ff15;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .close:hover {
+            color: #fff;
+            text-shadow: 0 0 10px #01ff0e;
+        }
+
+        /* --- OPTIMIZACIÓN RESPONSIVA (MÓVILES) --- */
+        @media (max-width: 600px) {
+            body { 
+                background-position: 50% center !important;
+            }
+            .seccion-claves-container {
+                max-width: 95%;
+                padding: 10px;
+            }
+            .mega-titulo {
+                font-size: clamp(25px, 12vw, 50px) !important; 
+                -webkit-text-stroke: 1px #06ad00;
+                text-align: center !important;
+                margin: 0 auto !important;
+                display: block;
+                background-size: 250px;
+                width: 90%;
+            }
+            .breadcrumb {
+                font-size: 16px !important;
+                margin-left: 4% !important;
+            }
+            h3.instruccion {
+                font-size: 18px !important;
+                margin-left: 5% !important;
+                margin-right: 5% !important;
+            }
+            .input-grupo {
+                flex-direction: column;
+                gap: 10px;
+            }
+            button {
+                width: 100%;
+            }
+            .secret-content p {
+                font-size: 16px;
+            }
+            .close {
+                right: 20px;
+                top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <hr>
+    <div class="breadcrumb">
+        <a href="index.html">Inicio</a><span> / Claves</span>
+    </div>
+    
+    <div class="contenedor-mega-titulo">
+        <h1 class="mega-titulo">ZONA DE CLAVES</h1>
+    </div>
+    <hr>
+
+    <h3 class="instruccion">Introduce los códigos correspondientes para revelar los misterios ocultos de la producción.</h3>
+
+    <div class="seccion-claves-container">
+
+        <div class="space-container">
+            <h4>Clave 1</h4>
+            <div class="input-grupo">
+                <input type="text" id="input-clave1" placeholder="Escribe la clave 1..." oninput="filtrarInput(this)">
+                <button onclick="verificarClave(1)">Verificar</button>
+            </div>
+            <div id="revelado-1" class="secret-content">
+                <p><strong>Señal interceptada:</strong> Archivo del Nivel 1 dañado por un desfase cronológico. El descifrador César necesita el valor de salto correcto para limpiar las letras. Investiga en los registros del canal: la cantidad de minutos que dura el video más popular de Rigelcraft es el número que necesitas introducir.</p>
+            </div>
+        </div>
+
+        <div class="space-container">
+            <h4>Clave 2</h4>
+            <div class="input-grupo">
+                <input type="text" id="input-clave2" placeholder="Escribe la clave 2..." oninput="filtrarInput(this)">
+                <button onclick="verificarClave(2)">Verificar</button>
+            </div>
+            <div id="revelado-2" class="secret-content">
+                <p><strong>Conexión autorizada en el Módulo 2.</strong> Accediendo al archivo de personal intergaláctico... Se ha detectado una anomalía en el sistema de navegación. Para avanzar al siguiente nivel de la transmisión Vigenère, necesitas el nombre del tripulante clave.</p>
+                <p><strong>Pista del sujeto:</strong> Personaje pelirrojo que estudia en la universidad y que ha aparecido en el universo de Rigelcraft como su mejor amigo. Ingresa su nombre como clave de descifrado.</p>
+            </div>
+        </div>
+
+        <div class="space-container">
+            <h4>Clave 3</h4>
+            <div class="input-grupo">
+                <input type="text" id="input-clave3" placeholder="Escribe la clave 3..." oninput="filtrarInput(this)">
+                <button onclick="verificarClave(3)">Verificar</button>
+            </div>
+            <div id="revelado-3" class="secret-content">
+                <p><strong>Conexión establecida con la base de datos central de Rigelcraft:</strong> Explorador, has desbloqueado el siguiente nivel del enigma. Para calibrar el simulador Enigma M4 y revelar el tesoro intergaláctico, debes sincronizar los rotores con los datos de nuestra primera producción cinematográfica. Introduce como fecha la publicación del primer episodio de la serie en la terminal y utiliza como frase clave el título exacto de ese mismo episodio. La verdad aguarda en los registros de transmisión.</p>
+            </div>
+        </div>
+
+        <div class="space-container" style="border-left-color: #00ccff;">
+            <h4 style="color: #00ffb3;">Clave Final 🏆</h4>
+            <div class="input-grupo">
+                <input type="text" id="input-clave4" placeholder="Escribe la clave final..." oninput="filtrarInput(this)">
+                <button onclick="verificarClave(4)" style="background: linear-gradient(90deg, #0066aa, #00ccff); color: white;">Desbloquear Premio</button>
+            </div>
+            <div id="revelado-4" class="secret-content" style="border-color: #00ccff; background: rgba(0, 204, 255, 0.1);">
+                <p style="color: #00ffb3;"><strong>¡PREMIO FINAL DESBLOQUEADO! Haz clic o toca la imagen para expandirla:</strong></p>
+                <img src="trofeo.jpg" alt="Recompensa final" onclick="abrirZoom(this)">
+            </div>
+        </div>
+
+    </div>
+
+    <hr>
+    <div class="breadcrumb">
+        <a href="index.html">Inicio</a><span> / Claves</span>
+    </div>
+
+    <div id="miModal" class="modal" onclick="cerrarZoom()">
+        <span class="close" onclick="cerrarZoom()">&times;</span>
+        <img class="modal-content" id="imgAmpliada">
+    </div>
+
+    <script>
+        const clavesCorrectas = {
+            1: "betelgeuse",
+            2: "orbita",
+            3: "antares",
+            4: "orion"
+        };
+
+        function filtrarInput(elemento) {
+            let valor = elemento.value;
+            valor = valor.toLowerCase();
+            valor = valor.replace(/[áäâà]/g, "a")
+                         .replace(/[éëêè]/g, "e")
+                         .replace(/[íïîì]/g, "i")
+                         .replace(/[óöôò]/g, "o")
+                         .replace(/[úüûù]/g, "u")
+                         .replace(/ñ/g, "n");
+            
+            valor = valor.replace(/[^a-z0-9]/g, "");
+            
+            elemento.value = valor;
+        }
+
+        // Lógica de validación
+        function verificarClave(numeroEspacio) {
+            const inputUsuario = document.getElementById(`input-clave${numeroEspacio}`).value.trim();
+            const contenidoOculto = document.getElementById(`revelado-${numeroEspacio}`);
+
+            if (inputUsuario === clavesCorrectas[numeroEspacio]) {
+                contenidoOculto.style.display = "block"; 
+            } else {
+                alert("Clave incorrecta. ¡Revisa bien las pistas e inténtalo de nuevo!");
+            }
+        }
+
+        function abrirZoom(elementoImg) {
+            const modal = document.getElementById("miModal");
+            const imgAmpliada = document.getElementById("imgAmpliada");
+            
+            modal.style.display = "block";
+            imgAmpliada.src = elementoImg.src;
+        }
+
+        function cerrarZoom() {
+            const modal = document.getElementById("miModal");
+            modal.style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
