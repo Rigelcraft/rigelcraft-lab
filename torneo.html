@@ -68,7 +68,6 @@
         h3 { font-size: 25px; margin-left: 2%; text-shadow: 0 0 4px #000; }
         p { font-size: 22px; margin-left: 2%; margin-right: 2%; margin-top: 15px; text-shadow: 0 0 4px #000; }
 
-        /* SELECTOR DE MODO DE VISTA */
         .selector-vistas {
             display: flex;
             justify-content: center;
@@ -100,7 +99,6 @@
             transform: scale(1.03);
         }
 
-        /* GRID GRUPOS */
         .grid-grupos {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -152,7 +150,6 @@
             gap: 10px;
         }
 
-        /* DISEÑO DE MEDALLAS */
         .pos-badge { 
             font-size: 14px; 
             font-weight: bold; 
@@ -172,13 +169,11 @@
         .pos-top32 { background-color: #ff9100; box-shadow: 0 0 8px #ff9100; }
         .pos-resto { background-color: #d50000; box-shadow: 0 0 6px #d50000; }
 
-        /* CONTENEDORES DE NOMBRE Y REPRESENTANTE (Sin Avatar) */
         .info-participante { display: flex; align-items: center; gap: 15px; flex-grow: 1; }
         .nombre-contenedor { display: flex; flex-direction: column; gap: 4px; justify-content: center; }
         .nombre { font-size: 16px; font-weight: bold; text-shadow: 0 0 4px #000; }
         .tag-grupo { font-size: 13px; color: #00fff2; font-weight: normal; margin-left: 6px; text-shadow: 0 0 3px #000; }
         
-        /* Estilos del Representante */
         .rep-tag { font-size: 12px; color: #ff9100; text-shadow: 0 0 3px #000; font-weight: bold; }
         .input-rep { 
             width: 140px; padding: 4px 6px; background: rgba(0,0,0,0.8); border: 1px solid #ff9100; 
@@ -186,7 +181,6 @@
         }
         .input-rep:focus { box-shadow: 0 0 6px #ff9100; }
 
-        /* Votos Input y Text */
         .input-votos {
             width: 75px; padding: 8px; background: rgba(0,0,0,0.9); border: 1.5px solid #00fff2; 
             border-radius: 6px; color: #ffe600; font-size: 16px; font-weight: bold; text-align: center; outline: none;
@@ -195,7 +189,6 @@
         .input-votos:focus { box-shadow: 0 0 10px #ffe600; border-color: #ffe600; }
         .texto-votos { font-size: 18px; font-weight: bold; color: #ffe600; text-shadow: 0 0 5px #ffe600; flex-shrink: 0; }
 
-        /* FASE DE LLAVES (BRACKETS) */
         .contenedor-ronda { margin: 40px auto; width: 96%; background: rgba(0, 0, 0, 0.6); border: 2px dashed #0051ff; border-radius: 12px; padding: 20px; }
         .titulo-ronda { color: #ffe600; text-align: center; font-size: 30px; text-shadow: 0 0 10px #000; margin-bottom: 20px; }
         .grid-llaves { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
@@ -203,19 +196,16 @@
         .llave-duelo { background: linear-gradient(180deg, rgba(0,20,50,0.9) 0%, rgba(0,0,0,0.95) 100%); border: 2px solid #00c3ff; border-radius: 10px; padding: 15px; position: relative; }
         .vs-badge { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #ff0000; color: #fff; font-weight: bold; font-size: 12px; padding: 4px 8px; border-radius: 20px; box-shadow: 0 0 10px #ff0000; }
 
-        /* Botones Globales */
         .admin-controls { display: none; justify-content: center; gap: 15px; flex-wrap: wrap; margin: 40px auto; width: 96%; }
         .btn-accion { background: linear-gradient(135deg, #00c3ff, #0051ff); color: #fff; font-family: 'Anton', Arial, sans-serif; font-size: clamp(16px, 3vw, 22px); padding: 15px 30px; border: 2px solid #00fff2; border-radius: 10px; cursor: pointer; box-shadow: 0 0 15px rgba(0, 204, 255, 0.5); transition: 0.3s; letter-spacing: 1px; }
         .btn-accion:hover { background: linear-gradient(135deg, #ffe600, #ff8800); color: #000; border-color: #ffe600; transform: scale(1.02); }
         .btn-peligro { background: rgba(213,0,0,0.3); color: #ff5252; border-color: #ff5252; }
         .btn-peligro:hover { background: #d50000; color: #fff; box-shadow: 0 0 15px #d50000; }
 
-        /* Botón Modo Admin Footer */
         .footer-admin { text-align: center; margin-top: 50px; }
         .btn-toggle-admin { background: transparent; border: none; font-size: 24px; cursor: pointer; filter: grayscale(100%); transition: 0.3s; }
         .btn-toggle-admin:hover { filter: grayscale(0%); transform: scale(1.2); }
 
-        /* Responsive */
         @media (max-width: 600px) {
             body { background-position: 50% center !important; }
             .mega-titulo { font-size: clamp(25px, 11vw, 50px) !important; text-align: center !important; margin: 0 auto !important; width: 90%; }
@@ -225,6 +215,10 @@
             .btn-accion { width: 100%; margin-bottom: 10px; }
         }
     </style>
+
+    <!-- SDKs DE FIREBASE -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
     <hr>
@@ -238,11 +232,10 @@
     <hr>
 
     <div id="encabezado-fase">
-        <h3 id="titulo-estado">Fase de Grupos - Vista Pública</h3>
+        <h3 id="titulo-estado">Fase de Grupos - En Vivo</h3>
         <p id="desc-estado">Sigue en vivo la puntuación de cada participante. Puedes alternar entre la vista por grupos o la lista general de los 84 competidores.</p>
     </div>
 
-    <!-- BOTONES DE CAMBIO DE MODO DE VISTA -->
     <div class="selector-vistas" id="selector-vistas">
         <button class="btn-vista activo" id="btn-modo-grupos" onclick="cambiarModoVista('grupos')">👥 Vista por Grupos</button>
         <button class="btn-vista" id="btn-modo-lista" onclick="cambiarModoVista('lista')">🏆 Ranking Global (84)</button>
@@ -250,10 +243,10 @@
 
     <hr>
 
-    <!-- Contenedor Principal Dinámico (Grupos, Lista Global o Llaves) -->
-    <div id="contenedor-principal"></div>
+    <div id="contenedor-principal">
+        <p style="text-align: center; color: #00c3ff;">🌌 Conectando con la red estelar de Firebase...</p>
+    </div>
 
-    <!-- Controles de Administrador (Ocultos por defecto) -->
     <div class="admin-controls" id="panel-admin">
         <button id="btn-cerrar-fase" class="btn-accion">🚀 CERRAR FASE Y AVANZAR</button>
         <button id="btn-resetear" class="btn-accion btn-peligro">⚠️ REINICIAR TORNEO</button>
@@ -264,18 +257,30 @@
         <a href="index.html">Inicio</a><span> / Torneo Galáctico</span>
     </div>
 
-    <!-- Footer Switcher Modo Admin -->
     <div class="footer-admin">
         <button class="btn-toggle-admin" onclick="solicitarAccesoAdmin()" title="Modo Administrador">⚙️</button>
     </div>
 
     <script>
-        // CONFIGURACIÓN DE SEGURIDAD
-        const PASSWORD_ADMIN = "RigelcraftAdmin2026";
-        let isAdmin = false;
-        let modoVista = "grupos"; // "grupos" o "lista"
+        // CONFIGURACIÓN DE TUS CREDENCIALES DE FIREBASE
+        const firebaseConfig = {
+            apiKey: "AIzaSyBNr-hwGarQxNOKhcHkPm33egsmi4O3DgE",
+            authDomain: "rigelcraft-studio.firebaseapp.com",
+            projectId: "rigelcraft-studio",
+            storageBucket: "rigelcraft-studio.firebasestorage.app",
+            messagingSenderId: "1044676614155",
+            appId: "1:1044676614155:web:50b8f77a4101fa5c650f0e",
+            measurementId: "G-E67K17585E"
+        };
 
-        // ESTRUCTURA CON LOS 84 PARTICIPANTES OFICIALES Y REPRESENTANTES (Sin fotos)
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const docRef = db.collection("torneo_galactico").doc("estado_oficial");
+
+        const PASSWORD_ADMIN = "Rigel2026"; 
+        let isAdmin = false;
+        let modoVista = "grupos";
+
         function generarEstructuraBase() {
             return {
                 faseActual: "grupos",
@@ -479,19 +484,26 @@
 
         let torneoGalactico = {};
 
-        function cargarDatos() {
-            // Actualizada base de datos a v3 para que cargue la estructura limpia de imágenes
-            const guardado = localStorage.getItem("torneo_galactico_v3_db");
-            if (guardado) {
-                try { torneoGalactico = JSON.parse(guardado); } 
-                catch (e) { torneoGalactico = generarEstructuraBase(); }
-            } else {
-                torneoGalactico = generarEstructuraBase();
-            }
+        function inicializarFirebaseListener() {
+            docRef.onSnapshot((doc) => {
+                if (doc.exists) {
+                    torneoGalactico = doc.data();
+                } else {
+                    torneoGalactico = generarEstructuraBase();
+                    guardarDatosEnNube();
+                }
+                renderizarApp();
+            }, (error) => {
+                console.error("Error al conectar con Firestore: ", error);
+            });
         }
 
-        function guardarDatos() {
-            localStorage.setItem("torneo_galactico_v3_db", JSON.stringify(torneoGalactico));
+        function guardarDatosEnNube() {
+            docRef.set(torneoGalactico).then(() => {
+                console.log("⚡ Datos sincronizados en la nube de Firebase");
+            }).catch((err) => {
+                console.error("Error al guardar en Firebase: ", err);
+            });
         }
 
         function solicitarAccesoAdmin() {
@@ -502,7 +514,7 @@
                 const pass = prompt("Acceso Restringido. Ingrese contraseña de Administrador:");
                 if (pass === PASSWORD_ADMIN) {
                     isAdmin = true;
-                    alert("🔓 Modo Administrador activado. Controles habilitados.");
+                    alert("🔓 Modo Administrador activado. Puedes editar votos y representantes.");
                 } else if (pass !== null) {
                     alert("❌ Contraseña incorrecta.");
                 }
@@ -527,6 +539,7 @@
             if (torneoGalactico.faseActual === "grupos") {
                 selectorVistas.style.display = "flex";
                 document.getElementById("titulo-estado").innerText = isAdmin ? "Fase de Grupos - MODO ADMINISTRADOR" : "Fase de Grupos - Ranking en Vivo";
+                document.getElementById("desc-estado").innerText = "Sigue en vivo la puntuación de cada participante. Los datos se actualizan automáticamente desde la nube.";
                 btnCerrar.innerText = "🚀 CERRAR GRUPOS Y CLASIFICAR (Top 32)";
 
                 if (modoVista === "grupos") {
@@ -548,7 +561,6 @@
             }
         }
 
-        // GENERADOR DE HTML PARA REPRESENTANTE
         function getRepHtml(p, gId) {
             if (isAdmin) {
                 return `<input type="text" class="input-rep" value="${p.representante || ''}" placeholder="Rep: @Usuario" data-grupo="${gId}" data-pid="${p.id}">`;
@@ -557,7 +569,6 @@
             }
         }
 
-        // RENDER 1: VISTA POR GRUPOS
         function renderizarGrupos() {
             const contenedor = document.getElementById("contenedor-principal");
             let html = `<div class="grid-grupos">`;
@@ -597,7 +608,6 @@
             }
         }
 
-        // RENDER 2: VISTA LISTA GLOBAL DE LOS 84 PARTICIPANTES
         function renderizarListaGlobal84() {
             const contenedor = document.getElementById("contenedor-principal");
             
@@ -651,7 +661,6 @@
             }
         }
 
-        // RENDER 3: VISTA DE LLAVES ELIMINATORIAS (BRACKETS)
         function renderizarLlaves() {
             const contenedor = document.getElementById("contenedor-principal");
             let html = ``;
@@ -725,7 +734,6 @@
             if (isAdmin) asignarEventosInputsVotos();
         }
 
-        // EVENTOS DE VOTOS
         function asignarEventosInputsVotos() {
             document.querySelectorAll(".input-votos").forEach(input => {
                 input.addEventListener("change", (e) => {
@@ -740,21 +748,19 @@
                         const grupo = torneoGalactico.grupos.find(g => g.id === gId);
                         const part = grupo.participantes.find(p => p.id === pId);
                         part.votos = val;
-                        guardarDatos();
-                        renderizarApp();
+                        guardarDatosEnNube();
                     } else if (tipo === "llave") {
                         const r = e.target.getAttribute("data-ronda");
                         const lId = e.target.getAttribute("data-llave");
                         const target = e.target.getAttribute("data-target");
                         const llave = torneoGalactico.llaves[`ronda${r}`].find(l => l.id === lId);
                         llave[target] = val;
-                        guardarDatos();
+                        guardarDatosEnNube();
                     }
                 });
             });
         }
 
-        // EVENTOS DE REPRESENTANTES
         function asignarEventosInputsReps() {
             document.querySelectorAll(".input-rep").forEach(input => {
                 input.addEventListener("change", (e) => {
@@ -765,7 +771,7 @@
                         const part = grupo.participantes.find(p => p.id === pId);
                         if (part) {
                             part.representante = e.target.value;
-                            guardarDatos();
+                            guardarDatosEnNube();
                         }
                     }
                 });
@@ -822,8 +828,7 @@
             }
             torneoGalactico.llaves["ronda32"] = llaves32;
             torneoGalactico.rondaLlavesActiva = 32;
-            guardarDatos();
-            renderizarApp();
+            guardarDatosEnNube();
         }
 
         function avanzarRondaLlaves() {
@@ -860,22 +865,19 @@
                 torneoGalactico.rondaLlavesActiva = sigRondaNum;
             }
 
-            guardarDatos();
-            renderizarApp();
+            guardarDatosEnNube();
         }
 
         function resetearTorneo() {
-            if (confirm("⚠️ ¡ADVERTENCIA CRÍTICA!\n¿Estás absolutamente seguro de querer borrar todos los datos del torneo? Esto volverá todos los votos a 0 y regresará a la Fase de Grupos.")) {
-                localStorage.removeItem("torneo_galactico_v3_db");
-                cargarDatos();
-                renderizarApp();
-                alert("Torneo reiniciado con la base de datos limpia (Sin fotos) 🚀.");
+            if (confirm("⚠️ ¡ADVERTENCIA CRÍTICA!\n¿Estás absolutamente seguro de querer borrar todos los datos del torneo en la NUBE? Se borrarán todos los votos y se reiniciará la Fase de Grupos.")) {
+                torneoGalactico = generarEstructuraBase();
+                guardarDatosEnNube();
+                alert("Torneo reiniciado exitosamente en la Nube 🚀.");
             }
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            cargarDatos();
-            renderizarApp();
+            inicializarFirebaseListener();
 
             document.getElementById("btn-cerrar-fase").addEventListener("click", botonPrincipalAccion);
             document.getElementById("btn-resetear").addEventListener("click", resetearTorneo);
