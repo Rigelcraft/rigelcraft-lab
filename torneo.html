@@ -10,7 +10,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-image: url("torneo.png"); /* Usa el fondo que prefieras */
+            background-image: url("torneo.png"); 
             background-size: cover;
             background-attachment: fixed;
             background-color: #050505;
@@ -68,13 +68,56 @@
         h3 { font-size: 25px; margin-left: 2%; text-shadow: 0 0 4px #000; }
         p { font-size: 22px; margin-left: 2%; margin-right: 2%; margin-top: 15px; text-shadow: 0 0 4px #000; }
 
-        /* FASE DE GRUPOS - GRID */
+        /* SELECTOR DE MODO DE VISTA */
+        .selector-vistas {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px auto;
+            width: 96%;
+            flex-wrap: wrap;
+        }
+
+        .btn-vista {
+            background: rgba(0, 0, 0, 0.85);
+            color: #00c3ff;
+            border: 2px solid #00c3ff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-family: 'Anton', Arial, sans-serif;
+            font-size: clamp(16px, 3vw, 20px);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            box-shadow: 0 0 10px rgba(0, 195, 255, 0.2);
+        }
+
+        .btn-vista:hover, .btn-vista.activo {
+            background: linear-gradient(135deg, #00c3ff, #0051ff);
+            color: #ffffff;
+            border-color: #00fff2;
+            box-shadow: 0 0 18px rgba(0, 255, 242, 0.6);
+            transform: scale(1.03);
+        }
+
+        /* GRID GRUPOS */
         .grid-grupos {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 20px;
             width: 96%;
             margin: 30px auto;
+        }
+
+        .contenedor-lista-global {
+            width: 96%;
+            max-width: 900px;
+            margin: 30px auto;
+            background: rgba(0, 0, 0, 0.85);
+            border: 2px solid #00ccff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 204, 255, 0.3);
         }
 
         .tarjeta {
@@ -106,59 +149,65 @@
             padding: 8px 12px;
             border-radius: 8px;
             margin-bottom: 12px;
+            gap: 10px; /* Separación principal */
         }
 
-        /* Medallas */
-        .pos-badge { font-size: 13px; font-weight: bold; padding: 3px 7px; border-radius: 6px; min-width: 32px; text-align: center; color: #fff; }
-        .pos-1 { background-color: #00c853; box-shadow: 0 0 8px #00c853; }
-        .pos-2 { background-color: #00c853; box-shadow: 0 0 8px #00c853; }
+        /* DISEÑO DE MEDALLAS CORREGIDO */
+        .pos-badge { 
+            font-size: 14px; 
+            font-weight: bold; 
+            padding: 5px 9px; 
+            border-radius: 6px; 
+            min-width: 45px; 
+            text-align: center; 
+            color: #fff;
+            margin-right: 15px; /* <--- Esto separa el número de la foto */
+            flex-shrink: 0;
+        }
+        
+        .pos-1, .pos-2 { background-color: #00c853; box-shadow: 0 0 8px #00c853; }
         .pos-3 { background-color: #ff9100; box-shadow: 0 0 8px #ff9100; }
         .pos-4 { background-color: #d50000; box-shadow: 0 0 6px #d50000; }
+        .pos-top21 { background-color: #00c853; box-shadow: 0 0 8px #00c853; }
+        .pos-top32 { background-color: #ff9100; box-shadow: 0 0 8px #ff9100; }
+        .pos-resto { background-color: #d50000; box-shadow: 0 0 6px #d50000; }
 
-        .info-participante { display: flex; align-items: center; gap: 10px; flex-grow: 1; }
-        .avatar { width: 38px; height: 38px; border-radius: 50%; border: 2px solid #00c3ff; object-fit: cover; background-color: #111; }
-        .nombre { font-size: 15px; font-weight: bold; text-shadow: 0 0 4px #000; }
+        /* CONTENEDORES DE NOMBRE Y REPRESENTANTE */
+        .info-participante { display: flex; align-items: center; gap: 15px; flex-grow: 1; }
+        .avatar { width: 42px; height: 42px; border-radius: 50%; border: 2px solid #00c3ff; object-fit: cover; background-color: #111; flex-shrink: 0; }
+        
+        .nombre-contenedor { display: flex; flex-direction: column; gap: 4px; justify-content: center; }
+        .nombre { font-size: 16px; font-weight: bold; text-shadow: 0 0 4px #000; }
+        .tag-grupo { font-size: 13px; color: #00fff2; font-weight: normal; margin-left: 6px; text-shadow: 0 0 3px #000; }
+        
+        /* Estilos del Representante */
+        .rep-tag { font-size: 12px; color: #ff9100; text-shadow: 0 0 3px #000; font-weight: bold; }
+        .input-rep { 
+            width: 140px; padding: 4px 6px; background: rgba(0,0,0,0.8); border: 1px solid #ff9100; 
+            border-radius: 4px; color: #ff9100; font-size: 12px; outline: none; transition: 0.3s;
+        }
+        .input-rep:focus { box-shadow: 0 0 6px #ff9100; }
 
         /* Votos Input y Text */
         .input-votos {
-            width: 70px; padding: 6px; background: rgba(0,0,0,0.9); border: 1.5px solid #00fff2; 
+            width: 75px; padding: 8px; background: rgba(0,0,0,0.9); border: 1.5px solid #00fff2; 
             border-radius: 6px; color: #ffe600; font-size: 16px; font-weight: bold; text-align: center; outline: none;
+            flex-shrink: 0;
         }
         .input-votos:focus { box-shadow: 0 0 10px #ffe600; border-color: #ffe600; }
-        .texto-votos { font-size: 18px; font-weight: bold; color: #ffe600; text-shadow: 0 0 5px #ffe600; }
+        .texto-votos { font-size: 18px; font-weight: bold; color: #ffe600; text-shadow: 0 0 5px #ffe600; flex-shrink: 0; }
 
         /* FASE DE LLAVES (BRACKETS) */
-        .contenedor-ronda {
-            margin: 40px auto;
-            width: 96%;
-            background: rgba(0, 0, 0, 0.6);
-            border: 2px dashed #0051ff;
-            border-radius: 12px;
-            padding: 20px;
-        }
+        .contenedor-ronda { margin: 40px auto; width: 96%; background: rgba(0, 0, 0, 0.6); border: 2px dashed #0051ff; border-radius: 12px; padding: 20px; }
         .titulo-ronda { color: #ffe600; text-align: center; font-size: 30px; text-shadow: 0 0 10px #000; margin-bottom: 20px; }
         .grid-llaves { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         
-        .llave-duelo {
-            background: linear-gradient(180deg, rgba(0,20,50,0.9) 0%, rgba(0,0,0,0.95) 100%);
-            border: 2px solid #00c3ff;
-            border-radius: 10px;
-            padding: 15px;
-            position: relative;
-        }
-        .vs-badge {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            background: #ff0000; color: #fff; font-weight: bold; font-size: 12px; padding: 4px 8px;
-            border-radius: 20px; box-shadow: 0 0 10px #ff0000;
-        }
+        .llave-duelo { background: linear-gradient(180deg, rgba(0,20,50,0.9) 0%, rgba(0,0,0,0.95) 100%); border: 2px solid #00c3ff; border-radius: 10px; padding: 15px; position: relative; }
+        .vs-badge { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #ff0000; color: #fff; font-weight: bold; font-size: 12px; padding: 4px 8px; border-radius: 20px; box-shadow: 0 0 10px #ff0000; }
 
         /* Botones Globales */
         .admin-controls { display: none; justify-content: center; gap: 15px; flex-wrap: wrap; margin: 40px auto; width: 96%; }
-        .btn-accion {
-            background: linear-gradient(135deg, #00c3ff, #0051ff); color: #fff; font-family: 'Anton', Arial, sans-serif;
-            font-size: clamp(16px, 3vw, 22px); padding: 15px 30px; border: 2px solid #00fff2; border-radius: 10px;
-            cursor: pointer; box-shadow: 0 0 15px rgba(0, 204, 255, 0.5); transition: 0.3s; letter-spacing: 1px;
-        }
+        .btn-accion { background: linear-gradient(135deg, #00c3ff, #0051ff); color: #fff; font-family: 'Anton', Arial, sans-serif; font-size: clamp(16px, 3vw, 22px); padding: 15px 30px; border: 2px solid #00fff2; border-radius: 10px; cursor: pointer; box-shadow: 0 0 15px rgba(0, 204, 255, 0.5); transition: 0.3s; letter-spacing: 1px; }
         .btn-accion:hover { background: linear-gradient(135deg, #ffe600, #ff8800); color: #000; border-color: #ffe600; transform: scale(1.02); }
         .btn-peligro { background: rgba(213,0,0,0.3); color: #ff5252; border-color: #ff5252; }
         .btn-peligro:hover { background: #d50000; color: #fff; box-shadow: 0 0 15px #d50000; }
@@ -192,11 +241,18 @@
 
     <div id="encabezado-fase">
         <h3 id="titulo-estado">Fase de Grupos - Vista Pública</h3>
-        <p id="desc-estado">Sigue en vivo la puntuación de cada participante. Las posiciones se actualizan según los resultados.</p>
+        <p id="desc-estado">Sigue en vivo la puntuación de cada participante. Puedes alternar entre la vista por grupos o la lista general de los 84 competidores.</p>
     </div>
+
+    <!-- BOTONES DE CAMBIO DE MODO DE VISTA -->
+    <div class="selector-vistas" id="selector-vistas">
+        <button class="btn-vista activo" id="btn-modo-grupos" onclick="cambiarModoVista('grupos')">👥 Vista por Grupos</button>
+        <button class="btn-vista" id="btn-modo-lista" onclick="cambiarModoVista('lista')">🏆 Ranking Global (84)</button>
+    </div>
+
     <hr>
 
-    <!-- Contenedor Principal Dinámico (Grupos o Llaves) -->
+    <!-- Contenedor Principal Dinámico (Grupos, Lista Global o Llaves) -->
     <div id="contenedor-principal"></div>
 
     <!-- Controles de Administrador (Ocultos por defecto) -->
@@ -217,39 +273,216 @@
 
     <script>
         // CONFIGURACIÓN DE SEGURIDAD
-        const PASSWORD_ADMIN = "Rigel2026"; // <-- Cambia aquí la contraseña de Administrador
+        const PASSWORD_ADMIN = "Rigel2026"; 
         let isAdmin = false;
+        let modoVista = "grupos"; // "grupos" o "lista"
 
-        // FASE 1.1: ESTRUCTURA DE DATOS BASE (21 GRUPOS)
+        // ESTRUCTURA CON LOS 84 PARTICIPANTES OFICIALES Y REPRESENTANTES
         function generarEstructuraBase() {
-            const letras = "ABCDEFGHIJKLMNOPQRSTU".split("");
-            const grupos = letras.map(letra => {
-                return {
-                    id: `grupo_${letra.toLowerCase()}`,
-                    nombre: `Grupo ${letra}`,
-                    participantes: [
-                        { id: `p_${letra}1`, nombre: `Participante 1`, foto: "", votos: 0 },
-                        { id: `p_${letra}2`, nombre: `Participante 2`, foto: "", votos: 0 },
-                        { id: `p_${letra}3`, nombre: `Participante 3`, foto: "", votos: 0 },
-                        { id: `p_${letra}4`, nombre: `Participante 4`, foto: "", votos: 0 }
-                    ]
-                };
-            });
             return {
-                faseActual: "grupos", // "grupos" o "llaves"
-                rondaLlavesActiva: 0, // 32, 16, 8, 4, 2, 1
-                grupos: grupos,
+                faseActual: "grupos",
+                rondaLlavesActiva: 0,
                 clasificados32: [],
                 llaves: {},
-                campeon: null
+                campeon: null,
+                grupos: [
+                    {
+                        id: "g1", nombre: "Estrellas: Clásicos y Brillantes",
+                        participantes: [
+                            { id: "g1p1", nombre: "El Sol", foto: "", votos: 0, representante: "" },
+                            { id: "g1p2", nombre: "Betelgeuse", foto: "", votos: 0, representante: "" },
+                            { id: "g1p3", nombre: "Alfa Centauri A", foto: "", votos: 0, representante: "" },
+                            { id: "g1p4", nombre: "Polaris", foto: "", votos: 0, representante: "" }
+                        ]
+                    },
+                    {
+                        id: "g2", nombre: "Estrellas: Titanes y Vecinos",
+                        participantes: [
+                            { id: "g2p1", nombre: "Stephenson 2-18", foto: "", votos: 0, representante: "" },
+                            { id: "g2p2", nombre: "Arturo / Arcturus", foto: "", votos: 0, representante: "" },
+                            { id: "g2p3", nombre: "Alfa Centauri B", foto: "", votos: 0, representante: "" },
+                            { id: "g2p4", nombre: "Próxima Centauri", foto: "", votos: 0, representante: "" }
+                        ]
+                    },
+                    {
+                        id: "g3", nombre: "Estrellas: Monstruos del Cosmos",
+                        participantes: [
+                            { id: "g3p1", nombre: "UY Scuti", foto: "", votos: 0, representante: "" },
+                            { id: "g3p2", nombre: "Antares", foto: "", votos: 0, representante: "@DarlenyVerásdeJesús" },
+                            { id: "g3p3", nombre: "Eta Carinae", foto: "", votos: 0, representante: "" },
+                            { id: "g3p4", nombre: "Aldebarán", foto: "", votos: 0, representante: "" }
+                        ]
+                    },
+                    {
+                        id: "g4", nombre: "Rocosos: Íntimos del Sol",
+                        participantes: [
+                            { id: "g4p1", nombre: "Mercurio", foto: "", votos: 0, representante: "@Giovanni-t2b1w" },
+                            { id: "g4p2", nombre: "Venus", foto: "", votos: 0, representante: "" },
+                            { id: "g4p3", nombre: "La Tierra", foto: "", votos: 0, representante: "@FaustaanayeliReyesgomez" },
+                            { id: "g4p4", nombre: "Marte", foto: "", votos: 0, representante: "" }
+                        ]
+                    },
+                    {
+                        id: "g5", nombre: "Gaseosos: Gigantes del Sistema",
+                        participantes: [
+                            { id: "g5p1", nombre: "Júpiter", foto: "", votos: 0, representante: "" },
+                            { id: "g5p2", nombre: "Saturno", foto: "", votos: 0, representante: "" },
+                            { id: "g5p3", nombre: "Urano", foto: "", votos: 0, representante: "" },
+                            { id: "g5p4", nombre: "Neptuno", foto: "", votos: 0, representante: "@animacionkati123" }
+                        ]
+                    },
+                    {
+                        id: "g6", nombre: "Hipotéticos: Los Fantasmas",
+                        participantes: [
+                            { id: "g6p1", nombre: "Planeta X", foto: "", votos: 0, representante: "" },
+                            { id: "g6p2", nombre: "Vulcano", foto: "", votos: 0, representante: "" },
+                            { id: "g6p3", nombre: "Proto-Tierra", foto: "", votos: 0, representante: "" },
+                            { id: "g6p4", nombre: "Theia / Tea", foto: "", votos: 0, representante: "" }
+                        ]
+                    },
+                    {
+                        id: "g7", nombre: "Errantes: Vagabundos del Vacío",
+                        participantes: [
+                            { id: "g7p1", nombre: "PSO J318.5-22", foto: "", votos: 0, representante: "" },
+                            { id: "g7p2", nombre: "WISE 0855−0714", foto: "", votos: 0, representante: "" },
+                            { id: "g7p3", nombre: "SIMP J01365663", foto: "", votos: 0, representante: "" },
+                            { id: "g7p4", nombre: "OGLE-2016-BLG", foto: "", votos: 0, representante: "" }
+                        ]
+                    },
+                    {
+                        id: "g8", nombre: "Exoplanetas: Maravillas Lejanas",
+                        participantes: [
+                            { id: "g8p1", nombre: "Kepler-186f", foto: "", votos: 0, representante: "" },
+                            { id: "g8p2", nombre: "Próxima Centauri b", foto: "", votos: 0, representante: "" },
+                            { id: "g8p3", nombre: "Matusalén", foto: "", votos: 0, representante: "" },
+                            { id: "g8p4", nombre: "WASP-12b", foto: "", votos: 0, representante: "" }
+                        ]
+                    },
+                    {
+                        id: "g9", nombre: "Lunas 1: Las Gigantes",
+                        participantes: [
+                            { id: "g9p1", nombre: "Ganímedes", foto: "", votos: 0, representante: "" },
+                            { id: "g9p2", nombre: "Titán", foto: "", votos: 0, representante: "" },
+                            { id: "g9p3", nombre: "Calisto", foto: "", votos: 0, representante: "" },
+                            { id: "g9p4", nombre: "Ío", foto: "", votos: 0, representante: "" }
+                        ]
+                    },
+                    {
+                        id: "g10", nombre: "Lunas 2: Clásicas y Misteriosas",
+                        participantes: [
+                            { id: "g10p1", nombre: "La Luna", foto: "", votos: 0, representante: "" },
+                            { id: "g10p2", nombre: "Europa", foto: "", votos: 0, representante: "" },
+                            { id: "g10p3", nombre: "Encélado", foto: "", votos: 0, representante: "" },
+                            { id: "g10p4", nombre: "Tritón", foto: "", votos: 0, representante: "" }
+                        ]
+                    },
+                    {
+                        id: "g11", nombre: "Lunas 3: Escuadrón de Saturno",
+                        participantes: [
+                            { id: "g11p1", nombre: "Rea", foto: "", votos: 0, representante: "" },
+                            { id: "g11p2", nombre: "Jápeto", foto: "", votos: 0, representante: "" },
+                            { id: "g11p3", nombre: "Dione", foto: "", votos: 0, representante: "" },
+                            { id: "g11p4", nombre: "Tetis", foto: "", votos: 0, representante: "" }
+                        ]
+                    },
+                    {
+                        id: "g12", nombre: "Lunas 4: Gélidas de Urano",
+                        participantes: [
+                            { id: "g12p1", nombre: "Titania", foto: "", votos: 0, representante: "" },
+                            { id: "g12p2", nombre: "Oberón", foto: "", votos: 0, representante: "" },
+                            { id: "g12p3", nombre: "Umbriel", foto: "", votos: 0, representante: "" },
+                            { id: "g12p4", nombre: "Ariel", foto: "", votos: 0, representante: "" }
+                        ]
+                    },
+                    {
+                        id: "g13", nombre: "Lunas 5: Esféricas Pequeñas",
+                        participantes: [
+                            { id: "g13p1", nombre: "Mimas", foto: "", votos: 0, representante: "" },
+                            { id: "g13p2", nombre: "Miranda", foto: "", votos: 0, representante: "" },
+                            { id: "g13p3", nombre: "Caronte", foto: "", votos: 0, representante: "" },
+                            { id: "g13p4", nombre: "Proteo", foto: "", votos: 0, representante: "" }
+                        ]
+                    },
+                    {
+                        id: "g14", nombre: "Lunas 6: Patatas e Irregulares",
+                        participantes: [
+                            { id: "g14p1", nombre: "Fobos", foto: "", votos: 0, representante: "" },
+                            { id: "g14p2", nombre: "Deimos", foto: "", votos: 0, representante: "" },
+                            { id: "g14p3", nombre: "Hiperión", foto: "", votos: 0, representante: "" },
+                            { id: "g14p4", nombre: "Amaltea", foto: "", votos: 0, representante: "" }
+                        ]
+                    },
+                    {
+                        id: "g15", nombre: "Lunas 7: Rocas de Júpiter",
+                        participantes: [
+                            { id: "g15p1", nombre: "Tebe", foto: "", votos: 0, representante: "" },
+                            { id: "g15p2", nombre: "Calícore", foto: "", votos: 0, representante: "" },
+                            { id: "g15p3", nombre: "Elara", foto: "", votos: 0, representante: "" },
+                            { id: "g15p4", nombre: "Metis", foto: "", votos: 0, representante: "" }
+                        ]
+                    },
+                    {
+                        id: "g16", nombre: "Enanos 1: Reyes y Destronado",
+                        participantes: [
+                            { id: "g16p1", nombre: "Plutón", foto: "", votos: 0, representante: "" },
+                            { id: "g16p2", nombre: "Ceres", foto: "", votos: 0, representante: "" },
+                            { id: "g16p3", nombre: "Eris", foto: "", votos: 0, representante: "" },
+                            { id: "g16p4", nombre: "Makemake", foto: "", votos: 0, representante: "" }
+                        ]
+                    },
+                    {
+                        id: "g17", nombre: "Enanos 2: Extraños y Lejanos",
+                        participantes: [
+                            { id: "g17p1", nombre: "Haumea", foto: "", votos: 0, representante: "" },
+                            { id: "g17p2", nombre: "Sedna", foto: "", votos: 0, representante: "" },
+                            { id: "g17p3", nombre: "Gonggong", foto: "", votos: 0, representante: "" },
+                            { id: "g17p4", nombre: "Quaoar", foto: "", votos: 0, representante: "" }
+                        ]
+                    },
+                    {
+                        id: "g18", nombre: "Humanos 1: Protagonistas",
+                        participantes: [
+                            { id: "g18p1", nombre: "Astrobola", foto: "", votos: 0, representante: "" },
+                            { id: "g18p2", nombre: "Cosmo", foto: "", votos: 0, representante: "" },
+                            { id: "g18p3", nombre: "El Jefe", foto: "", votos: 0, representante: "" },
+                            { id: "g18p4", nombre: "Sar", foto: "", votos: 0, representante: "" }
+                        ]
+                    },
+                    {
+                        id: "g19", nombre: "Humanos 2: Familia y Agencia",
+                        participantes: [
+                            { id: "g19p1", nombre: "Junior", foto: "", votos: 0, representante: "" },
+                            { id: "g19p2", nombre: "Esposa de Astrobola", foto: "", votos: 0, representante: "" },
+                            { id: "g19p3", nombre: "PlayerRound", foto: "", votos: 0, representante: "" },
+                            { id: "g19p4", nombre: "La NASA", foto: "", votos: 0, representante: "" }
+                        ]
+                    },
+                    {
+                        id: "g20", nombre: "Naciones: Países Terrícolas",
+                        participantes: [
+                            { id: "g20p1", nombre: "EEUU / Sr. América", foto: "", votos: 0, representante: "" },
+                            { id: "g20p2", nombre: "Rusia", foto: "", votos: 0, representante: "" },
+                            { id: "g20p3", nombre: "Japón", foto: "", votos: 0, representante: "" },
+                            { id: "g20p4", nombre: "Canadá", foto: "", votos: 0, representante: "" }
+                        ]
+                    },
+                    {
+                        id: "g21", nombre: "Devoradores: Reyes del Vacío",
+                        participantes: [
+                            { id: "g21p1", nombre: "TON 618", foto: "", votos: 0, representante: "@PatriciaFlores-kx2vq" },
+                            { id: "g21p2", nombre: "Sagitario A*", foto: "", votos: 0, representante: "" },
+                            { id: "g21p3", nombre: "Phoenix A", foto: "", votos: 0, representante: "" },
+                            { id: "g21p4", nombre: "M87*", foto: "", votos: 0, representante: "" }
+                        ]
+                    }
+                ]
             };
         }
 
         let torneoGalactico = {};
 
-        // FASE 4.2: PERSISTENCIA LOCALSTORAGE
         function cargarDatos() {
-            const guardado = localStorage.getItem("torneo_galactico_db");
+            const guardado = localStorage.getItem("torneo_galactico_v2_db");
             if (guardado) {
                 try { torneoGalactico = JSON.parse(guardado); } 
                 catch (e) { torneoGalactico = generarEstructuraBase(); }
@@ -259,10 +492,9 @@
         }
 
         function guardarDatos() {
-            localStorage.setItem("torneo_galactico_db", JSON.stringify(torneoGalactico));
+            localStorage.setItem("torneo_galactico_v2_db", JSON.stringify(torneoGalactico));
         }
 
-        // CONTROLADOR DE VISTAS (INFOGRAFÍA VS ADMIN)
         function solicitarAccesoAdmin() {
             if (isAdmin) {
                 isAdmin = false;
@@ -279,19 +511,32 @@
             renderizarApp();
         }
 
-        // RENDERIZADOR PRINCIPAL
+        function cambiarModoVista(modo) {
+            modoVista = modo;
+            document.getElementById("btn-modo-grupos").classList.toggle("activo", modo === 'grupos');
+            document.getElementById("btn-modo-lista").classList.toggle("activo", modo === 'lista');
+            renderizarApp();
+        }
+
         function renderizarApp() {
             const panelAdmin = document.getElementById("panel-admin");
             const btnCerrar = document.getElementById("btn-cerrar-fase");
+            const selectorVistas = document.getElementById("selector-vistas");
             
-            // Lógica de visibilidad del panel admin
             panelAdmin.style.display = isAdmin ? "flex" : "none";
 
             if (torneoGalactico.faseActual === "grupos") {
+                selectorVistas.style.display = "flex";
                 document.getElementById("titulo-estado").innerText = isAdmin ? "Fase de Grupos - MODO ADMINISTRADOR" : "Fase de Grupos - Ranking en Vivo";
                 btnCerrar.innerText = "🚀 CERRAR GRUPOS Y CLASIFICAR (Top 32)";
-                renderizarGrupos();
+
+                if (modoVista === "grupos") {
+                    renderizarGrupos();
+                } else {
+                    renderizarListaGlobal84();
+                }
             } else {
+                selectorVistas.style.display = "none";
                 if (torneoGalactico.campeon) {
                     document.getElementById("titulo-estado").innerText = "🏆 ¡EL TORNEO HA FINALIZADO!";
                     btnCerrar.style.display = "none";
@@ -304,7 +549,16 @@
             }
         }
 
-        // FASE 1.2 & 4.1: RENDER DE GRUPOS
+        // GENERADOR DE HTML PARA REPRESENTANTE
+        function getRepHtml(p, gId) {
+            if (isAdmin) {
+                return `<input type="text" class="input-rep" value="${p.representante || ''}" placeholder="Rep: @Usuario" data-grupo="${gId}" data-pid="${p.id}">`;
+            } else {
+                return p.representante ? `<span class="rep-tag">🛡️ Rep: ${p.representante}</span>` : '';
+            }
+        }
+
+        // RENDER 1: VISTA POR GRUPOS
         function renderizarGrupos() {
             const contenedor = document.getElementById("contenedor-principal");
             let html = `<div class="grid-grupos">`;
@@ -318,13 +572,18 @@
                     const inputHtml = isAdmin 
                         ? `<input type="number" class="input-votos" min="0" value="${p.votos}" data-tipo="grupo" data-grupo="${grupo.id}" data-pid="${p.id}">`
                         : `<span class="texto-votos">${p.votos} pts</span>`;
+                    
+                    const repHtml = getRepHtml(p, grupo.id);
 
                     html += `
                         <div class="fila-participante">
                             <span class="pos-badge pos-${pos}">${pos}º</span>
                             <div class="info-participante">
-                                <img src="${p.foto}" alt="${p.nombre}" class="avatar" onerror="this.src='https://via.placeholder.com/38/000000/00fff2?text=P'">
-                                <span class="nombre">${p.nombre}</span>
+                                <img src="${p.foto}" alt="${p.nombre}" class="avatar" onerror="this.src='https://via.placeholder.com/42/000000/00fff2?text=P'">
+                                <div class="nombre-contenedor">
+                                    <span class="nombre">${p.nombre}</span>
+                                    ${repHtml}
+                                </div>
                             </div>
                             ${inputHtml}
                         </div>`;
@@ -334,10 +593,68 @@
 
             html += `</div>`;
             contenedor.innerHTML = html;
-            if (isAdmin) asignarEventosInputs();
+            if (isAdmin) {
+                asignarEventosInputsVotos();
+                asignarEventosInputsReps();
+            }
         }
 
-        // FASE 3.2 & 4.1: RENDER DE LLAVES (BRACKETS)
+        // RENDER 2: VISTA LISTA GLOBAL DE LOS 84 PARTICIPANTES
+        function renderizarListaGlobal84() {
+            const contenedor = document.getElementById("contenedor-principal");
+            
+            let listaTodos = [];
+            torneoGalactico.grupos.forEach(grupo => {
+                grupo.participantes.forEach(p => {
+                    listaTodos.push({ ...p, grupoNombre: grupo.nombre, grupoId: grupo.id });
+                });
+            });
+
+            listaTodos.sort((a, b) => b.votos - a.votos);
+
+            let html = `
+            <div class="contenedor-lista-global">
+                <h3 class="titulo-tarjeta" style="font-size: 26px; margin-bottom: 20px;">RANKING GENERAL - 84 COMPETIDORES</h3>
+            `;
+
+            listaTodos.forEach((p, idx) => {
+                const pos = idx + 1;
+                let claseBadge = "pos-resto";
+                if (pos <= 21) claseBadge = "pos-top21";
+                else if (pos <= 32) claseBadge = "pos-top32";
+
+                const inputHtml = isAdmin 
+                    ? `<input type="number" class="input-votos" min="0" value="${p.votos}" data-tipo="grupo" data-grupo="${p.grupoId}" data-pid="${p.id}">`
+                    : `<span class="texto-votos">${p.votos} pts</span>`;
+                
+                const repHtml = getRepHtml(p, p.grupoId);
+
+                html += `
+                    <div class="fila-participante">
+                        <span class="pos-badge ${claseBadge}">${pos}º</span>
+                        <div class="info-participante">
+                            <img src="${p.foto}" alt="${p.nombre}" class="avatar" onerror="this.src='https://via.placeholder.com/42/000000/00fff2?text=P'">
+                            <div class="nombre-contenedor">
+                                <div style="display:flex; align-items:center; flex-wrap: wrap;">
+                                    <span class="nombre">${p.nombre}</span>
+                                    <span class="tag-grupo">(${p.grupoNombre})</span>
+                                </div>
+                                ${repHtml}
+                            </div>
+                        </div>
+                        ${inputHtml}
+                    </div>`;
+            });
+
+            html += `</div>`;
+            contenedor.innerHTML = html;
+            if (isAdmin) {
+                asignarEventosInputsVotos();
+                asignarEventosInputsReps();
+            }
+        }
+
+        // RENDER 3: VISTA DE LLAVES ELIMINATORIAS (BRACKETS)
         function renderizarLlaves() {
             const contenedor = document.getElementById("contenedor-principal");
             let html = ``;
@@ -349,17 +666,17 @@
                     <div style="text-align: center;">
                         <img src="${torneoGalactico.campeon.foto}" class="avatar" style="width: 150px; height: 150px; border-width: 5px; border-color: #ffe600;" onerror="this.src='https://via.placeholder.com/150/000000/ffe600?text=WIN'">
                         <h2 style="color: #fff; margin-top: 15px;">${torneoGalactico.campeon.nombre}</h2>
+                        ${torneoGalactico.campeon.representante ? `<div class="rep-tag" style="font-size:18px; margin-top:10px;">🛡️ Rep: ${torneoGalactico.campeon.representante}</div>` : ''}
                     </div>
                 </div>`;
             }
 
-            // Mostrar rondas (De la actual hacia atrás)
             const rondasPosibles = [1, 2, 4, 8, 16, 32];
             rondasPosibles.forEach(r => {
                 if (torneoGalactico.llaves[`ronda${r}`]) {
                     const nombreRonda = r === 2 ? "GRAN FINAL" : r === 4 ? "SEMIFINALES" : r === 8 ? "CUARTOS DE FINAL" : r === 16 ? "OCTAVOS DE FINAL" : "DIECISEISAVOS DE FINAL";
                     const isActiva = (torneoGalactico.rondaLlavesActiva === r && !torneoGalactico.campeon);
-                    const opacity = isActiva ? "1" : "0.5"; // Rondas pasadas se ven atenuadas
+                    const opacity = isActiva ? "1" : "0.5";
 
                     html += `
                     <div class="contenedor-ronda" style="opacity: ${opacity};">
@@ -375,26 +692,32 @@
                             ? `<input type="number" class="input-votos" value="${llave.votosP2}" data-tipo="llave" data-ronda="${r}" data-llave="${llave.id}" data-target="votosP2">`
                             : `<span class="texto-votos">${llave.votosP2}</span>`;
 
-                        // Colores si ya hay ganador
                         const colorP1 = llave.ganador && llave.ganador.id === llave.p1.id ? "#00ff22" : "#fff";
                         const colorP2 = llave.ganador && llave.ganador.id === llave.p2.id ? "#00ff22" : "#fff";
+
+                        const repP1 = llave.p1.representante ? `<span class="rep-tag">🛡️ Rep: ${llave.p1.representante}</span>` : '';
+                        const repP2 = llave.p2.representante ? `<span class="rep-tag">🛡️ Rep: ${llave.p2.representante}</span>` : '';
 
                         html += `
                             <div class="llave-duelo">
                                 <div class="vs-badge">VS</div>
-                                <!-- Jugador 1 -->
                                 <div class="fila-participante" style="margin-bottom: 25px;">
                                     <div class="info-participante">
-                                        <img src="${llave.p1.foto}" class="avatar" onerror="this.src='https://via.placeholder.com/38/000000/00fff2?text=P1'">
-                                        <span class="nombre" style="color: ${colorP1}">${llave.p1.nombre}</span>
+                                        <img src="${llave.p1.foto}" class="avatar" onerror="this.src='https://via.placeholder.com/42/000000/00fff2?text=P1'">
+                                        <div class="nombre-contenedor">
+                                            <span class="nombre" style="color: ${colorP1}">${llave.p1.nombre}</span>
+                                            ${repP1}
+                                        </div>
                                     </div>
                                     ${htmlVotosP1}
                                 </div>
-                                <!-- Jugador 2 -->
                                 <div class="fila-participante" style="margin-bottom: 0;">
                                     <div class="info-participante">
-                                        <img src="${llave.p2.foto}" class="avatar" onerror="this.src='https://via.placeholder.com/38/000000/00fff2?text=P2'">
-                                        <span class="nombre" style="color: ${colorP2}">${llave.p2.nombre}</span>
+                                        <img src="${llave.p2.foto}" class="avatar" onerror="this.src='https://via.placeholder.com/42/000000/00fff2?text=P2'">
+                                        <div class="nombre-contenedor">
+                                            <span class="nombre" style="color: ${colorP2}">${llave.p2.nombre}</span>
+                                            ${repP2}
+                                        </div>
                                     </div>
                                     ${htmlVotosP2}
                                 </div>
@@ -405,11 +728,11 @@
                 }
             });
             contenedor.innerHTML = html;
-            if (isAdmin) asignarEventosInputs();
+            if (isAdmin) asignarEventosInputsVotos();
         }
 
-        // EVENTOS DE ENTRADA DINÁMICA
-        function asignarEventosInputs() {
+        // EVENTOS DE VOTOS
+        function asignarEventosInputsVotos() {
             document.querySelectorAll(".input-votos").forEach(input => {
                 input.addEventListener("change", (e) => {
                     let val = parseInt(e.target.value) || 0;
@@ -424,11 +747,11 @@
                         const part = grupo.participantes.find(p => p.id === pId);
                         part.votos = val;
                         guardarDatos();
-                        renderizarGrupos(); // Auto reorden
+                        renderizarApp();
                     } else if (tipo === "llave") {
                         const r = e.target.getAttribute("data-ronda");
                         const lId = e.target.getAttribute("data-llave");
-                        const target = e.target.getAttribute("data-target"); // votosP1 o votosP2
+                        const target = e.target.getAttribute("data-target");
                         const llave = torneoGalactico.llaves[`ronda${r}`].find(l => l.id === lId);
                         llave[target] = val;
                         guardarDatos();
@@ -437,7 +760,25 @@
             });
         }
 
-        // FASE 2 Y 3: LÓGICA DE AVANCE Y CÁLCULO
+        // EVENTOS DE REPRESENTANTES
+        function asignarEventosInputsReps() {
+            document.querySelectorAll(".input-rep").forEach(input => {
+                input.addEventListener("change", (e) => {
+                    const gId = e.target.getAttribute("data-grupo");
+                    const pId = e.target.getAttribute("data-pid");
+                    const grupo = torneoGalactico.grupos.find(g => g.id === gId);
+                    if (grupo) {
+                        const part = grupo.participantes.find(p => p.id === pId);
+                        if (part) {
+                            part.representante = e.target.value;
+                            guardarDatos();
+                            // No hacemos renderizarApp() automático aquí para no perder el foco de escritura
+                        }
+                    }
+                });
+            });
+        }
+
         function botonPrincipalAccion() {
             if (torneoGalactico.faseActual === "grupos") {
                 cerrarFaseGrupos();
@@ -447,8 +788,6 @@
         }
 
         function cerrarFaseGrupos() {
-            // Fase 2.1: Validado automáticamente en input events.
-            // Fase 2.2: Clasificados Directos (21 Primeros)
             let directos = [];
             let todosLosSegundos = [];
 
@@ -458,11 +797,9 @@
                 if (ord.length > 1) todosLosSegundos.push(ord[1]);
             });
 
-            // Fase 2.3: 11 Mejores segundos
             todosLosSegundos.sort((a, b) => b.votos - a.votos);
             const mejoresSegundos = todosLosSegundos.slice(0, 11);
 
-            // Fase 2.4: Fusión 32 Finalistas
             const finalistas = [...directos, ...mejoresSegundos];
             if (finalistas.length !== 32) return alert("Error: No se lograron 32 finalistas.");
 
@@ -473,7 +810,6 @@
             }
         }
 
-        // FASE 3.1: MEZCLA Y EMPAREJAMIENTO DE LLAVES
         function shuffle(array) {
             let arr = [...array];
             for (let i = arr.length - 1; i > 0; i--) {
@@ -484,7 +820,7 @@
         }
 
         function generarPrimeraRondaLlaves(lista32) {
-            const mezclados = shuffle(lista32); // Fisher-Yates Random
+            const mezclados = shuffle(lista32);
             const llaves32 = [];
             for (let i = 0; i < 32; i += 2) {
                 llaves32.push({
@@ -497,12 +833,10 @@
             renderizarApp();
         }
 
-        // FASE 3.3: AVANCE DINÁMICO DE RONDAS
         function avanzarRondaLlaves() {
             const rActiva = torneoGalactico.rondaLlavesActiva;
             const duelos = torneoGalactico.llaves[`ronda${rActiva}`];
 
-            // Validar empates
             for (let duelo of duelos) {
                 if (duelo.votosP1 === duelo.votosP2) {
                     alert(`⚠️ EMPATE DETECTADO en el duelo de ${duelo.p1.nombre} vs ${duelo.p2.nombre}.\nDebes romper el empate antes de avanzar.`);
@@ -520,11 +854,9 @@
             const sigRondaNum = rActiva / 2;
 
             if (sigRondaNum < 1) {
-                // Hay Campeón
                 torneoGalactico.campeon = ganadores[0];
                 torneoGalactico.rondaLlavesActiva = 0;
             } else {
-                // Crear siguiente bracket
                 const nuevasLlaves = [];
                 for (let i = 0; i < ganadores.length; i += 2) {
                     nuevasLlaves.push({
@@ -539,17 +871,15 @@
             renderizarApp();
         }
 
-        // FASE 4.2: REINICIAR SISTEMA
         function resetearTorneo() {
             if (confirm("⚠️ ¡ADVERTENCIA CRÍTICA!\n¿Estás absolutamente seguro de querer borrar todos los datos del torneo? Esto volverá todos los votos a 0 y regresará a la Fase de Grupos.")) {
-                localStorage.removeItem("torneo_galactico_db");
+                localStorage.removeItem("torneo_galactico_v2_db");
                 cargarDatos();
                 renderizarApp();
-                alert("Torneo reiniciado con éxito.");
+                alert("Torneo reiniciado con la base de datos oficial 🚀.");
             }
         }
 
-        // INICIALIZACIÓN
         document.addEventListener("DOMContentLoaded", () => {
             cargarDatos();
             renderizarApp();
@@ -557,7 +887,6 @@
             document.getElementById("btn-cerrar-fase").addEventListener("click", botonPrincipalAccion);
             document.getElementById("btn-resetear").addEventListener("click", resetearTorneo);
         });
-
     </script>
 </body>
 </html>
