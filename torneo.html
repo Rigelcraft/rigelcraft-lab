@@ -216,9 +216,10 @@
         }
     </style>
 
-    <!-- SDKs DE FIREBASE -->
+    <!-- SDKs DE FIREBASE CON AUTHENTICATION INTEGRADO -->
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
 </head>
 <body>
     <hr>
@@ -258,11 +259,10 @@
     </div>
 
     <div class="footer-admin">
-        <button class="btn-toggle-admin" onclick="solicitarAccesoAdmin()" title="Modo Administrador">⚙️</button>
+        <button class="btn-toggle-admin" id="btn-admin-icon" onclick="solicitarAccesoAdmin()" title="Modo Administrador">⚙️</button>
     </div>
 
     <script>
-        // CONFIGURACIÓN DE TUS CREDENCIALES DE FIREBASE
         const firebaseConfig = {
             apiKey: "AIzaSyBNr-hwGarQxNOKhcHkPm33egsmi4O3DgE",
             authDomain: "rigelcraft-studio.firebaseapp.com",
@@ -275,11 +275,44 @@
 
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
+        const auth = firebase.auth();
         const docRef = db.collection("torneo_galactico").doc("estado_oficial");
 
-        const PASSWORD_ADMIN = "Rigel2026"; 
         let isAdmin = false;
         let modoVista = "grupos";
+
+        // MONITOREAR AUTENTICACIÓN SEGURA DE GOOGLE
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                isAdmin = true;
+                document.getElementById("btn-admin-icon").style.filter = "grayscale(0%)";
+            } else {
+                isAdmin = false;
+                document.getElementById("btn-admin-icon").style.filter = "grayscale(100%)";
+            }
+            renderizarApp();
+        });
+
+        function solicitarAccesoAdmin() {
+            if (isAdmin) {
+                auth.signOut().then(() => {
+                    alert("🔒 Sesión cerrada. Modo Público activo.");
+                });
+            } else {
+                const email = prompt("Ingrese su correo de Administrador:");
+                if (!email) return;
+                const pass = prompt("Ingrese su contraseña de Administrador:");
+                if (!pass) return;
+
+                auth.signInWithEmailAndPassword(email, pass)
+                    .then(() => {
+                        alert("🔓 Autenticado con éxito en los servidores de Google.");
+                    })
+                    .catch((error) => {
+                        alert("❌ Error de acceso: Datos incorrectos o no autorizados.");
+                    });
+            }
+        }
 
         function generarEstructuraBase() {
             return {
@@ -503,23 +536,8 @@
                 console.log("⚡ Datos sincronizados en la nube de Firebase");
             }).catch((err) => {
                 console.error("Error al guardar en Firebase: ", err);
+                alert("⚠️ Operación rechazada: No tienes permisos de escritura.");
             });
-        }
-
-        function solicitarAccesoAdmin() {
-            if (isAdmin) {
-                isAdmin = false;
-                alert("🔒 Modo Público activado. Controles ocultos.");
-            } else {
-                const pass = prompt("Acceso Restringido. Ingrese contraseña de Administrador:");
-                if (pass === PASSWORD_ADMIN) {
-                    isAdmin = true;
-                    alert("🔓 Modo Administrador activado. Puedes editar votos y representantes.");
-                } else if (pass !== null) {
-                    alert("❌ Contraseña incorrecta.");
-                }
-            }
-            renderizarApp();
         }
 
         function cambiarModoVista(modo) {
