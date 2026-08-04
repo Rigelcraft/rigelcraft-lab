@@ -149,10 +149,10 @@
             padding: 8px 12px;
             border-radius: 8px;
             margin-bottom: 12px;
-            gap: 10px; /* Separación principal */
+            gap: 10px;
         }
 
-        /* DISEÑO DE MEDALLAS CORREGIDO */
+        /* DISEÑO DE MEDALLAS */
         .pos-badge { 
             font-size: 14px; 
             font-weight: bold; 
@@ -161,7 +161,7 @@
             min-width: 45px; 
             text-align: center; 
             color: #fff;
-            margin-right: 15px; /* <--- Esto separa el número de la foto */
+            margin-right: 15px; 
             flex-shrink: 0;
         }
         
@@ -172,10 +172,8 @@
         .pos-top32 { background-color: #ff9100; box-shadow: 0 0 8px #ff9100; }
         .pos-resto { background-color: #d50000; box-shadow: 0 0 6px #d50000; }
 
-        /* CONTENEDORES DE NOMBRE Y REPRESENTANTE */
+        /* CONTENEDORES DE NOMBRE Y REPRESENTANTE (Sin Avatar) */
         .info-participante { display: flex; align-items: center; gap: 15px; flex-grow: 1; }
-        .avatar { width: 42px; height: 42px; border-radius: 50%; border: 2px solid #00c3ff; object-fit: cover; background-color: #111; flex-shrink: 0; }
-        
         .nombre-contenedor { display: flex; flex-direction: column; gap: 4px; justify-content: center; }
         .nombre { font-size: 16px; font-weight: bold; text-shadow: 0 0 4px #000; }
         .tag-grupo { font-size: 13px; color: #00fff2; font-weight: normal; margin-left: 6px; text-shadow: 0 0 3px #000; }
@@ -273,11 +271,11 @@
 
     <script>
         // CONFIGURACIÓN DE SEGURIDAD
-        const PASSWORD_ADMIN = "Rigel2026"; 
+        const PASSWORD_ADMIN = "RigelcraftAdmin2026";
         let isAdmin = false;
         let modoVista = "grupos"; // "grupos" o "lista"
 
-        // ESTRUCTURA CON LOS 84 PARTICIPANTES OFICIALES Y REPRESENTANTES
+        // ESTRUCTURA CON LOS 84 PARTICIPANTES OFICIALES Y REPRESENTANTES (Sin fotos)
         function generarEstructuraBase() {
             return {
                 faseActual: "grupos",
@@ -289,190 +287,190 @@
                     {
                         id: "g1", nombre: "Estrellas: Clásicos y Brillantes",
                         participantes: [
-                            { id: "g1p1", nombre: "El Sol", foto: "SolarBalls.png", votos: 0, representante: "" },
-                            { id: "g1p2", nombre: "Betelgeuse", foto: "", votos: 0, representante: "" },
-                            { id: "g1p3", nombre: "Alfa Centauri A", foto: "", votos: 0, representante: "" },
-                            { id: "g1p4", nombre: "Polaris", foto: "", votos: 0, representante: "" }
+                            { id: "g1p1", nombre: "El Sol", votos: 0, representante: "" },
+                            { id: "g1p2", nombre: "Betelgeuse", votos: 0, representante: "" },
+                            { id: "g1p3", nombre: "Alfa Centauri A", votos: 0, representante: "" },
+                            { id: "g1p4", nombre: "Polaris", votos: 0, representante: "" }
                         ]
                     },
                     {
                         id: "g2", nombre: "Estrellas: Titanes y Vecinos",
                         participantes: [
-                            { id: "g2p1", nombre: "Stephenson 2-18", foto: "", votos: 0, representante: "" },
-                            { id: "g2p2", nombre: "Arturo / Arcturus", foto: "", votos: 0, representante: "" },
-                            { id: "g2p3", nombre: "Alfa Centauri B", foto: "", votos: 0, representante: "" },
-                            { id: "g2p4", nombre: "Próxima Centauri", foto: "", votos: 0, representante: "" }
+                            { id: "g2p1", nombre: "Stephenson 2-18", votos: 0, representante: "" },
+                            { id: "g2p2", nombre: "Arturo / Arcturus", votos: 0, representante: "" },
+                            { id: "g2p3", nombre: "Alfa Centauri B", votos: 0, representante: "" },
+                            { id: "g2p4", nombre: "Próxima Centauri", votos: 0, representante: "" }
                         ]
                     },
                     {
                         id: "g3", nombre: "Estrellas: Monstruos del Cosmos",
                         participantes: [
-                            { id: "g3p1", nombre: "UY Scuti", foto: "", votos: 0, representante: "" },
-                            { id: "g3p2", nombre: "Antares", foto: "", votos: 0, representante: "@DarlenyVerásdeJesús" },
-                            { id: "g3p3", nombre: "Eta Carinae", foto: "", votos: 0, representante: "" },
-                            { id: "g3p4", nombre: "Aldebarán", foto: "", votos: 0, representante: "" }
+                            { id: "g3p1", nombre: "UY Scuti", votos: 0, representante: "" },
+                            { id: "g3p2", nombre: "Antares", votos: 0, representante: "@DarlenyVerásdeJesús" },
+                            { id: "g3p3", nombre: "Eta Carinae", votos: 0, representante: "" },
+                            { id: "g3p4", nombre: "Aldebarán", votos: 0, representante: "" }
                         ]
                     },
                     {
                         id: "g4", nombre: "Rocosos: Íntimos del Sol",
                         participantes: [
-                            { id: "g4p1", nombre: "Mercurio", foto: "", votos: 0, representante: "@Giovanni-t2b1w" },
-                            { id: "g4p2", nombre: "Venus", foto: "", votos: 0, representante: "" },
-                            { id: "g4p3", nombre: "La Tierra", foto: "", votos: 0, representante: "@FaustaanayeliReyesgomez" },
-                            { id: "g4p4", nombre: "Marte", foto: "", votos: 0, representante: "" }
+                            { id: "g4p1", nombre: "Mercurio", votos: 0, representante: "@Giovanni-t2b1w" },
+                            { id: "g4p2", nombre: "Venus", votos: 0, representante: "" },
+                            { id: "g4p3", nombre: "La Tierra", votos: 0, representante: "@FaustaanayeliReyesgomez" },
+                            { id: "g4p4", nombre: "Marte", votos: 0, representante: "" }
                         ]
                     },
                     {
                         id: "g5", nombre: "Gaseosos: Gigantes del Sistema",
                         participantes: [
-                            { id: "g5p1", nombre: "Júpiter", foto: "", votos: 0, representante: "" },
-                            { id: "g5p2", nombre: "Saturno", foto: "", votos: 0, representante: "" },
-                            { id: "g5p3", nombre: "Urano", foto: "", votos: 0, representante: "" },
-                            { id: "g5p4", nombre: "Neptuno", foto: "", votos: 0, representante: "@animacionkati123" }
+                            { id: "g5p1", nombre: "Júpiter", votos: 0, representante: "" },
+                            { id: "g5p2", nombre: "Saturno", votos: 0, representante: "" },
+                            { id: "g5p3", nombre: "Urano", votos: 0, representante: "" },
+                            { id: "g5p4", nombre: "Neptuno", votos: 0, representante: "@animacionkati123" }
                         ]
                     },
                     {
                         id: "g6", nombre: "Hipotéticos: Los Fantasmas",
                         participantes: [
-                            { id: "g6p1", nombre: "Planeta X", foto: "", votos: 0, representante: "" },
-                            { id: "g6p2", nombre: "Vulcano", foto: "", votos: 0, representante: "" },
-                            { id: "g6p3", nombre: "Proto-Tierra", foto: "", votos: 0, representante: "" },
-                            { id: "g6p4", nombre: "Theia / Tea", foto: "", votos: 0, representante: "" }
+                            { id: "g6p1", nombre: "Planeta X", votos: 0, representante: "" },
+                            { id: "g6p2", nombre: "Vulcano", votos: 0, representante: "" },
+                            { id: "g6p3", nombre: "Proto-Tierra", votos: 0, representante: "" },
+                            { id: "g6p4", nombre: "Theia / Tea", votos: 0, representante: "" }
                         ]
                     },
                     {
                         id: "g7", nombre: "Errantes: Vagabundos del Vacío",
                         participantes: [
-                            { id: "g7p1", nombre: "PSO J318.5-22", foto: "", votos: 0, representante: "" },
-                            { id: "g7p2", nombre: "WISE 0855−0714", foto: "", votos: 0, representante: "" },
-                            { id: "g7p3", nombre: "SIMP J01365663", foto: "", votos: 0, representante: "" },
-                            { id: "g7p4", nombre: "OGLE-2016-BLG", foto: "", votos: 0, representante: "" }
+                            { id: "g7p1", nombre: "PSO J318.5-22", votos: 0, representante: "" },
+                            { id: "g7p2", nombre: "WISE 0855−0714", votos: 0, representante: "" },
+                            { id: "g7p3", nombre: "SIMP J01365663", votos: 0, representante: "" },
+                            { id: "g7p4", nombre: "OGLE-2016-BLG", votos: 0, representante: "" }
                         ]
                     },
                     {
                         id: "g8", nombre: "Exoplanetas: Maravillas Lejanas",
                         participantes: [
-                            { id: "g8p1", nombre: "Kepler-186f", foto: "", votos: 0, representante: "" },
-                            { id: "g8p2", nombre: "Próxima Centauri b", foto: "", votos: 0, representante: "" },
-                            { id: "g8p3", nombre: "Matusalén", foto: "", votos: 0, representante: "" },
-                            { id: "g8p4", nombre: "WASP-12b", foto: "", votos: 0, representante: "" }
+                            { id: "g8p1", nombre: "Kepler-186f", votos: 0, representante: "" },
+                            { id: "g8p2", nombre: "Próxima Centauri b", votos: 0, representante: "" },
+                            { id: "g8p3", nombre: "Matusalén", votos: 0, representante: "" },
+                            { id: "g8p4", nombre: "WASP-12b", votos: 0, representante: "" }
                         ]
                     },
                     {
                         id: "g9", nombre: "Lunas 1: Las Gigantes",
                         participantes: [
-                            { id: "g9p1", nombre: "Ganímedes", foto: "", votos: 0, representante: "" },
-                            { id: "g9p2", nombre: "Titán", foto: "", votos: 0, representante: "" },
-                            { id: "g9p3", nombre: "Calisto", foto: "", votos: 0, representante: "" },
-                            { id: "g9p4", nombre: "Ío", foto: "", votos: 0, representante: "" }
+                            { id: "g9p1", nombre: "Ganímedes", votos: 0, representante: "" },
+                            { id: "g9p2", nombre: "Titán", votos: 0, representante: "" },
+                            { id: "g9p3", nombre: "Calisto", votos: 0, representante: "" },
+                            { id: "g9p4", nombre: "Ío", votos: 0, representante: "" }
                         ]
                     },
                     {
                         id: "g10", nombre: "Lunas 2: Clásicas y Misteriosas",
                         participantes: [
-                            { id: "g10p1", nombre: "La Luna", foto: "", votos: 0, representante: "" },
-                            { id: "g10p2", nombre: "Europa", foto: "", votos: 0, representante: "" },
-                            { id: "g10p3", nombre: "Encélado", foto: "", votos: 0, representante: "" },
-                            { id: "g10p4", nombre: "Tritón", foto: "", votos: 0, representante: "" }
+                            { id: "g10p1", nombre: "La Luna", votos: 0, representante: "" },
+                            { id: "g10p2", nombre: "Europa", votos: 0, representante: "" },
+                            { id: "g10p3", nombre: "Encélado", votos: 0, representante: "" },
+                            { id: "g10p4", nombre: "Tritón", votos: 0, representante: "" }
                         ]
                     },
                     {
                         id: "g11", nombre: "Lunas 3: Escuadrón de Saturno",
                         participantes: [
-                            { id: "g11p1", nombre: "Rea", foto: "", votos: 0, representante: "" },
-                            { id: "g11p2", nombre: "Jápeto", foto: "", votos: 0, representante: "" },
-                            { id: "g11p3", nombre: "Dione", foto: "", votos: 0, representante: "" },
-                            { id: "g11p4", nombre: "Tetis", foto: "", votos: 0, representante: "" }
+                            { id: "g11p1", nombre: "Rea", votos: 0, representante: "" },
+                            { id: "g11p2", nombre: "Jápeto", votos: 0, representante: "" },
+                            { id: "g11p3", nombre: "Dione", votos: 0, representante: "" },
+                            { id: "g11p4", nombre: "Tetis", votos: 0, representante: "" }
                         ]
                     },
                     {
                         id: "g12", nombre: "Lunas 4: Gélidas de Urano",
                         participantes: [
-                            { id: "g12p1", nombre: "Titania", foto: "", votos: 0, representante: "" },
-                            { id: "g12p2", nombre: "Oberón", foto: "", votos: 0, representante: "" },
-                            { id: "g12p3", nombre: "Umbriel", foto: "", votos: 0, representante: "" },
-                            { id: "g12p4", nombre: "Ariel", foto: "", votos: 0, representante: "" }
+                            { id: "g12p1", nombre: "Titania", votos: 0, representante: "" },
+                            { id: "g12p2", nombre: "Oberón", votos: 0, representante: "" },
+                            { id: "g12p3", nombre: "Umbriel", votos: 0, representante: "" },
+                            { id: "g12p4", nombre: "Ariel", votos: 0, representante: "" }
                         ]
                     },
                     {
                         id: "g13", nombre: "Lunas 5: Esféricas Pequeñas",
                         participantes: [
-                            { id: "g13p1", nombre: "Mimas", foto: "", votos: 0, representante: "" },
-                            { id: "g13p2", nombre: "Miranda", foto: "", votos: 0, representante: "" },
-                            { id: "g13p3", nombre: "Caronte", foto: "", votos: 0, representante: "" },
-                            { id: "g13p4", nombre: "Proteo", foto: "", votos: 0, representante: "" }
+                            { id: "g13p1", nombre: "Mimas", votos: 0, representante: "" },
+                            { id: "g13p2", nombre: "Miranda", votos: 0, representante: "" },
+                            { id: "g13p3", nombre: "Caronte", votos: 0, representante: "" },
+                            { id: "g13p4", nombre: "Proteo", votos: 0, representante: "" }
                         ]
                     },
                     {
                         id: "g14", nombre: "Lunas 6: Patatas e Irregulares",
                         participantes: [
-                            { id: "g14p1", nombre: "Fobos", foto: "", votos: 0, representante: "" },
-                            { id: "g14p2", nombre: "Deimos", foto: "", votos: 0, representante: "" },
-                            { id: "g14p3", nombre: "Hiperión", foto: "", votos: 0, representante: "" },
-                            { id: "g14p4", nombre: "Amaltea", foto: "", votos: 0, representante: "" }
+                            { id: "g14p1", nombre: "Fobos", votos: 0, representante: "" },
+                            { id: "g14p2", nombre: "Deimos", votos: 0, representante: "" },
+                            { id: "g14p3", nombre: "Hiperión", votos: 0, representante: "" },
+                            { id: "g14p4", nombre: "Amaltea", votos: 0, representante: "" }
                         ]
                     },
                     {
                         id: "g15", nombre: "Lunas 7: Rocas de Júpiter",
                         participantes: [
-                            { id: "g15p1", nombre: "Tebe", foto: "", votos: 0, representante: "" },
-                            { id: "g15p2", nombre: "Calícore", foto: "", votos: 0, representante: "" },
-                            { id: "g15p3", nombre: "Elara", foto: "", votos: 0, representante: "" },
-                            { id: "g15p4", nombre: "Metis", foto: "", votos: 0, representante: "" }
+                            { id: "g15p1", nombre: "Tebe", votos: 0, representante: "" },
+                            { id: "g15p2", nombre: "Calícore", votos: 0, representante: "" },
+                            { id: "g15p3", nombre: "Elara", votos: 0, representante: "" },
+                            { id: "g15p4", nombre: "Metis", votos: 0, representante: "" }
                         ]
                     },
                     {
                         id: "g16", nombre: "Enanos 1: Reyes y Destronado",
                         participantes: [
-                            { id: "g16p1", nombre: "Plutón", foto: "", votos: 0, representante: "" },
-                            { id: "g16p2", nombre: "Ceres", foto: "", votos: 0, representante: "" },
-                            { id: "g16p3", nombre: "Eris", foto: "", votos: 0, representante: "" },
-                            { id: "g16p4", nombre: "Makemake", foto: "", votos: 0, representante: "" }
+                            { id: "g16p1", nombre: "Plutón", votos: 0, representante: "" },
+                            { id: "g16p2", nombre: "Ceres", votos: 0, representante: "" },
+                            { id: "g16p3", nombre: "Eris", votos: 0, representante: "" },
+                            { id: "g16p4", nombre: "Makemake", votos: 0, representante: "" }
                         ]
                     },
                     {
                         id: "g17", nombre: "Enanos 2: Extraños y Lejanos",
                         participantes: [
-                            { id: "g17p1", nombre: "Haumea", foto: "", votos: 0, representante: "" },
-                            { id: "g17p2", nombre: "Sedna", foto: "", votos: 0, representante: "" },
-                            { id: "g17p3", nombre: "Gonggong", foto: "", votos: 0, representante: "" },
-                            { id: "g17p4", nombre: "Quaoar", foto: "", votos: 0, representante: "" }
+                            { id: "g17p1", nombre: "Haumea", votos: 0, representante: "" },
+                            { id: "g17p2", nombre: "Sedna", votos: 0, representante: "" },
+                            { id: "g17p3", nombre: "Gonggong", votos: 0, representante: "" },
+                            { id: "g17p4", nombre: "Quaoar", votos: 0, representante: "" }
                         ]
                     },
                     {
                         id: "g18", nombre: "Humanos 1: Protagonistas",
                         participantes: [
-                            { id: "g18p1", nombre: "Astrobola", foto: "", votos: 0, representante: "" },
-                            { id: "g18p2", nombre: "Cosmo", foto: "", votos: 0, representante: "" },
-                            { id: "g18p3", nombre: "El Jefe", foto: "", votos: 0, representante: "" },
-                            { id: "g18p4", nombre: "Sar", foto: "", votos: 0, representante: "" }
+                            { id: "g18p1", nombre: "Astrobola", votos: 0, representante: "" },
+                            { id: "g18p2", nombre: "Cosmo", votos: 0, representante: "" },
+                            { id: "g18p3", nombre: "El Jefe", votos: 0, representante: "" },
+                            { id: "g18p4", nombre: "Sar", votos: 0, representante: "" }
                         ]
                     },
                     {
                         id: "g19", nombre: "Humanos 2: Familia y Agencia",
                         participantes: [
-                            { id: "g19p1", nombre: "Junior", foto: "", votos: 0, representante: "" },
-                            { id: "g19p2", nombre: "Esposa de Astrobola", foto: "", votos: 0, representante: "" },
-                            { id: "g19p3", nombre: "PlayerRound", foto: "", votos: 0, representante: "" },
-                            { id: "g19p4", nombre: "La NASA", foto: "", votos: 0, representante: "" }
+                            { id: "g19p1", nombre: "Junior", votos: 0, representante: "" },
+                            { id: "g19p2", nombre: "Esposa de Astrobola", votos: 0, representante: "" },
+                            { id: "g19p3", nombre: "PlayerRound", votos: 0, representante: "" },
+                            { id: "g19p4", nombre: "La NASA", votos: 0, representante: "" }
                         ]
                     },
                     {
                         id: "g20", nombre: "Naciones: Países Terrícolas",
                         participantes: [
-                            { id: "g20p1", nombre: "EEUU / Sr. América", foto: "", votos: 0, representante: "" },
-                            { id: "g20p2", nombre: "Rusia", foto: "", votos: 0, representante: "" },
-                            { id: "g20p3", nombre: "Japón", foto: "", votos: 0, representante: "" },
-                            { id: "g20p4", nombre: "Canadá", foto: "", votos: 0, representante: "" }
+                            { id: "g20p1", nombre: "EEUU / Sr. América", votos: 0, representante: "" },
+                            { id: "g20p2", nombre: "Rusia", votos: 0, representante: "" },
+                            { id: "g20p3", nombre: "Japón", votos: 0, representante: "" },
+                            { id: "g20p4", nombre: "Canadá", votos: 0, representante: "" }
                         ]
                     },
                     {
                         id: "g21", nombre: "Devoradores: Reyes del Vacío",
                         participantes: [
-                            { id: "g21p1", nombre: "TON 618", foto: "", votos: 0, representante: "@PatriciaFlores-kx2vq" },
-                            { id: "g21p2", nombre: "Sagitario A*", foto: "", votos: 0, representante: "" },
-                            { id: "g21p3", nombre: "Phoenix A", foto: "", votos: 0, representante: "" },
-                            { id: "g21p4", nombre: "M87*", foto: "", votos: 0, representante: "" }
+                            { id: "g21p1", nombre: "TON 618", votos: 0, representante: "@PatriciaFlores-kx2vq" },
+                            { id: "g21p2", nombre: "Sagitario A*", votos: 0, representante: "" },
+                            { id: "g21p3", nombre: "Phoenix A", votos: 0, representante: "" },
+                            { id: "g21p4", nombre: "M87*", votos: 0, representante: "" }
                         ]
                     }
                 ]
@@ -482,7 +480,8 @@
         let torneoGalactico = {};
 
         function cargarDatos() {
-            const guardado = localStorage.getItem("torneo_galactico_v2_db");
+            // Actualizada base de datos a v3 para que cargue la estructura limpia de imágenes
+            const guardado = localStorage.getItem("torneo_galactico_v3_db");
             if (guardado) {
                 try { torneoGalactico = JSON.parse(guardado); } 
                 catch (e) { torneoGalactico = generarEstructuraBase(); }
@@ -492,7 +491,7 @@
         }
 
         function guardarDatos() {
-            localStorage.setItem("torneo_galactico_v2_db", JSON.stringify(torneoGalactico));
+            localStorage.setItem("torneo_galactico_v3_db", JSON.stringify(torneoGalactico));
         }
 
         function solicitarAccesoAdmin() {
@@ -579,7 +578,6 @@
                         <div class="fila-participante">
                             <span class="pos-badge pos-${pos}">${pos}º</span>
                             <div class="info-participante">
-                                <img src="${p.foto}" alt="${p.nombre}" class="avatar" onerror="this.src='https://via.placeholder.com/42/000000/00fff2?text=P'">
                                 <div class="nombre-contenedor">
                                     <span class="nombre">${p.nombre}</span>
                                     ${repHtml}
@@ -633,7 +631,6 @@
                     <div class="fila-participante">
                         <span class="pos-badge ${claseBadge}">${pos}º</span>
                         <div class="info-participante">
-                            <img src="${p.foto}" alt="${p.nombre}" class="avatar" onerror="this.src='https://via.placeholder.com/42/000000/00fff2?text=P'">
                             <div class="nombre-contenedor">
                                 <div style="display:flex; align-items:center; flex-wrap: wrap;">
                                     <span class="nombre">${p.nombre}</span>
@@ -664,9 +661,8 @@
                 <div class="contenedor-ronda" style="border-color: #ffe600; box-shadow: 0 0 20px #ffe600;">
                     <h2 class="titulo-ronda" style="font-size: 40px;">👑 CAMPEÓN ABSOLUTO 👑</h2>
                     <div style="text-align: center;">
-                        <img src="${torneoGalactico.campeon.foto}" class="avatar" style="width: 150px; height: 150px; border-width: 5px; border-color: #ffe600;" onerror="this.src='https://via.placeholder.com/150/000000/ffe600?text=WIN'">
-                        <h2 style="color: #fff; margin-top: 15px;">${torneoGalactico.campeon.nombre}</h2>
-                        ${torneoGalactico.campeon.representante ? `<div class="rep-tag" style="font-size:18px; margin-top:10px;">🛡️ Rep: ${torneoGalactico.campeon.representante}</div>` : ''}
+                        <h2 style="color: #fff; margin-top: 15px; font-size: 40px;">${torneoGalactico.campeon.nombre}</h2>
+                        ${torneoGalactico.campeon.representante ? `<div class="rep-tag" style="font-size:22px; margin-top:10px;">🛡️ Rep: ${torneoGalactico.campeon.representante}</div>` : ''}
                     </div>
                 </div>`;
             }
@@ -703,7 +699,6 @@
                                 <div class="vs-badge">VS</div>
                                 <div class="fila-participante" style="margin-bottom: 25px;">
                                     <div class="info-participante">
-                                        <img src="${llave.p1.foto}" class="avatar" onerror="this.src='https://via.placeholder.com/42/000000/00fff2?text=P1'">
                                         <div class="nombre-contenedor">
                                             <span class="nombre" style="color: ${colorP1}">${llave.p1.nombre}</span>
                                             ${repP1}
@@ -713,7 +708,6 @@
                                 </div>
                                 <div class="fila-participante" style="margin-bottom: 0;">
                                     <div class="info-participante">
-                                        <img src="${llave.p2.foto}" class="avatar" onerror="this.src='https://via.placeholder.com/42/000000/00fff2?text=P2'">
                                         <div class="nombre-contenedor">
                                             <span class="nombre" style="color: ${colorP2}">${llave.p2.nombre}</span>
                                             ${repP2}
@@ -772,7 +766,6 @@
                         if (part) {
                             part.representante = e.target.value;
                             guardarDatos();
-                            // No hacemos renderizarApp() automático aquí para no perder el foco de escritura
                         }
                     }
                 });
@@ -873,10 +866,10 @@
 
         function resetearTorneo() {
             if (confirm("⚠️ ¡ADVERTENCIA CRÍTICA!\n¿Estás absolutamente seguro de querer borrar todos los datos del torneo? Esto volverá todos los votos a 0 y regresará a la Fase de Grupos.")) {
-                localStorage.removeItem("torneo_galactico_v2_db");
+                localStorage.removeItem("torneo_galactico_v3_db");
                 cargarDatos();
                 renderizarApp();
-                alert("Torneo reiniciado con la base de datos oficial 🚀.");
+                alert("Torneo reiniciado con la base de datos limpia (Sin fotos) 🚀.");
             }
         }
 
