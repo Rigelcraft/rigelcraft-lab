@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torneo Galáctico | Rigelcraft Studio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Angkor&family=Anton&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url("torneo.png");
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: 'Arial', sans-serif;
+            padding-bottom: 50px;
+        }
+
+        hr {
+            border: none;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #0184ff, #00ccff, #00ffb3);
+            box-shadow: 0 0 10px #00ccff, 0 0 10px #00c3ff;
+            margin: 30px 0;
+        }
+
+        /* Navegación Breadcrumb */
+        .breadcrumb {
+            text-align: left;
+            width: 100%;
+            margin: 20px 0 40px 2%;
+            font-size: 20px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+        }
+
+        .breadcrumb a {
+            color: #00c3ff;
+            text-decoration: underline;
+            font-weight: bold;
+            transition: 0.3s;
+            text-shadow: 0 0 5px #000;
+        }
+
+        .breadcrumb a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px #00ccff, 0 0 20px #00c3ff;
+        }
+
+        .breadcrumb span {
+            color: #00c3ff;
+            text-decoration: none;
+            font-weight: bold;
+            text-shadow: 0 0 5px #000;
+        }
+
+        /* Estilos del Mega Título */
+        .contenedor-mega-titulo {
+            text-align: left;
+            width: 100%;
+            margin: 20px 0 20px 2%;
+            max-width: 98%;
+            overflow-x: visible;
+        }
+
+        .mega-titulo {
+            font-family: 'Angkor', 'Anton', Arial, sans-serif;
+            font-size: clamp(40px, 8vw, 130px);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+            line-height: 1;
+            background-image: url('https://static.vecteezy.com/system/resources/previews/006/059/573/non_2x/blue-water-surface-background-waves-of-sea-ocean-pool-and-lake-light-ripple-texture-seamless-pattern-vector.jpg');
+            background-size: 400px;
+            background-repeat: repeat;
+            background-position: center;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            -webkit-text-stroke: 1.5px #003050;
+            filter: drop-shadow(0 0 10px #00ccff) drop-shadow(0 0 20px #00e1ff);
+            max-width: 95%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            display: block;
+            padding-right: 2px;
+            box-sizing: border-box;
+        }
+
+        h3 {
+            color: #e6edf3;
+            font-size: 25px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+            margin-left: 2%;
+            text-align: left;
+        }
+
+        p {
+            color: #e6edf3;
+            font-size: 22px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+            margin-left: 2%;
+            text-align: left;
+            margin-top: 15px;
+        }
+
+        /* Grid del Torneo Galáctico */
+        .grid-grupos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            width: 96%;
+            margin: 30px auto;
+        }
+
+        .tarjeta-grupo {
+            background: rgba(0, 0, 0, 0.85);
+            border: 2px solid #00ccff;
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 0 12px rgba(0, 204, 255, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tarjeta-grupo:hover {
+            box-shadow: 0 0 22px rgba(0, 204, 255, 0.6);
+            transform: translateY(-3px);
+        }
+
+        .titulo-grupo {
+            color: #00fff2;
+            font-size: 22px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-align: center;
+            border-bottom: 2px solid #00ccff;
+            padding-bottom: 8px;
+            text-shadow: 0 0 6px #000;
+        }
+
+        .fila-participante {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 12px;
+            border-radius: 8px;
+        }
+
+        .info-participante {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-grow: 1;
+        }
+
+        .avatar-participante {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #00c3ff;
+            object-fit: cover;
+            background-color: #111;
+        }
+
+        .nombre-participante {
+            color: #e6edf3;
+            font-size: 16px;
+            font-weight: bold;
+            text-shadow: 0 0 4px #000;
+        }
+
+        /* Inputs para ingresar votos manualmente */
+        .input-votos {
+            width: 80px;
+            padding: 8px;
+            background-color: rgba(0, 0, 0, 0.9);
+            border: 1.5px solid #00fff2;
+            border-radius: 6px;
+            color: #ffe600;
+            font-size: 17px;
+            font-weight: bold;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .input-votos:focus {
+            border-color: #ffe600;
+            box-shadow: 0 0 10px #ffe600;
+        }
+
+        /* Botón de Acción Principal (Paso 1.3) */
+        .contenedor-boton-accion {
+            text-align: center;
+            margin: 40px auto 20px auto;
+            width: 96%;
+        }
+
+        .btn-cerrar-fase {
+            background: linear-gradient(135deg, #00c3ff, #0051ff);
+            color: #ffffff;
+            font-family: 'Anton', Arial, sans-serif;
+            font-size: clamp(18px, 4vw, 26px);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 16px 35px;
+            border: 2px solid #00fff2;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 204, 255, 0.5), inset 0 0 10px rgba(0, 255, 242, 0.3);
+            transition: all 0.3s ease;
+            text-shadow: 0 0 5px #000;
+        }
+
+        .btn-cerrar-fase:hover {
+            background: linear-gradient(135deg, #ffe600, #ff8800);
+            color: #000;
+            border-color: #ffe600;
+            box-shadow: 0 0 25px rgba(255, 230, 0, 0.8), inset 0 0 15px rgba(255, 255, 0, 0.5);
+            transform: scale(1.03);
+            text-shadow: none;
+        }
+
+        .btn-cerrar-fase:active {
+            transform: scale(0.98);
+        }
+
+        /* Optimización Responsive */
+        @media (max-width: 600px) {
+            body { 
+                background-attachment: fixed; 
+                background-position: 50% center !important;
+            }
+            .mega-titulo {
+                font-size: clamp(25px, 11vw, 50px) !important; 
+                -webkit-text-stroke: 1px #003050;
+                text-align: center !important;
+                margin: 0 auto !important;
+                display: block;
+                background-size: 250px;
+                width: 90%;
+            }
+            .breadcrumb {
+                font-size: 16px !important;
+                margin-left: 4% !important;
+            }
+            p, h3 {
+                font-size: 18px !important;
+                margin-left: 5% !important;
+                margin-right: 5% !important;
+            }
+            .grid-grupos {
+                grid-template-columns: 1fr;
+                width: 92%;
+            }
+            .contenedor-mega-titulo {
+                text-align: center !important;
+                margin-left: 0 !important;
+                width: 100% !important;
+            }
+            .btn-cerrar-fase {
+                width: 92%;
+                padding: 14px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <hr>
+    <div class="breadcrumb">
+        <a href="index.html">Inicio</a><span> / Torneo Galáctico</span>
+    </div>
+    
+    <div class="contenedor-mega-titulo">
+        <h1 class="mega-titulo">TORNEO GALÁCTICO</h1>
+    </div>
+    <hr>
+
+    <h3>Fase de Grupos - Panel de Control</h3>
+    <p>Bienvenido al Panel de Control del Torneo Galáctico. Desde esta interfaz puedes ingresar manualmente los votos correspondientes a cada participante dentro de los 21 grupos.</p>
+    
+    <hr>
+
+    <!-- Contenedor dinámico de los 21 grupos -->
+    <div id="contenedor-grupos" class="grid-grupos"></div>
+
+    <!-- Botón Principal de Acción (Paso 1.3) -->
+    <div class="contenedor-boton-accion">
+        <button id="btn-cerrar-fase" class="btn-cerrar-fase">🚀 CERRAR FASE DE GRUPOS Y CLASIFICAR</button>
+    </div>
+
+    <hr>
+    <div class="breadcrumb">
+        <a href="index.html">Inicio</a><span> / Torneo Galáctico</span>
+    </div>
+
+    <script>
+        // Paso 1.1: Objeto/JSON con la estructura de los 21 grupos y sus 4 participantes
+        const torneoGalactico = {
+            faseActual: "grupos",
+            grupos: [
+                {
+                    id: "grupo_a",
+                    nombre: "Grupo A",
+                    participantes: [
+                        { id: "p_a1", nombre: "Participante 1", foto: "img/torneo/p1.png", votos: 0 },
+                        { id: "p_a2", nombre: "Participante 2", foto: "img/torneo/p2.png", votos: 0 },
+                        { id: "p_a3", nombre: "Participante 3", foto: "img/torneo/p3.png", votos: 0 },
+                        { id: "p_a4", nombre: "Participante 4", foto: "img/torneo/p4.png", votos: 0 }
+                    ]
+                },
+                {
+                    id: "grupo_b",
+                    nombre: "Grupo B",
+                    participantes: [
+                        { id: "p_b1", nombre: "Participante 1", foto: "img/torneo/p5.png", votos: 0 },
+                        { id: "p_b2", nombre: "Participante 2", foto: "img/torneo/p6.png", votos: 0 },
+                        { id: "p_b3", nombre: "Participante 3", foto: "img/torneo/p7.png", votos: 0 },
+                        { id: "p_b4", nombre: "Participante 4", foto: "img/torneo/p8.png", votos: 0 }
+                    ]
+                },
+                {
+                    id: "grupo_c",
+                    nombre: "Grupo C",
+                    participantes: [
+                        { id: "p_c1", nombre: "Participante 1", foto: "img/torneo/p9.png", votos: 0 },
+                        { id: "p_c2", nombre: "Participante 2", foto: "img/torneo/p10.png", votos: 0 },
+                        { id: "p_c3", nombre: "Participante 3", foto: "img/torneo/p11.png", votos: 0 },
+                        { id: "p_c4", nombre: "Participante 4", foto: "img/torneo/p12.png", votos: 0 }
+                    ]
+                },
+                {
+                    id: "grupo_d",
+                    nombre: "Grupo D",
+                    participantes: [
+                        { id: "p_d1", nombre: "Participante 1", foto: "img/torneo/p13.png", votos: 0 },
+                        { id: "p_d2", nombre: "Participante 2", foto: "img/torneo/p14.png", votos: 0 },
+                        { id: "p_d3", nombre: "Participante 3", foto: "img/torneo/p15.png", votos: 0 },
+                        { id: "p_d4", nombre: "Participante 4", foto: "img/torneo/p16.png", votos: 0 }
+                    ]
+                },
+                {
+                    id: "grupo_e",
+                    nombre: "Grupo E",
+                    participantes: [
+                        { id: "p_e1", nombre: "Participante 1", foto: "img/torneo/p17.png", votos: 0 },
+                        { id: "p_e2", nombre: "Participante 2", foto: "img/torneo/p18.png", votos: 0 },
+                        { id: "p_e3", nombre: "Participante 3", foto: "img/torneo/p19.png", votos: 0 },
+                        { id: "p_e4", nombre: "Participante 4", foto: "img/torneo/p20.png", votos: 0 }
+                    ]
+                },
+                {
+                    id: "grupo_f",
+                    nombre: "Grupo F",
+                    participantes: [
+                        { id: "p_f1", nombre: "Participante 1", foto: "img/torneo/p21.png", votos: 0 },
+                        { id: "p_f2", nombre: "Participante 2", foto: "img/torneo/p22.png", votos: 0 },
+                        { id: "p_f3", nombre: "Participante 3", foto: "img/torneo/p23.png", votos: 0 },
+                        { id: "p_f4", nombre: "Participante 4", foto: "img/torneo/p24.png", votos: 0 }
+                    ]
+                },
+                {
+                    id: "grupo_g",
+                    nombre: "Grupo G",
+                    participantes: [
+                        { id: "p_g1", nombre: "Participante 1", foto: "img/torneo/p25.png", votos: 0 },
+                        { id: "p_g2", nombre: "Participante 2", foto: "img/torneo/p26.png", votos: 0 },
+                        { id: "p_g3", nombre: "Participante 3", foto: "img/torneo/p27.png", votos: 0 },
+                        { id: "p_g4", nombre: "Participante 4", foto: "img/torneo/p28.png", votos: 0 }
+                    ]
+                },
+                {
+                    id: "grupo_h",
+                    nombre: "Grupo H",
+                    participantes: [
+                        { id: "p_h1", nombre: "Participante 1", foto: "img/torneo/p29.png", votos: 0 },
+                        { id: "p_h2", nombre: "Participante 2", foto: "img/torneo/p30.png", votos: 0 },
+                        { id: "p_h3", nombre: "Participante 3", foto: "img/torneo/p31.png", votos: 0 },
+                        { id: "p_h4", nombre: "Participante 4", foto: "img/torneo/p32.png", votos: 0 }
+                    ]
+                },
+                {
+                    id: "grupo_i",
+                    nombre: "Grupo I",
+                    participantes: [
+                        { id: "p_i1", nombre: "Participante 1", foto: "img/torneo/p33.png", votos: 0 },
+                        { id: "p_i2", nombre: "Participante 2", foto: "img/torneo/p34.png", votos: 0 },
+                        { id: "p_i3", nombre: "Participante 3", foto: "img/torneo/p35.png", votos: 0 },
+                        { id: "p_i4", nombre: "Participante 4", foto: "img/torneo/p36.png", votos: 0 }
+                    ]
+                },
+                {
+                    id: "grupo_j",
+                    nombre: "Grupo J",
+                    participantes: [
+                        { id: "p_j1", nombre: "Participante 1", foto: "img/torneo/p37.png", votos: 0 },
+                        { id: "p_j2", nombre: "Participante 2", foto: "img/torneo/p38.png", votos: 0 },
+                        { id: "p_j3", nombre: "Participante 3", foto: "img/torneo/p39.png", votos: 0 },
+                        { id: "p_j4", nombre: "Participante 4", foto: "img/torneo/p40.png", votos: 0 }
+                    ]
+                },
+                {
+                    id: "grupo_k",
+                    nombre: "Grupo K",
+                    participantes: [
+                        { id: "p_k1", nombre: "Participante 1", foto: "img/torneo/p41.png", votos: 0 },
+                        { id: "p_k2", nombre: "Participante 2", foto: "img/torneo/p42.png", votos: 0 },
+                        { id: "p_k3", nombre: "Participante 3", foto: "img/torneo/p43.png", votos: 0 },
+                        { id: "p_k4", nombre: "Participante 4", foto: "img/torneo/p44.png", votos: 0 }
+                    ]
+                },
+                {
+                    id: "grupo_l",
+                    nombre: "Grupo L",
+                    participantes: [
+                        { id: "p_l1", nombre: "Participante 1", foto: "img/torneo/p45.png", votos: 0 },
+                        { id: "p_l2", nombre: "Participante 2", foto: "img/torneo/p46.png", votos: 0 },
+                        { id: "p_l3", nombre: "Participante 3", foto: "img/torneo/p47.png", votos: 0 },
+                        { id: "p_l4", nombre: "Participante 4", foto: "img/torneo/p48.png", votos: 0 }
+                    ]
+                },
+                {
+                    id: "grupo_m",
+                    nombre: "Grupo M",
+                    participantes: [
+                        { id: "p_m1", nombre: "Participante 1", foto: "img/torneo/p49.png", votos: 0 },
+                        { id: "p_m2", nombre: "Participante 2", foto: "img/torneo/p50.png", votos: 0 },
+                        { id: "p_m3", nombre: "Participante 3", foto: "img/torneo/p51.png", votos: 0 },
+                        { id: "p_m4", nombre: "Participante 4", foto: "img/torneo/p52.png", votos: 0 }
+                    ]
+                },
+                {
+                    id: "grupo_n",
+                    nombre: "Grupo N",
+                    participantes: [
+                        { id: "p_n1", nombre: "Participante 1", foto: "img/torneo/p53.png", votos: 0 },
+                        { id: "p_n2", nombre: "Participante 2", foto: "img/torneo/p54.png", votos: 0 },
+                        { id: "p_n3", nombre: "Participante 3", foto: "img/torneo/p55.png", votos: 0 },
+                        { id: "p_n4", nombre: "Participante 4", foto: "img/torneo/p56.png", votos: 0 }
+                    ]
+                },
+                {
+                    id: "grupo_o",
+                    nombre: "Grupo O",
+                    participantes: [
+                        { id: "p_o1", nombre: "Participante 1", foto: "img/torneo/p57.png", votos: 0 },
+                        { id: "p_o2", nombre: "Participante 2", foto: "img/torneo/p58.png", votos: 0 },
+                        { id: "p_o3", nombre: "Participante 3", foto: "img/torneo/p59.png", votos: 0 },
+                        { id: "p_o4", nombre: "Participante 4", foto: "img/torneo/p60.png", votos: 0 }
+                    ]
+                },
+                {
+                    id: "grupo_p",
+                    nombre: "Grupo P",
+                    participantes: [
+                        { id: "p_p1", nombre: "Participante 1", foto: "img/torneo/p61.png", votos: 0 },
+                        { id: "p_p2", nombre: "Participante 2", foto: "img/torneo/p62.png", votos: 0 },
+                        { id: "p_p3", nombre: "Participante 3", foto: "img/torneo/p63.png", votos: 0 },
+                        { id: "p_p4", nombre: "Participante 4", foto: "img/torneo/p64.png", votos: 0 }
+                    ]
+                },
+                {
+                    id: "grupo_q",
+                    nombre: "Grupo Q",
+                    participantes: [
+                        { id: "p_q1", nombre: "Participante 1", foto: "img/torneo/p65.png", votos: 0 },
+                        { id: "p_q2", nombre: "Participante 2", foto: "img/torneo/p66.png", votos: 0 },
+                        { id: "p_q3", nombre: "Participante 3", foto: "img/torneo/p67.png", votos: 0 },
+                        { id: "p_q4", nombre: "Participante 4", foto: "img/torneo/p68.png", votos: 0 }
+                    ]
+                },
+                {
+                    id: "grupo_r",
+                    nombre: "Grupo R",
+                    participantes: [
+                        { id: "p_r1", nombre: "Participante 1", foto: "img/torneo/p69.png", votos: 0 },
+                        { id: "p_r2", nombre: "Participante 2", foto: "img/torneo/p70.png", votos: 0 },
+                        { id: "p_r3", nombre: "Participante 3", foto: "img/torneo/p71.png", votos: 0 },
+                        { id: "p_r4", nombre: "Participante 4", foto: "img/torneo/p72.png", votos: 0 }
+                    ]
+                },
+                {
+                    id: "grupo_s",
+                    nombre: "Grupo S",
+                    participantes: [
+                        { id: "p_s1", nombre: "Participante 1", foto: "img/torneo/p73.png", votos: 0 },
+                        { id: "p_s2", nombre: "Participante 2", foto: "img/torneo/p74.png", votos: 0 },
+                        { id: "p_s3", nombre: "Participante 3", foto: "img/torneo/p75.png", votos: 0 },
+                        { id: "p_s4", nombre: "Participante 4", foto: "img/torneo/p76.png", votos: 0 }
+                    ]
+                },
+                {
+                    id: "grupo_t",
+                    nombre: "Grupo T",
+                    participantes: [
+                        { id: "p_t1", nombre: "Participante 1", foto: "img/torneo/p77.png", votos: 0 },
+                        { id: "p_t2", nombre: "Participante 2", foto: "img/torneo/p78.png", votos: 0 },
+                        { id: "p_t3", nombre: "Participante 3", foto: "img/torneo/p79.png", votos: 0 },
+                        { id: "p_t4", nombre: "Participante 4", foto: "img/torneo/p80.png", votos: 0 }
+                    ]
+                },
+                {
+                    id: "grupo_u",
+                    nombre: "Grupo U",
+                    participantes: [
+                        { id: "p_u1", nombre: "Participante 1", foto: "img/torneo/p81.png", votos: 0 },
+                        { id: "p_u2", nombre: "Participante 2", foto: "img/torneo/p82.png", votos: 0 },
+                        { id: "p_u3", nombre: "Participante 3", foto: "img/torneo/p83.png", votos: 0 },
+                        { id: "p_u4", nombre: "Participante 4", foto: "img/torneo/p84.png", votos: 0 }
+                    ]
+                }
+            ]
+        };
+
+        // Paso 1.2: Renderizado en Grid del Panel de Control
+        function renderizarPanelGrupos() {
+            const contenedor = document.getElementById("contenedor-grupos");
+            if (!contenedor) return;
+
+            let htmlContenido = "";
+
+            torneoGalactico.grupos.forEach(grupo => {
+                htmlContenido += `
+                    <div class="tarjeta-grupo" id="card-${grupo.id}">
+                        <h3 class="titulo-grupo">${grupo.nombre}</h3>
+                        <div class="lista-participantes">
+                `;
+
+                grupo.participantes.forEach(participante => {
+                    htmlContenido += `
+                        <div class="fila-participante">
+                            <div class="info-participante">
+                                <img src="${participante.foto}" alt="${participante.nombre}" class="avatar-participante" onerror="this.src='https://via.placeholder.com/40/000000/00fff2?text=P'">
+                                <span class="nombre-participante">${participante.nombre}</span>
+                            </div>
+                            <input 
+                                type="number" 
+                                class="input-votos" 
+                                min="0" 
+                                value="${participante.votos}" 
+                                data-grupo="${grupo.id}" 
+                                data-participante="${participante.id}"
+                                placeholder="0"
+                            >
+                        </div>
+                    `;
+                });
+
+                htmlContenido += `
+                        </div>
+                    </div>
+                `;
+            });
+
+            contenedor.innerHTML = htmlContenido;
+        }
+
+        // Paso 1.3: Función para guardar votos tipeados en el objeto torneoGalactico
+        function guardarVotosIngresados() {
+            const inputs = document.querySelectorAll(".input-votos");
+            inputs.forEach(input => {
+                const grupoId = input.getAttribute("data-grupo");
+                const participanteId = input.getAttribute("data-participante");
+                const votosNum = parseInt(input.value) || 0;
+
+                const grupo = torneoGalactico.grupos.find(g => g.id === grupoId);
+                if (grupo) {
+                    const participante = grupo.participantes.find(p => p.id === participanteId);
+                    if (participante) {
+                        participante.votos = votosNum;
+                    }
+                }
+            });
+        }
+
+        // Paso 1.3: Desencadenador del cálculo/clasificación
+        function iniciarCalculoClasificacion() {
+            guardarVotosIngresados();
+            console.log("Datos de la Fase de Grupos guardados:", torneoGalactico);
+            alert("🚀 ¡Fase de grupos cerrada y votos registrados con éxito!\n\nListo para procesar la tabla de clasificados.");
+        }
+
+        // Inicializar eventos
+        document.addEventListener("DOMContentLoaded", () => {
+            renderizarPanelGrupos();
+
+            const btnCerrar = document.getElementById("btn-cerrar-fase");
+            if (btnCerrar) {
+                btnCerrar.addEventListener("click", iniciarCalculoClasificacion);
+            }
+        });
+    </script>
+</body>
+</html>
