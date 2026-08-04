@@ -7,18 +7,16 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Angkor&family=Anton&display=swap');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-image: url("torneo.png");
+            background-image: url("torneo.png"); /* Usa el fondo que prefieras */
             background-size: cover;
             background-attachment: fixed;
+            background-color: #050505;
             font-family: 'Arial', sans-serif;
             padding-bottom: 50px;
+            color: #e6edf3;
         }
 
         hr {
@@ -30,42 +28,23 @@
             margin: 30px 0;
         }
 
-        /* Navegación Breadcrumb */
         .breadcrumb {
             text-align: left;
             width: 100%;
             margin: 20px 0 40px 2%;
             font-size: 20px;
-            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+            text-shadow: 0 0 4px #000;
         }
 
-        .breadcrumb a {
-            color: #00c3ff;
-            text-decoration: underline;
-            font-weight: bold;
-            transition: 0.3s;
-            text-shadow: 0 0 5px #000;
-        }
+        .breadcrumb a { color: #00c3ff; text-decoration: underline; font-weight: bold; transition: 0.3s; text-shadow: 0 0 5px #000; }
+        .breadcrumb a:hover { color: #fff; text-shadow: 0 0 10px #00ccff; }
+        .breadcrumb span { color: #00c3ff; font-weight: bold; text-decoration: none; }
 
-        .breadcrumb a:hover {
-            color: #fff;
-            text-shadow: 0 0 10px #00ccff, 0 0 20px #00c3ff;
-        }
-
-        .breadcrumb span {
-            color: #00c3ff;
-            text-decoration: none;
-            font-weight: bold;
-            text-shadow: 0 0 5px #000;
-        }
-
-        /* Estilos del Mega Título */
         .contenedor-mega-titulo {
             text-align: left;
             width: 100%;
             margin: 20px 0 20px 2%;
             max-width: 98%;
-            overflow-x: visible;
         }
 
         .mega-titulo {
@@ -78,40 +57,18 @@
             line-height: 1;
             background-image: url('https://static.vecteezy.com/system/resources/previews/006/059/573/non_2x/blue-water-surface-background-waves-of-sea-ocean-pool-and-lake-light-ripple-texture-seamless-pattern-vector.jpg');
             background-size: 400px;
-            background-repeat: repeat;
             background-position: center;
             -webkit-background-clip: text;
             background-clip: text;
-            -webkit-text-fill-color: transparent;
             color: transparent;
             -webkit-text-stroke: 1.5px #003050;
-            filter: drop-shadow(0 0 10px #00ccff) drop-shadow(0 0 20px #00e1ff);
-            max-width: 95%;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            display: block;
-            padding-right: 2px;
-            box-sizing: border-box;
+            filter: drop-shadow(0 0 10px #00ccff);
         }
 
-        h3 {
-            color: #e6edf3;
-            font-size: 25px;
-            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
-            margin-left: 2%;
-            text-align: left;
-        }
+        h3 { font-size: 25px; margin-left: 2%; text-shadow: 0 0 4px #000; }
+        p { font-size: 22px; margin-left: 2%; margin-right: 2%; margin-top: 15px; text-shadow: 0 0 4px #000; }
 
-        p {
-            color: #e6edf3;
-            font-size: 22px;
-            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
-            margin-left: 2%;
-            text-align: left;
-            margin-top: 15px;
-        }
-
-        /* Grid del Torneo Galáctico */
+        /* FASE DE GRUPOS - GRID */
         .grid-grupos {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -120,28 +77,24 @@
             margin: 30px auto;
         }
 
-        .tarjeta-grupo {
+        .tarjeta {
             background: rgba(0, 0, 0, 0.85);
             border: 2px solid #00ccff;
             border-radius: 12px;
             padding: 18px;
             box-shadow: 0 0 12px rgba(0, 204, 255, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s;
         }
 
-        .tarjeta-grupo:hover {
-            box-shadow: 0 0 22px rgba(0, 204, 255, 0.6);
-            transform: translateY(-3px);
-        }
+        .tarjeta:hover { box-shadow: 0 0 22px rgba(0, 204, 255, 0.6); transform: translateY(-3px); }
 
-        .titulo-grupo {
+        .titulo-tarjeta {
             color: #00fff2;
             font-size: 22px;
-            margin-top: 0;
-            margin-bottom: 15px;
             text-align: center;
             border-bottom: 2px solid #00ccff;
             padding-bottom: 8px;
+            margin-bottom: 15px;
             text-shadow: 0 0 6px #000;
         }
 
@@ -149,174 +102,80 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 10px;
-            margin-bottom: 12px;
             background: rgba(255, 255, 255, 0.05);
             padding: 8px 12px;
             border-radius: 8px;
-            transition: background 0.3s ease;
+            margin-bottom: 12px;
         }
 
-        /* Medallas / Badges de Posición */
-        .posicion-badge {
-            font-size: 13px;
-            font-weight: bold;
-            padding: 3px 7px;
-            border-radius: 6px;
-            min-width: 32px;
-            text-align: center;
-            color: #fff;
-        }
+        /* Medallas */
+        .pos-badge { font-size: 13px; font-weight: bold; padding: 3px 7px; border-radius: 6px; min-width: 32px; text-align: center; color: #fff; }
+        .pos-1 { background-color: #00c853; box-shadow: 0 0 8px #00c853; }
+        .pos-2 { background-color: #00c853; box-shadow: 0 0 8px #00c853; }
+        .pos-3 { background-color: #ff9100; box-shadow: 0 0 8px #ff9100; }
+        .pos-4 { background-color: #d50000; box-shadow: 0 0 6px #d50000; }
 
-        .pos-1, .pos-2 {
-            background-color: #00c853;
-            box-shadow: 0 0 8px #00c853;
-        }
+        .info-participante { display: flex; align-items: center; gap: 10px; flex-grow: 1; }
+        .avatar { width: 38px; height: 38px; border-radius: 50%; border: 2px solid #00c3ff; object-fit: cover; background-color: #111; }
+        .nombre { font-size: 15px; font-weight: bold; text-shadow: 0 0 4px #000; }
 
-        .pos-3 {
-            background-color: #ff9100;
-            box-shadow: 0 0 8px #ff9100;
-        }
-
-        .pos-4 {
-            background-color: #d50000;
-            box-shadow: 0 0 6px #d50000;
-        }
-
-        .info-participante {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-grow: 1;
-        }
-
-        .avatar-participante {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            border: 2px solid #00c3ff;
-            object-fit: cover;
-            background-color: #111;
-        }
-
-        .nombre-participante {
-            color: #e6edf3;
-            font-size: 15px;
-            font-weight: bold;
-            text-shadow: 0 0 4px #000;
-        }
-
-        /* Inputs para ingresar votos manualmente */
+        /* Votos Input y Text */
         .input-votos {
-            width: 75px;
-            padding: 6px;
-            background-color: rgba(0, 0, 0, 0.9);
-            border: 1.5px solid #00fff2;
-            border-radius: 6px;
-            color: #ffe600;
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
-            outline: none;
-            transition: border-color 0.3s, box-shadow 0.3s;
+            width: 70px; padding: 6px; background: rgba(0,0,0,0.9); border: 1.5px solid #00fff2; 
+            border-radius: 6px; color: #ffe600; font-size: 16px; font-weight: bold; text-align: center; outline: none;
         }
+        .input-votos:focus { box-shadow: 0 0 10px #ffe600; border-color: #ffe600; }
+        .texto-votos { font-size: 18px; font-weight: bold; color: #ffe600; text-shadow: 0 0 5px #ffe600; }
 
-        .input-votos:focus {
-            border-color: #ffe600;
-            box-shadow: 0 0 10px #ffe600;
-        }
-
-        /* Botón de Acción Principal y Reset */
-        .contenedor-botones {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin: 40px auto 20px auto;
+        /* FASE DE LLAVES (BRACKETS) */
+        .contenedor-ronda {
+            margin: 40px auto;
             width: 96%;
-        }
-
-        .btn-cerrar-fase {
-            background: linear-gradient(135deg, #00c3ff, #0051ff);
-            color: #ffffff;
-            font-family: 'Anton', Arial, sans-serif;
-            font-size: clamp(18px, 4vw, 26px);
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            padding: 16px 35px;
-            border: 2px solid #00fff2;
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px dashed #0051ff;
             border-radius: 12px;
-            cursor: pointer;
-            box-shadow: 0 0 15px rgba(0, 204, 255, 0.5), inset 0 0 10px rgba(0, 255, 242, 0.3);
-            transition: all 0.3s ease;
-            text-shadow: 0 0 5px #000;
+            padding: 20px;
+        }
+        .titulo-ronda { color: #ffe600; text-align: center; font-size: 30px; text-shadow: 0 0 10px #000; margin-bottom: 20px; }
+        .grid-llaves { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        
+        .llave-duelo {
+            background: linear-gradient(180deg, rgba(0,20,50,0.9) 0%, rgba(0,0,0,0.95) 100%);
+            border: 2px solid #00c3ff;
+            border-radius: 10px;
+            padding: 15px;
+            position: relative;
+        }
+        .vs-badge {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background: #ff0000; color: #fff; font-weight: bold; font-size: 12px; padding: 4px 8px;
+            border-radius: 20px; box-shadow: 0 0 10px #ff0000;
         }
 
-        .btn-cerrar-fase:hover {
-            background: linear-gradient(135deg, #ffe600, #ff8800);
-            color: #000;
-            border-color: #ffe600;
-            box-shadow: 0 0 25px rgba(255, 230, 0, 0.8), inset 0 0 15px rgba(255, 255, 0, 0.5);
-            transform: scale(1.03);
-            text-shadow: none;
+        /* Botones Globales */
+        .admin-controls { display: none; justify-content: center; gap: 15px; flex-wrap: wrap; margin: 40px auto; width: 96%; }
+        .btn-accion {
+            background: linear-gradient(135deg, #00c3ff, #0051ff); color: #fff; font-family: 'Anton', Arial, sans-serif;
+            font-size: clamp(16px, 3vw, 22px); padding: 15px 30px; border: 2px solid #00fff2; border-radius: 10px;
+            cursor: pointer; box-shadow: 0 0 15px rgba(0, 204, 255, 0.5); transition: 0.3s; letter-spacing: 1px;
         }
+        .btn-accion:hover { background: linear-gradient(135deg, #ffe600, #ff8800); color: #000; border-color: #ffe600; transform: scale(1.02); }
+        .btn-peligro { background: rgba(213,0,0,0.3); color: #ff5252; border-color: #ff5252; }
+        .btn-peligro:hover { background: #d50000; color: #fff; box-shadow: 0 0 15px #d50000; }
 
-        .btn-resetear {
-            background: rgba(213, 0, 0, 0.3);
-            color: #ff5252;
-            font-family: 'Anton', Arial, sans-serif;
-            font-size: clamp(16px, 3vw, 20px);
-            padding: 16px 25px;
-            border: 2px solid #ff5252;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+        /* Botón Modo Admin Footer */
+        .footer-admin { text-align: center; margin-top: 50px; }
+        .btn-toggle-admin { background: transparent; border: none; font-size: 24px; cursor: pointer; filter: grayscale(100%); transition: 0.3s; }
+        .btn-toggle-admin:hover { filter: grayscale(0%); transform: scale(1.2); }
 
-        .btn-resetear:hover {
-            background: #d50000;
-            color: #fff;
-            box-shadow: 0 0 15px #d50000;
-        }
-
-        /* Optimización Responsive */
+        /* Responsive */
         @media (max-width: 600px) {
-            body { 
-                background-attachment: fixed; 
-                background-position: 50% center !important;
-            }
-            .mega-titulo {
-                font-size: clamp(25px, 11vw, 50px) !important; 
-                -webkit-text-stroke: 1px #003050;
-                text-align: center !important;
-                margin: 0 auto !important;
-                display: block;
-                background-size: 250px;
-                width: 90%;
-            }
-            .breadcrumb {
-                font-size: 16px !important;
-                margin-left: 4% !important;
-            }
-            p, h3 {
-                font-size: 18px !important;
-                margin-left: 5% !important;
-                margin-right: 5% !important;
-            }
-            .grid-grupos {
-                grid-template-columns: 1fr;
-                width: 92%;
-            }
-            .contenedor-mega-titulo {
-                text-align: center !important;
-                margin-left: 0 !important;
-                width: 100% !important;
-            }
-            .btn-cerrar-fase, .btn-resetear {
-                width: 92%;
-                padding: 14px 10px;
-            }
+            body { background-position: 50% center !important; }
+            .mega-titulo { font-size: clamp(25px, 11vw, 50px) !important; text-align: center !important; margin: 0 auto !important; width: 90%; }
+            .breadcrumb { text-align: center; }
+            .contenedor-mega-titulo { text-align: center !important; margin-left: 0 !important; width: 100% !important; }
+            .grid-grupos, .grid-llaves { grid-template-columns: 1fr; }
+            .btn-accion { width: 100%; margin-bottom: 10px; }
         }
     </style>
 </head>
@@ -331,18 +190,19 @@
     </div>
     <hr>
 
-    <h3>Fase de Grupos - Tabla de Posiciones</h3>
-    <p>Ingresa los votos de cada participante. La tabla de cada grupo se ordenará en tiempo real según la cantidad de votos ingresados.</p>
-    
+    <div id="encabezado-fase">
+        <h3 id="titulo-estado">Fase de Grupos - Vista Pública</h3>
+        <p id="desc-estado">Sigue en vivo la puntuación de cada participante. Las posiciones se actualizan según los resultados.</p>
+    </div>
     <hr>
 
-    <!-- Contenedor dinámico de los 21 grupos -->
-    <div id="contenedor-grupos" class="grid-grupos"></div>
+    <!-- Contenedor Principal Dinámico (Grupos o Llaves) -->
+    <div id="contenedor-principal"></div>
 
-    <!-- Botones de Acción -->
-    <div class="contenedor-botones">
-        <button id="btn-cerrar-fase" class="btn-cerrar-fase">🚀 CERRAR FASE DE GRUPOS Y CLASIFICAR</button>
-        <button id="btn-resetear" class="btn-resetear">⚠️ RESETEAR VOTOS</button>
+    <!-- Controles de Administrador (Ocultos por defecto) -->
+    <div class="admin-controls" id="panel-admin">
+        <button id="btn-cerrar-fase" class="btn-accion">🚀 CERRAR FASE Y AVANZAR</button>
+        <button id="btn-resetear" class="btn-accion btn-peligro">⚠️ REINICIAR TORNEO</button>
     </div>
 
     <hr>
@@ -350,321 +210,354 @@
         <a href="index.html">Inicio</a><span> / Torneo Galáctico</span>
     </div>
 
+    <!-- Footer Switcher Modo Admin -->
+    <div class="footer-admin">
+        <button class="btn-toggle-admin" onclick="solicitarAccesoAdmin()" title="Modo Administrador">⚙️</button>
+    </div>
+
     <script>
-        // Estructura de Datos Inicial Base
-        const torneoBase = {
-            faseActual: "grupos",
-            grupos: [
-                {
-                    id: "grupo_a", nombre: "Grupo A",
+        // CONFIGURACIÓN DE SEGURIDAD
+        const PASSWORD_ADMIN = "Rigel2026"; // <-- Cambia aquí la contraseña de Administrador
+        let isAdmin = false;
+
+        // FASE 1.1: ESTRUCTURA DE DATOS BASE (21 GRUPOS)
+        function generarEstructuraBase() {
+            const letras = "ABCDEFGHIJKLMNOPQRSTU".split("");
+            const grupos = letras.map(letra => {
+                return {
+                    id: `grupo_${letra.toLowerCase()}`,
+                    nombre: `Grupo ${letra}`,
                     participantes: [
-                        { id: "p_a1", nombre: "Participante 1", foto: "img/torneo/p1.png", votos: 0 },
-                        { id: "p_a2", nombre: "Participante 2", foto: "img/torneo/p2.png", votos: 0 },
-                        { id: "p_a3", nombre: "Participante 3", foto: "img/torneo/p3.png", votos: 0 },
-                        { id: "p_a4", nombre: "Participante 4", foto: "img/torneo/p4.png", votos: 0 }
+                        { id: `p_${letra}1`, nombre: `Participante 1`, foto: "", votos: 0 },
+                        { id: `p_${letra}2`, nombre: `Participante 2`, foto: "", votos: 0 },
+                        { id: `p_${letra}3`, nombre: `Participante 3`, foto: "", votos: 0 },
+                        { id: `p_${letra}4`, nombre: `Participante 4`, foto: "", votos: 0 }
                     ]
-                },
-                {
-                    id: "grupo_b", nombre: "Grupo B",
-                    participantes: [
-                        { id: "p_b1", nombre: "Participante 1", foto: "img/torneo/p5.png", votos: 0 },
-                        { id: "p_b2", nombre: "Participante 2", foto: "img/torneo/p6.png", votos: 0 },
-                        { id: "p_b3", nombre: "Participante 3", foto: "img/torneo/p7.png", votos: 0 },
-                        { id: "p_b4", nombre: "Participante 4", foto: "img/torneo/p8.png", votos: 0 }
-                    ]
-                },
-                {
-                    id: "grupo_c", nombre: "Grupo C",
-                    participantes: [
-                        { id: "p_c1", nombre: "Participante 1", foto: "img/torneo/p9.png", votos: 0 },
-                        { id: "p_c2", nombre: "Participante 2", foto: "img/torneo/p10.png", votos: 0 },
-                        { id: "p_c3", nombre: "Participante 3", foto: "img/torneo/p11.png", votos: 0 },
-                        { id: "p_c4", nombre: "Participante 4", foto: "img/torneo/p12.png", votos: 0 }
-                    ]
-                },
-                {
-                    id: "grupo_d", nombre: "Grupo D",
-                    participantes: [
-                        { id: "p_d1", nombre: "Participante 1", foto: "img/torneo/p13.png", votos: 0 },
-                        { id: "p_d2", nombre: "Participante 2", foto: "img/torneo/p14.png", votos: 0 },
-                        { id: "p_d3", nombre: "Participante 3", foto: "img/torneo/p15.png", votos: 0 },
-                        { id: "p_d4", nombre: "Participante 4", foto: "img/torneo/p16.png", votos: 0 }
-                    ]
-                },
-                {
-                    id: "grupo_e", nombre: "Grupo E",
-                    participantes: [
-                        { id: "p_e1", nombre: "Participante 1", foto: "img/torneo/p17.png", votos: 0 },
-                        { id: "p_e2", nombre: "Participante 2", foto: "img/torneo/p18.png", votos: 0 },
-                        { id: "p_e3", nombre: "Participante 3", foto: "img/torneo/p19.png", votos: 0 },
-                        { id: "p_e4", nombre: "Participante 4", foto: "img/torneo/p20.png", votos: 0 }
-                    ]
-                },
-                {
-                    id: "grupo_f", nombre: "Grupo F",
-                    participantes: [
-                        { id: "p_f1", nombre: "Participante 1", foto: "img/torneo/p21.png", votos: 0 },
-                        { id: "p_f2", nombre: "Participante 2", foto: "img/torneo/p22.png", votos: 0 },
-                        { id: "p_f3", nombre: "Participante 3", foto: "img/torneo/p23.png", votos: 0 },
-                        { id: "p_f4", nombre: "Participante 4", foto: "img/torneo/p24.png", votos: 0 }
-                    ]
-                },
-                {
-                    id: "grupo_g", nombre: "Grupo G",
-                    participantes: [
-                        { id: "p_g1", nombre: "Participante 1", foto: "img/torneo/p25.png", votos: 0 },
-                        { id: "p_g2", nombre: "Participante 2", foto: "img/torneo/p26.png", votos: 0 },
-                        { id: "p_g3", nombre: "Participante 3", foto: "img/torneo/p27.png", votos: 0 },
-                        { id: "p_g4", nombre: "Participante 4", foto: "img/torneo/p28.png", votos: 0 }
-                    ]
-                },
-                {
-                    id: "grupo_h", nombre: "Grupo H",
-                    participantes: [
-                        { id: "p_h1", nombre: "Participante 1", foto: "img/torneo/p29.png", votos: 0 },
-                        { id: "p_h2", nombre: "Participante 2", foto: "img/torneo/p30.png", votos: 0 },
-                        { id: "p_h3", nombre: "Participante 3", foto: "img/torneo/p31.png", votos: 0 },
-                        { id: "p_h4", nombre: "Participante 4", foto: "img/torneo/p32.png", votos: 0 }
-                    ]
-                },
-                {
-                    id: "grupo_i", nombre: "Grupo I",
-                    participantes: [
-                        { id: "p_i1", nombre: "Participante 1", foto: "img/torneo/p33.png", votos: 0 },
-                        { id: "p_i2", nombre: "Participante 2", foto: "img/torneo/p34.png", votos: 0 },
-                        { id: "p_i3", nombre: "Participante 3", foto: "img/torneo/p35.png", votos: 0 },
-                        { id: "p_i4", nombre: "Participante 4", foto: "img/torneo/p36.png", votos: 0 }
-                    ]
-                },
-                {
-                    id: "grupo_j", nombre: "Grupo J",
-                    participantes: [
-                        { id: "p_j1", nombre: "Participante 1", foto: "img/torneo/p37.png", votos: 0 },
-                        { id: "p_j2", nombre: "Participante 2", foto: "img/torneo/p38.png", votos: 0 },
-                        { id: "p_j3", nombre: "Participante 3", foto: "img/torneo/p39.png", votos: 0 },
-                        { id: "p_j4", nombre: "Participante 4", foto: "img/torneo/p40.png", votos: 0 }
-                    ]
-                },
-                {
-                    id: "grupo_k", nombre: "Grupo K",
-                    participantes: [
-                        { id: "p_k1", nombre: "Participante 1", foto: "img/torneo/p41.png", votos: 0 },
-                        { id: "p_k2", nombre: "Participante 2", foto: "img/torneo/p42.png", votos: 0 },
-                        { id: "p_k3", nombre: "Participante 3", foto: "img/torneo/p43.png", votos: 0 },
-                        { id: "p_k4", nombre: "Participante 4", foto: "img/torneo/p44.png", votos: 0 }
-                    ]
-                },
-                {
-                    id: "grupo_l", nombre: "Grupo L",
-                    participantes: [
-                        { id: "p_l1", nombre: "Participante 1", foto: "img/torneo/p45.png", votos: 0 },
-                        { id: "p_l2", nombre: "Participante 2", foto: "img/torneo/p46.png", votos: 0 },
-                        { id: "p_l3", nombre: "Participante 3", foto: "img/torneo/p47.png", votos: 0 },
-                        { id: "p_l4", nombre: "Participante 4", foto: "img/torneo/p48.png", votos: 0 }
-                    ]
-                },
-                {
-                    id: "grupo_m", nombre: "Grupo M",
-                    participantes: [
-                        { id: "p_m1", nombre: "Participante 1", foto: "img/torneo/p49.png", votos: 0 },
-                        { id: "p_m2", nombre: "Participante 2", foto: "img/torneo/p50.png", votos: 0 },
-                        { id: "p_m3", nombre: "Participante 3", foto: "img/torneo/p51.png", votos: 0 },
-                        { id: "p_m4", nombre: "Participante 4", foto: "img/torneo/p52.png", votos: 0 }
-                    ]
-                },
-                {
-                    id: "grupo_n", nombre: "Grupo N",
-                    participantes: [
-                        { id: "p_n1", nombre: "Participante 1", foto: "img/torneo/p53.png", votos: 0 },
-                        { id: "p_n2", nombre: "Participante 2", foto: "img/torneo/p54.png", votos: 0 },
-                        { id: "p_n3", nombre: "Participante 3", foto: "img/torneo/p55.png", votos: 0 },
-                        { id: "p_n4", nombre: "Participante 4", foto: "img/torneo/p56.png", votos: 0 }
-                    ]
-                },
-                {
-                    id: "grupo_o", nombre: "Grupo O",
-                    participantes: [
-                        { id: "p_o1", nombre: "Participante 1", foto: "img/torneo/p57.png", votos: 0 },
-                        { id: "p_o2", nombre: "Participante 2", foto: "img/torneo/p58.png", votos: 0 },
-                        { id: "p_o3", nombre: "Participante 3", foto: "img/torneo/p59.png", votos: 0 },
-                        { id: "p_o4", nombre: "Participante 4", foto: "img/torneo/p60.png", votos: 0 }
-                    ]
-                },
-                {
-                    id: "grupo_p", nombre: "Grupo P",
-                    participantes: [
-                        { id: "p_p1", nombre: "Participante 1", foto: "img/torneo/p61.png", votos: 0 },
-                        { id: "p_p2", nombre: "Participante 2", foto: "img/torneo/p62.png", votos: 0 },
-                        { id: "p_p3", nombre: "Participante 3", foto: "img/torneo/p63.png", votos: 0 },
-                        { id: "p_p4", nombre: "Participante 4", foto: "img/torneo/p64.png", votos: 0 }
-                    ]
-                },
-                {
-                    id: "grupo_q", nombre: "Grupo Q",
-                    participantes: [
-                        { id: "p_q1", nombre: "Participante 1", foto: "img/torneo/p65.png", votos: 0 },
-                        { id: "p_q2", nombre: "Participante 2", foto: "img/torneo/p66.png", votos: 0 },
-                        { id: "p_q3", nombre: "Participante 3", foto: "img/torneo/p67.png", votos: 0 },
-                        { id: "p_q4", nombre: "Participante 4", foto: "img/torneo/p68.png", votos: 0 }
-                    ]
-                },
-                {
-                    id: "grupo_r", nombre: "Grupo R",
-                    participantes: [
-                        { id: "p_r1", nombre: "Participante 1", foto: "img/torneo/p69.png", votos: 0 },
-                        { id: "p_r2", nombre: "Participante 2", foto: "img/torneo/p70.png", votos: 0 },
-                        { id: "p_r3", nombre: "Participante 3", foto: "img/torneo/p71.png", votos: 0 },
-                        { id: "p_r4", nombre: "Participante 4", foto: "img/torneo/p72.png", votos: 0 }
-                    ]
-                },
-                {
-                    id: "grupo_s", nombre: "Grupo S",
-                    participantes: [
-                        { id: "p_s1", nombre: "Participante 1", foto: "img/torneo/p73.png", votos: 0 },
-                        { id: "p_s2", nombre: "Participante 2", foto: "img/torneo/p74.png", votos: 0 },
-                        { id: "p_s3", nombre: "Participante 3", foto: "img/torneo/p75.png", votos: 0 },
-                        { id: "p_s4", nombre: "Participante 4", foto: "img/torneo/p76.png", votos: 0 }
-                    ]
-                },
-                {
-                    id: "grupo_t", nombre: "Grupo T",
-                    participantes: [
-                        { id: "p_t1", nombre: "Participante 1", foto: "img/torneo/p77.png", votos: 0 },
-                        { id: "p_t2", nombre: "Participante 2", foto: "img/torneo/p78.png", votos: 0 },
-                        { id: "p_t3", nombre: "Participante 3", foto: "img/torneo/p79.png", votos: 0 },
-                        { id: "p_t4", nombre: "Participante 4", foto: "img/torneo/p80.png", votos: 0 }
-                    ]
-                },
-                {
-                    id: "grupo_u", nombre: "Grupo U",
-                    participantes: [
-                        { id: "p_u1", nombre: "Participante 1", foto: "img/torneo/p81.png", votos: 0 },
-                        { id: "p_u2", nombre: "Participante 2", foto: "img/torneo/p82.png", votos: 0 },
-                        { id: "p_u3", nombre: "Participante 3", foto: "img/torneo/p83.png", votos: 0 },
-                        { id: "p_u4", nombre: "Participante 4", foto: "img/torneo/p84.png", votos: 0 }
-                    ]
-                }
-            ]
-        };
+                };
+            });
+            return {
+                faseActual: "grupos", // "grupos" o "llaves"
+                rondaLlavesActiva: 0, // 32, 16, 8, 4, 2, 1
+                grupos: grupos,
+                clasificados32: [],
+                llaves: {},
+                campeon: null
+            };
+        }
 
         let torneoGalactico = {};
 
-        // Cargar desde localStorage o inicializar datos
-        function cargarDatosTorneo() {
-            const guardado = localStorage.getItem("torneo_galactico_data");
+        // FASE 4.2: PERSISTENCIA LOCALSTORAGE
+        function cargarDatos() {
+            const guardado = localStorage.getItem("torneo_galactico_db");
             if (guardado) {
-                try {
-                    torneoGalactico = JSON.parse(guardado);
-                } catch (e) {
-                    torneoGalactico = JSON.parse(JSON.stringify(torneoBase));
-                }
+                try { torneoGalactico = JSON.parse(guardado); } 
+                catch (e) { torneoGalactico = generarEstructuraBase(); }
             } else {
-                torneoGalactico = JSON.parse(JSON.stringify(torneoBase));
+                torneoGalactico = generarEstructuraBase();
             }
         }
 
-        function guardarEnLocalStorage() {
-            localStorage.setItem("torneo_galactico_data", JSON.stringify(torneoGalactico));
+        function guardarDatos() {
+            localStorage.setItem("torneo_galactico_db", JSON.stringify(torneoGalactico));
         }
 
-        // Renderizado ordenado por posición en tiempo real
-        function renderizarPanelGrupos() {
-            const contenedor = document.getElementById("contenedor-grupos");
-            if (!contenedor) return;
+        // CONTROLADOR DE VISTAS (INFOGRAFÍA VS ADMIN)
+        function solicitarAccesoAdmin() {
+            if (isAdmin) {
+                isAdmin = false;
+                alert("🔒 Modo Público activado. Controles ocultos.");
+            } else {
+                const pass = prompt("Acceso Restringido. Ingrese contraseña de Administrador:");
+                if (pass === PASSWORD_ADMIN) {
+                    isAdmin = true;
+                    alert("🔓 Modo Administrador activado. Controles habilitados.");
+                } else if (pass !== null) {
+                    alert("❌ Contraseña incorrecta.");
+                }
+            }
+            renderizarApp();
+        }
 
-            let htmlContenido = "";
+        // RENDERIZADOR PRINCIPAL
+        function renderizarApp() {
+            const panelAdmin = document.getElementById("panel-admin");
+            const btnCerrar = document.getElementById("btn-cerrar-fase");
+            
+            // Lógica de visibilidad del panel admin
+            panelAdmin.style.display = isAdmin ? "flex" : "none";
+
+            if (torneoGalactico.faseActual === "grupos") {
+                document.getElementById("titulo-estado").innerText = isAdmin ? "Fase de Grupos - MODO ADMINISTRADOR" : "Fase de Grupos - Ranking en Vivo";
+                btnCerrar.innerText = "🚀 CERRAR GRUPOS Y CLASIFICAR (Top 32)";
+                renderizarGrupos();
+            } else {
+                if (torneoGalactico.campeon) {
+                    document.getElementById("titulo-estado").innerText = "🏆 ¡EL TORNEO HA FINALIZADO!";
+                    btnCerrar.style.display = "none";
+                } else {
+                    document.getElementById("titulo-estado").innerText = isAdmin ? `Fase Final (Ronda de ${torneoGalactico.rondaLlavesActiva}) - ADMIN` : `Cuadro Eliminatorio - Ronda de ${torneoGalactico.rondaLlavesActiva}`;
+                    btnCerrar.innerText = "⚔️ CERRAR RONDA Y AVANZAR GANADORES";
+                    btnCerrar.style.display = "block";
+                }
+                renderizarLlaves();
+            }
+        }
+
+        // FASE 1.2 & 4.1: RENDER DE GRUPOS
+        function renderizarGrupos() {
+            const contenedor = document.getElementById("contenedor-principal");
+            let html = `<div class="grid-grupos">`;
 
             torneoGalactico.grupos.forEach(grupo => {
-                // Copia y ordena a los participantes por votos descendente
                 const ordenados = [...grupo.participantes].sort((a, b) => b.votos - a.votos);
+                html += `<div class="tarjeta"><h3 class="titulo-tarjeta">${grupo.nombre}</h3>`;
 
-                htmlContenido += `
-                    <div class="tarjeta-grupo" id="card-${grupo.id}">
-                        <h3 class="titulo-grupo">${grupo.nombre}</h3>
-                        <div class="lista-participantes">
-                `;
+                ordenados.forEach((p, idx) => {
+                    const pos = idx + 1;
+                    const inputHtml = isAdmin 
+                        ? `<input type="number" class="input-votos" min="0" value="${p.votos}" data-tipo="grupo" data-grupo="${grupo.id}" data-pid="${p.id}">`
+                        : `<span class="texto-votos">${p.votos} pts</span>`;
 
-                ordenados.forEach((participante, idx) => {
-                    const numPos = idx + 1;
-                    htmlContenido += `
+                    html += `
                         <div class="fila-participante">
-                            <span class="posicion-badge pos-${numPos}">${numPos}º</span>
+                            <span class="pos-badge pos-${pos}">${pos}º</span>
                             <div class="info-participante">
-                                <img src="${participante.foto}" alt="${participante.nombre}" class="avatar-participante" onerror="this.src='https://via.placeholder.com/38/000000/00fff2?text=P'">
-                                <span class="nombre-participante">${participante.nombre}</span>
+                                <img src="${p.foto}" alt="${p.nombre}" class="avatar" onerror="this.src='https://via.placeholder.com/38/000000/00fff2?text=P'">
+                                <span class="nombre">${p.nombre}</span>
                             </div>
-                            <input 
-                                type="number" 
-                                class="input-votos" 
-                                min="0" 
-                                value="${participante.votos}" 
-                                data-grupo="${grupo.id}" 
-                                data-participante="${participante.id}"
-                                placeholder="0"
-                            >
-                        </div>
-                    `;
+                            ${inputHtml}
+                        </div>`;
                 });
-
-                htmlContenido += `
-                        </div>
-                    </div>
-                `;
+                html += `</div>`;
             });
 
-            contenedor.innerHTML = htmlContenido;
-            asignarEventosInputs();
+            html += `</div>`;
+            contenedor.innerHTML = html;
+            if (isAdmin) asignarEventosInputs();
         }
 
-        function actualizarVoto(grupoId, participanteId, valor) {
-            const votosNum = parseInt(valor) || 0;
-            const grupo = torneoGalactico.grupos.find(g => g.id === grupoId);
-            if (grupo) {
-                const participante = grupo.participantes.find(p => p.id === participanteId);
-                if (participante) {
-                    participante.votos = votosNum;
-                    guardarEnLocalStorage();
-                    renderizarPanelGrupos(); // Reordenar la vista al instante
+        // FASE 3.2 & 4.1: RENDER DE LLAVES (BRACKETS)
+        function renderizarLlaves() {
+            const contenedor = document.getElementById("contenedor-principal");
+            let html = ``;
+
+            if (torneoGalactico.campeon) {
+                html += `
+                <div class="contenedor-ronda" style="border-color: #ffe600; box-shadow: 0 0 20px #ffe600;">
+                    <h2 class="titulo-ronda" style="font-size: 40px;">👑 CAMPEÓN ABSOLUTO 👑</h2>
+                    <div style="text-align: center;">
+                        <img src="${torneoGalactico.campeon.foto}" class="avatar" style="width: 150px; height: 150px; border-width: 5px; border-color: #ffe600;" onerror="this.src='https://via.placeholder.com/150/000000/ffe600?text=WIN'">
+                        <h2 style="color: #fff; margin-top: 15px;">${torneoGalactico.campeon.nombre}</h2>
+                    </div>
+                </div>`;
+            }
+
+            // Mostrar rondas (De la actual hacia atrás)
+            const rondasPosibles = [1, 2, 4, 8, 16, 32];
+            rondasPosibles.forEach(r => {
+                if (torneoGalactico.llaves[`ronda${r}`]) {
+                    const nombreRonda = r === 2 ? "GRAN FINAL" : r === 4 ? "SEMIFINALES" : r === 8 ? "CUARTOS DE FINAL" : r === 16 ? "OCTAVOS DE FINAL" : "DIECISEISAVOS DE FINAL";
+                    const isActiva = (torneoGalactico.rondaLlavesActiva === r && !torneoGalactico.campeon);
+                    const opacity = isActiva ? "1" : "0.5"; // Rondas pasadas se ven atenuadas
+
+                    html += `
+                    <div class="contenedor-ronda" style="opacity: ${opacity};">
+                        <h2 class="titulo-ronda">${nombreRonda} ${isActiva ? "(ACTIVA)" : "(FINALIZADA)"}</h2>
+                        <div class="grid-llaves">`;
+                    
+                    torneoGalactico.llaves[`ronda${r}`].forEach(llave => {
+                        const htmlVotosP1 = (isAdmin && isActiva) 
+                            ? `<input type="number" class="input-votos" value="${llave.votosP1}" data-tipo="llave" data-ronda="${r}" data-llave="${llave.id}" data-target="votosP1">`
+                            : `<span class="texto-votos">${llave.votosP1}</span>`;
+                            
+                        const htmlVotosP2 = (isAdmin && isActiva) 
+                            ? `<input type="number" class="input-votos" value="${llave.votosP2}" data-tipo="llave" data-ronda="${r}" data-llave="${llave.id}" data-target="votosP2">`
+                            : `<span class="texto-votos">${llave.votosP2}</span>`;
+
+                        // Colores si ya hay ganador
+                        const colorP1 = llave.ganador && llave.ganador.id === llave.p1.id ? "#00ff22" : "#fff";
+                        const colorP2 = llave.ganador && llave.ganador.id === llave.p2.id ? "#00ff22" : "#fff";
+
+                        html += `
+                            <div class="llave-duelo">
+                                <div class="vs-badge">VS</div>
+                                <!-- Jugador 1 -->
+                                <div class="fila-participante" style="margin-bottom: 25px;">
+                                    <div class="info-participante">
+                                        <img src="${llave.p1.foto}" class="avatar" onerror="this.src='https://via.placeholder.com/38/000000/00fff2?text=P1'">
+                                        <span class="nombre" style="color: ${colorP1}">${llave.p1.nombre}</span>
+                                    </div>
+                                    ${htmlVotosP1}
+                                </div>
+                                <!-- Jugador 2 -->
+                                <div class="fila-participante" style="margin-bottom: 0;">
+                                    <div class="info-participante">
+                                        <img src="${llave.p2.foto}" class="avatar" onerror="this.src='https://via.placeholder.com/38/000000/00fff2?text=P2'">
+                                        <span class="nombre" style="color: ${colorP2}">${llave.p2.nombre}</span>
+                                    </div>
+                                    ${htmlVotosP2}
+                                </div>
+                            </div>
+                        `;
+                    });
+                    html += `</div></div>`;
+                }
+            });
+            contenedor.innerHTML = html;
+            if (isAdmin) asignarEventosInputs();
+        }
+
+        // EVENTOS DE ENTRADA DINÁMICA
+        function asignarEventosInputs() {
+            document.querySelectorAll(".input-votos").forEach(input => {
+                input.addEventListener("change", (e) => {
+                    let val = parseInt(e.target.value) || 0;
+                    if (val < 0) val = 0;
+                    e.target.value = val;
+
+                    const tipo = e.target.getAttribute("data-tipo");
+                    if (tipo === "grupo") {
+                        const gId = e.target.getAttribute("data-grupo");
+                        const pId = e.target.getAttribute("data-pid");
+                        const grupo = torneoGalactico.grupos.find(g => g.id === gId);
+                        const part = grupo.participantes.find(p => p.id === pId);
+                        part.votos = val;
+                        guardarDatos();
+                        renderizarGrupos(); // Auto reorden
+                    } else if (tipo === "llave") {
+                        const r = e.target.getAttribute("data-ronda");
+                        const lId = e.target.getAttribute("data-llave");
+                        const target = e.target.getAttribute("data-target"); // votosP1 o votosP2
+                        const llave = torneoGalactico.llaves[`ronda${r}`].find(l => l.id === lId);
+                        llave[target] = val;
+                        guardarDatos();
+                    }
+                });
+            });
+        }
+
+        // FASE 2 Y 3: LÓGICA DE AVANCE Y CÁLCULO
+        function botonPrincipalAccion() {
+            if (torneoGalactico.faseActual === "grupos") {
+                cerrarFaseGrupos();
+            } else {
+                avanzarRondaLlaves();
+            }
+        }
+
+        function cerrarFaseGrupos() {
+            // Fase 2.1: Validado automáticamente en input events.
+            // Fase 2.2: Clasificados Directos (21 Primeros)
+            let directos = [];
+            let todosLosSegundos = [];
+
+            torneoGalactico.grupos.forEach(grupo => {
+                const ord = [...grupo.participantes].sort((a, b) => b.votos - a.votos);
+                directos.push(ord[0]);
+                if (ord.length > 1) todosLosSegundos.push(ord[1]);
+            });
+
+            // Fase 2.3: 11 Mejores segundos
+            todosLosSegundos.sort((a, b) => b.votos - a.votos);
+            const mejoresSegundos = todosLosSegundos.slice(0, 11);
+
+            // Fase 2.4: Fusión 32 Finalistas
+            const finalistas = [...directos, ...mejoresSegundos];
+            if (finalistas.length !== 32) return alert("Error: No se lograron 32 finalistas.");
+
+            if (confirm("🌌 FASE DE GRUPOS CONCLUIDA.\n\nSe seleccionaron 21 líderes y 11 mejores segundos.\n¿Generar llaves eliminatorias?")) {
+                torneoGalactico.clasificados32 = finalistas;
+                torneoGalactico.faseActual = "llaves";
+                generarPrimeraRondaLlaves(finalistas);
+            }
+        }
+
+        // FASE 3.1: MEZCLA Y EMPAREJAMIENTO DE LLAVES
+        function shuffle(array) {
+            let arr = [...array];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        function generarPrimeraRondaLlaves(lista32) {
+            const mezclados = shuffle(lista32); // Fisher-Yates Random
+            const llaves32 = [];
+            for (let i = 0; i < 32; i += 2) {
+                llaves32.push({
+                    id: `L32-${i/2}`, p1: mezclados[i], p2: mezclados[i+1], votosP1: 0, votosP2: 0, ganador: null
+                });
+            }
+            torneoGalactico.llaves["ronda32"] = llaves32;
+            torneoGalactico.rondaLlavesActiva = 32;
+            guardarDatos();
+            renderizarApp();
+        }
+
+        // FASE 3.3: AVANCE DINÁMICO DE RONDAS
+        function avanzarRondaLlaves() {
+            const rActiva = torneoGalactico.rondaLlavesActiva;
+            const duelos = torneoGalactico.llaves[`ronda${rActiva}`];
+
+            // Validar empates
+            for (let duelo of duelos) {
+                if (duelo.votosP1 === duelo.votosP2) {
+                    alert(`⚠️ EMPATE DETECTADO en el duelo de ${duelo.p1.nombre} vs ${duelo.p2.nombre}.\nDebes romper el empate antes de avanzar.`);
+                    return;
                 }
             }
-        }
 
-        function asignarEventosInputs() {
-            const inputs = document.querySelectorAll(".input-votos");
-            inputs.forEach(input => {
-                input.addEventListener("change", (e) => {
-                    const grupoId = e.target.getAttribute("data-grupo");
-                    const participanteId = e.target.getAttribute("data-participante");
-                    actualizarVoto(grupoId, participanteId, e.target.value);
-                });
+            if (!confirm(`¿Confirmar cierre de la Ronda de ${rActiva} y avanzar a los ganadores?`)) return;
+
+            const ganadores = duelos.map(d => {
+                d.ganador = d.votosP1 > d.votosP2 ? d.p1 : d.p2;
+                return d.ganador;
             });
+
+            const sigRondaNum = rActiva / 2;
+
+            if (sigRondaNum < 1) {
+                // Hay Campeón
+                torneoGalactico.campeon = ganadores[0];
+                torneoGalactico.rondaLlavesActiva = 0;
+            } else {
+                // Crear siguiente bracket
+                const nuevasLlaves = [];
+                for (let i = 0; i < ganadores.length; i += 2) {
+                    nuevasLlaves.push({
+                        id: `L${sigRondaNum}-${i/2}`, p1: ganadores[i], p2: ganadores[i+1], votosP1: 0, votosP2: 0, ganador: null
+                    });
+                }
+                torneoGalactico.llaves[`ronda${sigRondaNum}`] = nuevasLlaves;
+                torneoGalactico.rondaLlavesActiva = sigRondaNum;
+            }
+
+            guardarDatos();
+            renderizarApp();
         }
 
-        // Cierre de Fase
-        function iniciarCalculoClasificacion() {
-            guardarEnLocalStorage();
-            alert("🚀 ¡Fase de grupos guardada exitosamente!\n\nDatos sincronizados. Listos para pasar al módulo de cálculo y ranking global.");
-        }
-
-        // Reset
+        // FASE 4.2: REINICIAR SISTEMA
         function resetearTorneo() {
-            if (confirm("⚠️ ¿Seguro que deseas resetear todos los votos a 0?")) {
-                localStorage.removeItem("torneo_galactico_data");
-                cargarDatosTorneo();
-                renderizarPanelGrupos();
+            if (confirm("⚠️ ¡ADVERTENCIA CRÍTICA!\n¿Estás absolutamente seguro de querer borrar todos los datos del torneo? Esto volverá todos los votos a 0 y regresará a la Fase de Grupos.")) {
+                localStorage.removeItem("torneo_galactico_db");
+                cargarDatos();
+                renderizarApp();
+                alert("Torneo reiniciado con éxito.");
             }
         }
 
+        // INICIALIZACIÓN
         document.addEventListener("DOMContentLoaded", () => {
-            cargarDatosTorneo();
-            renderizarPanelGrupos();
+            cargarDatos();
+            renderizarApp();
 
-            const btnCerrar = document.getElementById("btn-cerrar-fase");
-            if (btnCerrar) btnCerrar.addEventListener("click", iniciarCalculoClasificacion);
-
-            const btnReset = document.getElementById("btn-resetear");
-            if (btnReset) btnReset.addEventListener("click", resetearTorneo);
+            document.getElementById("btn-cerrar-fase").addEventListener("click", botonPrincipalAccion);
+            document.getElementById("btn-resetear").addEventListener("click", resetearTorneo);
         });
+
     </script>
 </body>
 </html>
