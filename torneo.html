@@ -77,10 +77,7 @@
         .tarjeta { background: rgba(0, 0, 0, 0.85); border: 2px solid #00ccff; border-radius: 12px; padding: 18px; box-shadow: 0 0 12px rgba(0, 204, 255, 0.3); transition: transform 0.3s; }
         .tarjeta:hover { box-shadow: 0 0 22px rgba(0, 204, 255, 0.6); transform: translateY(-3px); }
         
-        /* ESTILOS PARA GRUPOS CERRADOS Y ELIMINADOS */
-        .grupo-cerrado { opacity: 0.85; border-color: #555; box-shadow: none; }
-        .grupo-cerrado .titulo-tarjeta { color: #aaa; }
-        .grupo-cerrado:hover { transform: none; box-shadow: 0 0 10px rgba(255,255,255,0.1); }
+        /* Botón para cerrar grupos */
         .btn-cerrar-grupo { background: rgba(213,0,0,0.2); color: #ff5252; border: 1px solid #ff5252; padding: 6px 10px; border-radius: 6px; cursor: pointer; float: right; font-size: 13px; font-weight: bold; transition: 0.3s; }
         .btn-cerrar-grupo:hover { background: #d50000; color: #fff; }
 
@@ -89,13 +86,15 @@
         .fila-participante { display: flex; align-items: center; justify-content: space-between; background: rgba(255, 255, 255, 0.05); padding: 8px 12px; border-radius: 8px; margin-bottom: 12px; gap: 10px; }
         .pos-badge { font-size: 14px; font-weight: bold; padding: 5px 9px; border-radius: 6px; min-width: 45px; text-align: center; color: #fff; margin-right: 15px; flex-shrink: 0; }
         
-        .pos-1, .pos-2 { background-color: #00c853; box-shadow: 0 0 8px #00c853; }
-        .pos-3 { background-color: #ff9100; box-shadow: 0 0 8px #ff9100; }
-        .pos-4 { background-color: #d50000; box-shadow: 0 0 6px #d50000; }
+        /* Colores para las posiciones dentro de la tarjeta de Grupo */
+        .pos-1 { background-color: #00c853; box-shadow: 0 0 8px #00c853; }
+        .pos-2 { background-color: #ff9100; box-shadow: 0 0 8px #ff9100; }
+        .pos-3, .pos-4 { background-color: #d50000; box-shadow: 0 0 6px #d50000; }
         
-        /* Estilos de posición dinámicos para ranking global */
-        .pos-vivo { background-color: #00c853; box-shadow: 0 0 8px #00c853; }
-        .pos-eliminado { background-color: #d50000; box-shadow: 0 0 6px #d50000; }
+        /* Colores para el Ranking Global (1-19 Verde, 20-32 Naranja, 33-76 Rojo) */
+        .pos-top19 { background-color: #00c853; box-shadow: 0 0 8px #00c853; }
+        .pos-top32 { background-color: #ff9100; box-shadow: 0 0 8px #ff9100; }
+        .pos-resto { background-color: #d50000; box-shadow: 0 0 6px #d50000; }
 
         .info-participante { display: flex; align-items: center; gap: 15px; flex-grow: 1; }
         .nombre-contenedor { display: flex; flex-direction: column; gap: 4px; justify-content: center; }
@@ -187,7 +186,7 @@
     </div>
 
     <div class="admin-controls" id="panel-admin">
-        <button id="btn-cerrar-fase" class="btn-accion">🚀 CERRAR FASE Y AVANZAR</button>
+        <button id="btn-cerrar-fase" class="btn-accion">🚀 CERRAR FASE DE GRUPOS Y CLASIFICAR (Top 32)</button>
         <button id="btn-resetear" class="btn-accion btn-peligro">⚠️ REINICIAR TORNEO</button>
     </div>
 
@@ -310,12 +309,12 @@
                     
                     if (torneo.faseActual === "grupos") {
                         if (g.cerrado) {
-                            if (idx === 0) estadoStr = "Clasificado (1.º de Grupo)";
-                            else if (idx === 1) estadoStr = "En espera de repechaje (2.º)";
-                            else estadoStr = "Eliminado en Grupos";
+                            if (idx === 0) estadoStr = "En competencia (1.º de Grupo)";
+                            else if (idx === 1) estadoStr = "En competencia (Espera de repechaje)";
+                            else estadoStr = "Eliminado en Fase de Grupos";
                         }
                     } else {
-                        estadoStr = "Eliminado en Grupos";
+                        estadoStr = "Eliminado en Fase de Grupos";
                     }
 
                     stats[p.id] = { 
@@ -407,8 +406,8 @@
         }
 
         function getClaseEstado(estadoStr) {
-            if (estadoStr.includes("En competencia") || estadoStr.includes("Clasificado") || estadoStr.includes("En espera")) return "estado-competencia";
-            if (estadoStr.includes("Lugar") || estadoStr.includes("CAMPEÓN")) return "estado-podio";
+            if (estadoStr.includes("En competencia") || estadoStr.includes("CAMPEÓN") || estadoStr.includes("espera")) return "estado-competencia";
+            if (estadoStr.includes("Lugar")) return "estado-podio";
             if (estadoStr.includes("Eliminado")) return "estado-eliminado";
             return "estado-eliminado";
         }
@@ -498,7 +497,7 @@
                     ? `<span style="color:#ff5252; font-size:13px; font-weight:bold; letter-spacing: 1px; margin-top: 5px;">🛑 ENCUESTA FINALIZADA</span>` 
                     : '';
 
-                html += `<div class="tarjeta ${grupo.cerrado ? 'grupo-cerrado' : ''}">
+                html += `<div class="tarjeta">
                          <div style="border-bottom: 2px solid #00ccff; padding-bottom: 8px; margin-bottom: 15px; display: flex; flex-direction: column;">
                             <div style="display: flex; justify-content: space-between; align-items: center;">
                                 <h3 class="titulo-tarjeta" style="border: none; padding: 0; margin: 0;">${grupo.nombre}</h3>
@@ -508,9 +507,9 @@
                          </div>`;
                          
                 ord.forEach((p, idx) => {
-                    // Si el grupo está cerrado, el 3ro y 4to lugar quedan eliminados matemáticamente
+                    // Si el grupo está cerrado, el 3ro y 4to lugar (índices 2 y 3) quedan tachados y marcados
                     let isEliminadoDirecto = grupo.cerrado && idx >= 2;
-                    let estiloNombre = isEliminadoDirecto ? `text-decoration: line-through; opacity: 0.6; color: #ff5252;` : ``;
+                    let estiloNombre = isEliminadoDirecto ? `text-decoration: line-through; color: #ff5252;` : ``;
                     let badgeEliminado = isEliminadoDirecto ? `<span class="estado-tag estado-eliminado" style="margin-left: 6px;">Eliminado</span>` : ``;
 
                     const cajaVotos = (isAdmin && isGruposActiva && !grupo.cerrado)
@@ -546,7 +545,7 @@
             const stats = calcularEstadisticasGlobales(torneoGalactico);
             let listaTodos = Object.values(stats);
 
-            // 1. Identificar al líder absoluto en puntos (antes de separar por vivos/eliminados)
+            // 1. Identificar al líder absoluto en puntos
             let maxPuntos = -1;
             let idLider = null;
             listaTodos.forEach(p => {
@@ -556,16 +555,16 @@
                 }
             });
 
-            // 2. Ordenamiento: Primero los VIVOS, luego los ELIMINADOS. Dentro de cada grupo, ordenados por Puntos Totales.
+            // 2. Ordenamiento: Primero los VIVOS, luego los ELIMINADOS. Por puntos.
             listaTodos.sort((a, b) => {
-                let vivoA = !a.estado.includes("Eliminado");
-                let vivoB = !b.estado.includes("Eliminado");
+                let vivoA = a.estado.includes("competencia") || a.estado.includes("CAMPEÓN");
+                let vivoB = b.estado.includes("competencia") || b.estado.includes("CAMPEÓN");
                 
-                // Si uno está vivo y el otro eliminado, el vivo va primero
+                // Si uno está vivo y el otro no, el vivo pasa al inicio de la tabla
                 if (vivoA && !vivoB) return -1;
                 if (!vivoA && vivoB) return 1;
                 
-                // Si ambos están vivos o ambos eliminados, desempata por puntos totales
+                // Si ambos están en el mismo estado (los dos vivos o los dos eliminados), se ordenan por puntos
                 return b.puntosTotales - a.puntosTotales;
             });
 
@@ -576,14 +575,13 @@
 
             listaTodos.forEach((p, idx) => {
                 const pos = idx + 1;
-                let vivo = !p.estado.includes("Eliminado");
                 
-                // Asigna color verde si sigue vivo, color rojo si está eliminado
-                let claseBadge = vivo ? "pos-vivo" : "pos-eliminado";
+                // Asigna colores según la posición global estricta (1-19 Verde, 20-32 Naranja, 33-76 Rojo)
+                let claseBadge = pos <= 19 ? "pos-top19" : pos <= 32 ? "pos-top32" : "pos-resto";
                 let claseEstado = getClaseEstado(p.estado);
                 
                 let etiquetaLider = "";
-                // La insignia dorada siempre la tendrá el que tiene más puntos de los 76, sin importar si está vivo o eliminado
+                // El #1 global en puntos tiene su etiqueta dorada, sin importar dónde haya quedado sorteado
                 if (p.id === idLider && p.puntosTotales > 0) {
                     etiquetaLider = `<span class="estado-tag estado-lider">🌟 LÍDER EN PUNTOS</span>`;
                 }
@@ -594,7 +592,7 @@
                         <div class="info-participante">
                             <div class="nombre-contenedor">
                                 <div style="display:flex; align-items:center; flex-wrap: wrap; gap: 6px;">
-                                    <span class="nombre" style="${vivo ? '' : 'opacity:0.8;'}">${p.nombre}</span>
+                                    <span class="nombre">${p.nombre}</span>
                                     <span class="tag-grupo">(${p.grupoNombre})</span>
                                     ${etiquetaLider}
                                 </div>
