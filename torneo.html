@@ -91,7 +91,9 @@
         .pos-2 { background-color: #ff9100; box-shadow: 0 0 8px #ff9100; }
         .pos-3, .pos-4 { background-color: #d50000; box-shadow: 0 0 6px #d50000; }
         
-        /* Colores para el Ranking Global (1-19 Verde, 20-32 Naranja, 33-76 Rojo) */
+        /* Colores para el Ranking Global */
+        .pos-vivo { background-color: #00c853; box-shadow: 0 0 8px #00c853; }
+        .pos-eliminado { background-color: #d50000; box-shadow: 0 0 6px #d50000; }
         .pos-top19 { background-color: #00c853; box-shadow: 0 0 8px #00c853; }
         .pos-top32 { background-color: #ff9100; box-shadow: 0 0 8px #ff9100; }
         .pos-resto { background-color: #d50000; box-shadow: 0 0 6px #d50000; }
@@ -106,7 +108,11 @@
         .estado-competencia { color: #00ffb3; border: 1px solid #00ffb3; }
         .estado-eliminado { color: #ff5252; border: 1px solid #ff5252; }
         .estado-podio { color: #ffe600; border: 1px solid #ffe600; font-weight: bold; }
-        .estado-lider { background: #ffe600 !important; color: #000 !important; border: none !important; font-weight: bold !important; box-shadow: 0 0 10px rgba(255, 230, 0, 0.5); }
+        
+        /* Insignias Especiales de Puntos */
+        .estado-lider { background: #ffe600 !important; color: #000 !important; border: none !important; font-weight: bold !important; margin-left: 10px; box-shadow: 0 0 10px rgba(255, 230, 0, 0.5); }
+        .estado-bicampeon { background: linear-gradient(135deg, #ffe600, #ff5100) !important; color: #000 !important; border: none !important; font-weight: bold !important; margin-left: 10px; box-shadow: 0 0 12px rgba(255, 230, 0, 0.8); }
+        .estado-heredado { background: #00e5ff !important; color: #000 !important; border: none !important; font-weight: bold !important; margin-left: 10px; box-shadow: 0 0 10px rgba(0, 229, 255, 0.6); }
 
         .input-rep { width: 140px; padding: 4px 6px; background: rgba(0,0,0,0.8); border: 1px solid #ff9100; border-radius: 4px; color: #ff9100; font-size: 12px; outline: none; transition: 0.3s; }
         .input-rep:focus { box-shadow: 0 0 6px #ff9100; }
@@ -339,8 +345,11 @@
                             let ptsP1 = totalD > 0 ? Math.round((d.votosP1 / totalD) * 1000) : 0;
                             let ptsP2 = totalD > 0 ? Math.round((d.votosP2 / totalD) * 1000) : 0;
                             
-                            if (stats[d.p1.id]) stats[d.p1.id].puntosTotales += ptsP1;
-                            if (stats[d.p2.id]) stats[d.p2.id].puntosTotales += ptsP2;
+                            // EXCLUSIÓN: La Final (ronda 2) no suma puntos.
+                            if (r > 2) {
+                                if (stats[d.p1.id]) stats[d.p1.id].puntosTotales += ptsP1;
+                                if (stats[d.p2.id]) stats[d.p2.id].puntosTotales += ptsP2;
+                            }
 
                             if (d.ganador) {
                                 let perdedorId = d.ganador.id === d.p1.id ? d.p2.id : d.p1.id;
@@ -453,13 +462,17 @@
                         const colorP1 = llave.ganador && llave.ganador.id === llave.p1.id ? "#00ff22" : "#fff";
                         const colorP2 = llave.ganador && llave.ganador.id === llave.p2.id ? "#00ff22" : "#fff";
 
+                        // Si es la final (r=2), no muestra la etiqueta de "pts", solo los votos netos para no confundir
+                        const textoPts1 = r === 2 ? `${Math.round((llave.votosP1 / (totalDuelo||1))*100)}%` : `${pts1} pts`;
+                        const textoPts2 = r === 2 ? `${Math.round((llave.votosP2 / (totalDuelo||1))*100)}%` : `${pts2} pts`;
+
                         const cajaVotosP1 = isAdmin && isActiva 
-                            ? `<div class="caja-votos"><input type="number" class="input-votos" value="${llave.votosP1}" data-tipo="llave" data-ronda="${r}" data-llave="${llave.id}" data-target="votosP1"><span class="preview-puntos">${pts1} pts</span></div>`
-                            : `<div class="caja-votos"><span class="preview-puntos">${pts1} pts</span><span class="texto-votos-reales">(${llave.votosP1} votos)</span></div>`;
+                            ? `<div class="caja-votos"><input type="number" class="input-votos" value="${llave.votosP1}" data-tipo="llave" data-ronda="${r}" data-llave="${llave.id}" data-target="votosP1"><span class="preview-puntos">${textoPts1}</span></div>`
+                            : `<div class="caja-votos"><span class="preview-puntos">${textoPts1}</span><span class="texto-votos-reales">(${llave.votosP1} votos)</span></div>`;
 
                         const cajaVotosP2 = isAdmin && isActiva 
-                            ? `<div class="caja-votos"><input type="number" class="input-votos" value="${llave.votosP2}" data-tipo="llave" data-ronda="${r}" data-llave="${llave.id}" data-target="votosP2"><span class="preview-puntos">${pts2} pts</span></div>`
-                            : `<div class="caja-votos"><span class="preview-puntos">${pts2} pts</span><span class="texto-votos-reales">(${llave.votosP2} votos)</span></div>`;
+                            ? `<div class="caja-votos"><input type="number" class="input-votos" value="${llave.votosP2}" data-tipo="llave" data-ronda="${r}" data-llave="${llave.id}" data-target="votosP2"><span class="preview-puntos">${textoPts2}</span></div>`
+                            : `<div class="caja-votos"><span class="preview-puntos">${textoPts2}</span><span class="texto-votos-reales">(${llave.votosP2} votos)</span></div>`;
 
                         html += `
                             <div class="llave-duelo">
@@ -497,6 +510,7 @@
                     ? `<span style="color:#ff5252; font-size:13px; font-weight:bold; letter-spacing: 1px; margin-top: 5px;">🛑 ENCUESTA FINALIZADA</span>` 
                     : '';
 
+                // Se quitó la clase 'grupo-cerrado' para que no opaque la tarjeta entera
                 html += `<div class="tarjeta">
                          <div style="border-bottom: 2px solid #00ccff; padding-bottom: 8px; margin-bottom: 15px; display: flex; flex-direction: column;">
                             <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -507,7 +521,6 @@
                          </div>`;
                          
                 ord.forEach((p, idx) => {
-                    // Si el grupo está cerrado, el 3ro y 4to lugar (índices 2 y 3) quedan tachados y marcados
                     let isEliminadoDirecto = grupo.cerrado && idx >= 2;
                     let estiloNombre = isEliminadoDirecto ? `text-decoration: line-through; color: #ff5252;` : ``;
                     let badgeEliminado = isEliminadoDirecto ? `<span class="estado-tag estado-eliminado" style="margin-left: 6px;">Eliminado</span>` : ``;
@@ -545,26 +558,23 @@
             const stats = calcularEstadisticasGlobales(torneoGalactico);
             let listaTodos = Object.values(stats);
 
-            // 1. Identificar al líder absoluto en puntos
-            let maxPuntos = -1;
-            let idLider = null;
-            listaTodos.forEach(p => {
-                if (p.puntosTotales > maxPuntos) {
-                    maxPuntos = p.puntosTotales;
-                    idLider = p.id;
-                }
-            });
+            let idCampeon = torneoGalactico.campeon ? torneoGalactico.campeon.id : null;
 
-            // 2. Ordenamiento: Primero los VIVOS, luego los ELIMINADOS. Por puntos.
+            // 1. Identificar Puestos por Puntos (para la herencia del premio)
+            let listaPorPuntos = [...listaTodos].sort((a,b) => b.puntosTotales - a.puntosTotales);
+            let idLiderPuntos = listaPorPuntos.length > 0 ? listaPorPuntos[0].id : null;
+            let idSegundoPuntos = listaPorPuntos.length > 1 ? listaPorPuntos[1].id : null;
+            
+            let esBicampeon = (idCampeon && idCampeon === idLiderPuntos);
+
+            // 2. Ordenamiento Visual: VIVOS primero, ELIMINADOS después. (Ordenados por puntos dentro de cada bloque)
             listaTodos.sort((a, b) => {
                 let vivoA = a.estado.includes("competencia") || a.estado.includes("CAMPEÓN");
                 let vivoB = b.estado.includes("competencia") || b.estado.includes("CAMPEÓN");
                 
-                // Si uno está vivo y el otro no, el vivo pasa al inicio de la tabla
                 if (vivoA && !vivoB) return -1;
                 if (!vivoA && vivoB) return 1;
                 
-                // Si ambos están en el mismo estado (los dos vivos o los dos eliminados), se ordenan por puntos
                 return b.puntosTotales - a.puntosTotales;
             });
 
@@ -575,15 +585,24 @@
 
             listaTodos.forEach((p, idx) => {
                 const pos = idx + 1;
+                let vivo = p.estado.includes("competencia") || p.estado.includes("CAMPEÓN");
                 
-                // Asigna colores según la posición global estricta (1-19 Verde, 20-32 Naranja, 33-76 Rojo)
-                let claseBadge = pos <= 19 ? "pos-top19" : pos <= 32 ? "pos-top32" : "pos-resto";
+                let claseBadge = vivo ? "pos-vivo" : "pos-eliminado";
                 let claseEstado = getClaseEstado(p.estado);
                 
                 let etiquetaLider = "";
-                // El #1 global en puntos tiene su etiqueta dorada, sin importar dónde haya quedado sorteado
-                if (p.id === idLider && p.puntosTotales > 0) {
-                    etiquetaLider = `<span class="estado-tag estado-lider">🌟 LÍDER EN PUNTOS</span>`;
+
+                // Regla de Bicampeón y Premio Heredado
+                if (esBicampeon) {
+                    if (p.id === idCampeon && p.puntosTotales > 0) {
+                        etiquetaLider = `<span class="estado-tag estado-bicampeon">👑🏆 BICAMPEÓN (Torneo + Puntos)</span>`;
+                    } else if (p.id === idSegundoPuntos && p.puntosTotales > 0) {
+                        etiquetaLider = `<span class="estado-tag estado-heredado">🌟 2.º EN PUNTOS (Premio Heredado)</span>`;
+                    }
+                } else {
+                    if (p.id === idLiderPuntos && p.puntosTotales > 0) {
+                        etiquetaLider = `<span class="estado-tag estado-lider">🌟 LÍDER EN PUNTOS</span>`;
+                    }
                 }
 
                 html += `
@@ -592,7 +611,7 @@
                         <div class="info-participante">
                             <div class="nombre-contenedor">
                                 <div style="display:flex; align-items:center; flex-wrap: wrap; gap: 6px;">
-                                    <span class="nombre">${p.nombre}</span>
+                                    <span class="nombre" style="${vivo ? '' : 'opacity:0.8;'}">${p.nombre}</span>
                                     <span class="tag-grupo">(${p.grupoNombre})</span>
                                     ${etiquetaLider}
                                 </div>
@@ -652,7 +671,14 @@
             inputsRelacionados.forEach(inp => total += (parseInt(inp.value)||0));
             inputsRelacionados.forEach(inp => {
                 let pts = total > 0 ? Math.round(((parseInt(inp.value)||0) / total) * 1000) : 0;
-                inp.parentElement.querySelector(".preview-puntos").innerText = `${pts} pts`;
+                // Si es la llave final (ronda 2) mostrar % en lugar de puntos
+                let r = inp.getAttribute("data-ronda");
+                if(r && parseInt(r) === 2) {
+                    let pct = total > 0 ? Math.round(((parseInt(inp.value)||0) / total) * 100) : 0;
+                    inp.parentElement.querySelector(".preview-puntos").innerText = `${pct}%`;
+                } else {
+                    inp.parentElement.querySelector(".preview-puntos").innerText = `${pts} pts`;
+                }
             });
         }
 
