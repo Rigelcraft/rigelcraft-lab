@@ -77,23 +77,25 @@
         .tarjeta { background: rgba(0, 0, 0, 0.85); border: 2px solid #00ccff; border-radius: 12px; padding: 18px; box-shadow: 0 0 12px rgba(0, 204, 255, 0.3); transition: transform 0.3s; }
         .tarjeta:hover { box-shadow: 0 0 22px rgba(0, 204, 255, 0.6); transform: translateY(-3px); }
         
-        /* ESTILOS PARA GRUPOS CERRADOS */
+        /* ESTILOS PARA GRUPOS CERRADOS Y ELIMINADOS */
         .grupo-cerrado { opacity: 0.85; border-color: #555; box-shadow: none; }
-        .grupo-cerrado .titulo-tarjeta { color: #aaa; border-bottom-color: #555; }
+        .grupo-cerrado .titulo-tarjeta { color: #aaa; }
         .grupo-cerrado:hover { transform: none; box-shadow: 0 0 10px rgba(255,255,255,0.1); }
         .btn-cerrar-grupo { background: rgba(213,0,0,0.2); color: #ff5252; border: 1px solid #ff5252; padding: 6px 10px; border-radius: 6px; cursor: pointer; float: right; font-size: 13px; font-weight: bold; transition: 0.3s; }
         .btn-cerrar-grupo:hover { background: #d50000; color: #fff; }
 
-        .titulo-tarjeta { color: #00fff2; font-size: 22px; text-align: left; border-bottom: 2px solid #00ccff; padding-bottom: 8px; margin-bottom: 15px; text-shadow: 0 0 6px #000; }
+        .titulo-tarjeta { color: #00fff2; font-size: 22px; text-align: left; margin: 0; text-shadow: 0 0 6px #000; }
 
         .fila-participante { display: flex; align-items: center; justify-content: space-between; background: rgba(255, 255, 255, 0.05); padding: 8px 12px; border-radius: 8px; margin-bottom: 12px; gap: 10px; }
         .pos-badge { font-size: 14px; font-weight: bold; padding: 5px 9px; border-radius: 6px; min-width: 45px; text-align: center; color: #fff; margin-right: 15px; flex-shrink: 0; }
+        
         .pos-1, .pos-2 { background-color: #00c853; box-shadow: 0 0 8px #00c853; }
         .pos-3 { background-color: #ff9100; box-shadow: 0 0 8px #ff9100; }
         .pos-4 { background-color: #d50000; box-shadow: 0 0 6px #d50000; }
-        .pos-top19 { background-color: #00c853; box-shadow: 0 0 8px #00c853; }
-        .pos-top32 { background-color: #ff9100; box-shadow: 0 0 8px #ff9100; }
-        .pos-resto { background-color: #d50000; box-shadow: 0 0 6px #d50000; }
+        
+        /* Estilos de posición dinámicos para ranking global */
+        .pos-vivo { background-color: #00c853; box-shadow: 0 0 8px #00c853; }
+        .pos-eliminado { background-color: #d50000; box-shadow: 0 0 6px #d50000; }
 
         .info-participante { display: flex; align-items: center; gap: 15px; flex-grow: 1; }
         .nombre-contenedor { display: flex; flex-direction: column; gap: 4px; justify-content: center; }
@@ -105,7 +107,7 @@
         .estado-competencia { color: #00ffb3; border: 1px solid #00ffb3; }
         .estado-eliminado { color: #ff5252; border: 1px solid #ff5252; }
         .estado-podio { color: #ffe600; border: 1px solid #ffe600; font-weight: bold; }
-        .estado-lider { background: #ffe600 !important; color: #000 !important; border: none !important; font-weight: bold !important; margin-left: 10px; box-shadow: 0 0 10px rgba(255, 230, 0, 0.5); }
+        .estado-lider { background: #ffe600 !important; color: #000 !important; border: none !important; font-weight: bold !important; box-shadow: 0 0 10px rgba(255, 230, 0, 0.5); }
 
         .input-rep { width: 140px; padding: 4px 6px; background: rgba(0,0,0,0.8); border: 1px solid #ff9100; border-radius: 4px; color: #ff9100; font-size: 12px; outline: none; transition: 0.3s; }
         .input-rep:focus { box-shadow: 0 0 6px #ff9100; }
@@ -299,7 +301,6 @@
             torneo.grupos.forEach(g => {
                 let totalG = g.participantes.reduce((sum, p) => sum + p.votos, 0);
                 
-                // Ordenamos internamente para saber quién fue primero, segundo, etc.
                 let ord = [...g.participantes].sort((a,b) => b.votos - a.votos);
 
                 ord.forEach((p, idx) => {
@@ -314,7 +315,6 @@
                             else estadoStr = "Eliminado en Grupos";
                         }
                     } else {
-                        // Si ya pasamos de grupos, todos por defecto están eliminados a menos que se sobreescriba abajo
                         estadoStr = "Eliminado en Grupos";
                     }
 
@@ -324,9 +324,8 @@
                 });
             });
 
-            // 2. Sumar Fases Eliminatorias si ya cerraron los grupos
+            // 2. Sumar Fases Eliminatorias
             if (torneo.faseActual === "llaves" || torneo.campeon) {
-                // Los que pasaron a 16avos los reactivamos
                 torneo.clasificados32.forEach(p => { 
                     if(stats[p.id]) stats[p.id].estado = "En competencia (16avos)"; 
                 });
@@ -341,7 +340,6 @@
                             let ptsP1 = totalD > 0 ? Math.round((d.votosP1 / totalD) * 1000) : 0;
                             let ptsP2 = totalD > 0 ? Math.round((d.votosP2 / totalD) * 1000) : 0;
                             
-                            // Acumular puntos
                             if (stats[d.p1.id]) stats[d.p1.id].puntosTotales += ptsP1;
                             if (stats[d.p2.id]) stats[d.p2.id].puntosTotales += ptsP2;
 
@@ -496,15 +494,25 @@
                     ? `<button class="btn-cerrar-grupo" onclick="cerrarGrupoIndividual('${grupo.id}')">🔒 Cerrar Grupo</button>` 
                     : '';
                 
-                let badgeCerrado = grupo.cerrado ? `<span style="color:#ff5252; font-size:12px; float:right; margin-top:2px;">CERRADO</span>` : '';
+                let subTituloCerrado = grupo.cerrado 
+                    ? `<span style="color:#ff5252; font-size:13px; font-weight:bold; letter-spacing: 1px; margin-top: 5px;">🛑 ENCUESTA FINALIZADA</span>` 
+                    : '';
 
                 html += `<div class="tarjeta ${grupo.cerrado ? 'grupo-cerrado' : ''}">
-                         <div style="border-bottom: 2px solid #00ccff; padding-bottom: 8px; margin-bottom: 15px;">
-                            <span class="titulo-tarjeta" style="border: none; padding: 0; margin: 0;">${grupo.nombre}</span>
-                            ${badgeCerrado} ${btnCerrarHtml}
+                         <div style="border-bottom: 2px solid #00ccff; padding-bottom: 8px; margin-bottom: 15px; display: flex; flex-direction: column;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <h3 class="titulo-tarjeta" style="border: none; padding: 0; margin: 0;">${grupo.nombre}</h3>
+                                ${btnCerrarHtml}
+                            </div>
+                            ${subTituloCerrado}
                          </div>`;
                          
                 ord.forEach((p, idx) => {
+                    // Si el grupo está cerrado, el 3ro y 4to lugar quedan eliminados matemáticamente
+                    let isEliminadoDirecto = grupo.cerrado && idx >= 2;
+                    let estiloNombre = isEliminadoDirecto ? `text-decoration: line-through; opacity: 0.6; color: #ff5252;` : ``;
+                    let badgeEliminado = isEliminadoDirecto ? `<span class="estado-tag estado-eliminado" style="margin-left: 6px;">Eliminado</span>` : ``;
+
                     const cajaVotos = (isAdmin && isGruposActiva && !grupo.cerrado)
                         ? `<div class="caja-votos"><input type="number" class="input-votos" value="${p.votos}" data-tipo="grupo" data-grupo="${grupo.id}" data-pid="${p.id}"><span class="preview-puntos">${p.pts} pts</span></div>`
                         : `<div class="caja-votos"><span class="preview-puntos">${p.pts} pts</span><span class="texto-votos-reales">(${p.votos} votos)</span></div>`;
@@ -514,7 +522,10 @@
                             <span class="pos-badge pos-${idx+1}">${idx+1}º</span>
                             <div class="info-participante">
                                 <div class="nombre-contenedor">
-                                    <span class="nombre">${p.nombre}</span>
+                                    <div style="display:flex; align-items:center; flex-wrap:wrap;">
+                                        <span class="nombre" style="${estiloNombre}">${p.nombre}</span>
+                                        ${badgeEliminado}
+                                    </div>
                                     ${getRepHtml({...p, grupoId: grupo.id})}
                                 </div>
                             </div>
@@ -529,14 +540,34 @@
             if (isAdmin) { asignarEventosInputsVotos(); asignarEventosInputsReps(); }
         }
 
-        // VISTA LISTA GLOBAL
+        // VISTA LISTA GLOBAL: 76 participantes ordenados (Vivos arriba, Eliminados abajo)
         function renderizarListaGlobal76() {
             const contenedor = document.getElementById("contenedor-principal");
             const stats = calcularEstadisticasGlobales(torneoGalactico);
             let listaTodos = Object.values(stats);
 
-            // Ordenamos a todos estrictamente por Puntos Totales Acumulados
-            listaTodos.sort((a, b) => b.puntosTotales - a.puntosTotales);
+            // 1. Identificar al líder absoluto en puntos (antes de separar por vivos/eliminados)
+            let maxPuntos = -1;
+            let idLider = null;
+            listaTodos.forEach(p => {
+                if (p.puntosTotales > maxPuntos) {
+                    maxPuntos = p.puntosTotales;
+                    idLider = p.id;
+                }
+            });
+
+            // 2. Ordenamiento: Primero los VIVOS, luego los ELIMINADOS. Dentro de cada grupo, ordenados por Puntos Totales.
+            listaTodos.sort((a, b) => {
+                let vivoA = !a.estado.includes("Eliminado");
+                let vivoB = !b.estado.includes("Eliminado");
+                
+                // Si uno está vivo y el otro eliminado, el vivo va primero
+                if (vivoA && !vivoB) return -1;
+                if (!vivoA && vivoB) return 1;
+                
+                // Si ambos están vivos o ambos eliminados, desempata por puntos totales
+                return b.puntosTotales - a.puntosTotales;
+            });
 
             let html = `
             <div class="contenedor-lista-global">
@@ -545,12 +576,15 @@
 
             listaTodos.forEach((p, idx) => {
                 const pos = idx + 1;
-                let claseBadge = pos <= 19 ? "pos-top19" : pos <= 32 ? "pos-top32" : "pos-resto";
+                let vivo = !p.estado.includes("Eliminado");
+                
+                // Asigna color verde si sigue vivo, color rojo si está eliminado
+                let claseBadge = vivo ? "pos-vivo" : "pos-eliminado";
                 let claseEstado = getClaseEstado(p.estado);
                 
                 let etiquetaLider = "";
-                // El número 1 en puntos recibe la insignia MVP especial
-                if (idx === 0 && p.puntosTotales > 0) {
+                // La insignia dorada siempre la tendrá el que tiene más puntos de los 76, sin importar si está vivo o eliminado
+                if (p.id === idLider && p.puntosTotales > 0) {
                     etiquetaLider = `<span class="estado-tag estado-lider">🌟 LÍDER EN PUNTOS</span>`;
                 }
 
@@ -559,8 +593,8 @@
                         <span class="pos-badge ${claseBadge}">${pos}º</span>
                         <div class="info-participante">
                             <div class="nombre-contenedor">
-                                <div style="display:flex; align-items:center; flex-wrap: wrap;">
-                                    <span class="nombre">${p.nombre}</span>
+                                <div style="display:flex; align-items:center; flex-wrap: wrap; gap: 6px;">
+                                    <span class="nombre" style="${vivo ? '' : 'opacity:0.8;'}">${p.nombre}</span>
                                     <span class="tag-grupo">(${p.grupoNombre})</span>
                                     ${etiquetaLider}
                                 </div>
@@ -678,8 +712,8 @@
                     calculados[1].brecha = calculados[1].ptsCalc - (calculados.length > 2 ? calculados[2].ptsCalc : 0);
                 }
 
-                directos.push(calculados[0]); // Pasan solo los primeros
-                if (calculados.length > 1) todosLosSegundos.push(calculados[1]); // Bolsa de segundos lugares
+                directos.push(calculados[0]);
+                if (calculados.length > 1) todosLosSegundos.push(calculados[1]);
             });
 
             // Ordenar los 2dos lugares por Puntos y luego por Brecha
