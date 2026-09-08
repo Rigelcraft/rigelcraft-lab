@@ -10,7 +10,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-image: url("torneo.png"); 
+            background-image: url("info.png"); 
             background-size: cover;
             background-attachment: fixed;
             background-color: #050505;
@@ -28,144 +28,62 @@
             margin: 30px 0;
         }
 
-        .breadcrumb {
-            text-align: left;
-            width: 100%;
-            margin: 20px 0 40px 2%;
-            font-size: 20px;
-            text-shadow: 0 0 4px #000;
-        }
-
+        .breadcrumb { text-align: left; width: 100%; margin: 20px 0 40px 2%; font-size: 20px; text-shadow: 0 0 4px #000; }
         .breadcrumb a { color: #00c3ff; text-decoration: underline; font-weight: bold; transition: 0.3s; text-shadow: 0 0 5px #000; }
         .breadcrumb a:hover { color: #fff; text-shadow: 0 0 10px #00ccff; }
         .breadcrumb span { color: #00c3ff; font-weight: bold; text-decoration: none; }
 
-        .contenedor-mega-titulo {
-            text-align: left;
-            width: 100%;
-            margin: 20px 0 20px 2%;
-            max-width: 98%;
-        }
-
+        .contenedor-mega-titulo { text-align: left; width: 100%; margin: 20px 0 20px 2%; max-width: 98%; }
         .mega-titulo {
             font-family: 'Angkor', 'Anton', Arial, sans-serif;
             font-size: clamp(40px, 8vw, 130px);
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin: 0;
-            line-height: 1;
+            margin: 0; line-height: 1;
             background-image: url('https://static.vecteezy.com/system/resources/previews/006/059/573/non_2x/blue-water-surface-background-waves-of-sea-ocean-pool-and-lake-light-ripple-texture-seamless-pattern-vector.jpg');
             background-size: 400px;
             background-position: center;
-            -webkit-background-clip: text;
-            background-clip: text;
+            -webkit-background-clip: text; background-clip: text;
             color: transparent;
             -webkit-text-stroke: 1.5px #003050;
             filter: drop-shadow(0 0 10px #00ccff);
         }
 
-        h3 { font-size: 25px; margin-left: 2%; text-shadow: 0 0 4px #000; }
-        p { font-size: 22px; margin-left: 2%; margin-right: 2%; margin-top: 15px; text-shadow: 0 0 4px #000; }
-
-        .selector-vistas {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 25px auto;
-            width: 96%;
-            flex-wrap: wrap;
+        h3 {
+            color: #e6edf3;
+            font-size: 30px;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+            margin-left: 2%;
+            text-align: left;
         }
-
-        .btn-vista {
-            background: rgba(0, 0, 0, 0.85);
-            color: #00c3ff;
-            border: 2px solid #00c3ff;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-family: 'Anton', Arial, sans-serif;
-            font-size: clamp(16px, 3vw, 20px);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 1px;
-            box-shadow: 0 0 10px rgba(0, 195, 255, 0.2);
-        }
-
-        .btn-vista:hover, .btn-vista.activo {
-            background: linear-gradient(135deg, #00c3ff, #0051ff);
-            color: #ffffff;
-            border-color: #00fff2;
-            box-shadow: 0 0 18px rgba(0, 255, 242, 0.6);
-            transform: scale(1.03);
-        }
-
-        .grid-grupos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
-            width: 96%;
-            margin: 30px auto;
-        }
-
-        .contenedor-lista-global {
-            width: 96%;
-            max-width: 900px;
-            margin: 30px auto;
-            background: rgba(0, 0, 0, 0.85);
-            border: 2px solid #00ccff;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 0 15px rgba(0, 204, 255, 0.3);
-        }
-
-        .tarjeta {
-            background: rgba(0, 0, 0, 0.85);
-            border: 2px solid #00ccff;
-            border-radius: 12px;
-            padding: 18px;
-            box-shadow: 0 0 12px rgba(0, 204, 255, 0.3);
-            transition: transform 0.3s;
-        }
-
-        .tarjeta:hover { box-shadow: 0 0 22px rgba(0, 204, 255, 0.6); transform: translateY(-3px); }
-
-        .titulo-tarjeta {
-            color: #00fff2;
+        p {
+            color: #e6edf3;
             font-size: 22px;
-            text-align: center;
-            border-bottom: 2px solid #00ccff;
-            padding-bottom: 8px;
-            margin-bottom: 15px;
-            text-shadow: 0 0 6px #000;
+            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
+            margin-left: 2%;
+            text-align: left;
         }
+        .selector-vistas { display: flex; justify-content: center; gap: 15px; margin: 25px auto; width: 96%; flex-wrap: wrap; }
+        .btn-vista {
+            background: rgba(0, 0, 0, 0.85); color: #00c3ff; border: 2px solid #00c3ff; padding: 12px 24px;
+            border-radius: 8px; font-family: 'Anton', Arial, sans-serif; font-size: clamp(16px, 3vw, 20px);
+            cursor: pointer; transition: all 0.3s ease; letter-spacing: 1px; box-shadow: 0 0 10px rgba(0, 195, 255, 0.2);
+        }
+        .btn-vista:hover, .btn-vista.activo { background: linear-gradient(135deg, #00c3ff, #0051ff); color: #ffffff; border-color: #00fff2; box-shadow: 0 0 18px rgba(0, 255, 242, 0.6); transform: scale(1.03); }
 
-        .fila-participante {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 8px 12px;
-            border-radius: 8px;
-            margin-bottom: 12px;
-            gap: 10px;
-        }
+        .grid-grupos { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; width: 96%; margin: 30px auto; }
+        .contenedor-lista-global { width: 96%; max-width: 900px; margin: 30px auto; background: rgba(0, 0, 0, 0.85); border: 2px solid #00ccff; border-radius: 12px; padding: 20px; box-shadow: 0 0 15px rgba(0, 204, 255, 0.3); }
+        .tarjeta { background: rgba(0, 0, 0, 0.85); border: 2px solid #00ccff; border-radius: 12px; padding: 18px; box-shadow: 0 0 12px rgba(0, 204, 255, 0.3); transition: transform 0.3s; }
+        .tarjeta:hover { box-shadow: 0 0 22px rgba(0, 204, 255, 0.6); transform: translateY(-3px); }
+        .titulo-tarjeta { color: #00fff2; font-size: 22px; text-align: center; border-bottom: 2px solid #00ccff; padding-bottom: 8px; margin-bottom: 15px; text-shadow: 0 0 6px #000; }
 
-        .pos-badge { 
-            font-size: 14px; 
-            font-weight: bold; 
-            padding: 5px 9px; 
-            border-radius: 6px; 
-            min-width: 45px; 
-            text-align: center; 
-            color: #fff;
-            margin-right: 15px; 
-            flex-shrink: 0;
-        }
-        
+        .fila-participante { display: flex; align-items: center; justify-content: space-between; background: rgba(255, 255, 255, 0.05); padding: 8px 12px; border-radius: 8px; margin-bottom: 12px; gap: 10px; }
+        .pos-badge { font-size: 14px; font-weight: bold; padding: 5px 9px; border-radius: 6px; min-width: 45px; text-align: center; color: #fff; margin-right: 15px; flex-shrink: 0; }
         .pos-1, .pos-2 { background-color: #00c853; box-shadow: 0 0 8px #00c853; }
         .pos-3 { background-color: #ff9100; box-shadow: 0 0 8px #ff9100; }
         .pos-4 { background-color: #d50000; box-shadow: 0 0 6px #d50000; }
-        .pos-top21 { background-color: #00c853; box-shadow: 0 0 8px #00c853; }
+        .pos-top19 { background-color: #00c853; box-shadow: 0 0 8px #00c853; }
         .pos-top32 { background-color: #ff9100; box-shadow: 0 0 8px #ff9100; }
         .pos-resto { background-color: #d50000; box-shadow: 0 0 6px #d50000; }
 
@@ -173,33 +91,32 @@
         .nombre-contenedor { display: flex; flex-direction: column; gap: 4px; justify-content: center; }
         .nombre { font-size: 16px; font-weight: bold; text-shadow: 0 0 4px #000; }
         .tag-grupo { font-size: 13px; color: #00fff2; font-weight: normal; margin-left: 6px; text-shadow: 0 0 3px #000; }
-        
         .rep-tag { font-size: 12px; color: #ff9100; text-shadow: 0 0 3px #000; font-weight: bold; }
-        .input-rep { 
-            width: 140px; padding: 4px 6px; background: rgba(0,0,0,0.8); border: 1px solid #ff9100; 
-            border-radius: 4px; color: #ff9100; font-size: 12px; outline: none; transition: 0.3s;
-        }
+        
+        .estado-tag { font-size: 12px; margin-top: 4px; display: inline-block; padding: 3px 6px; border-radius: 4px; background: rgba(0,0,0,0.6); }
+        .estado-competencia { color: #00ffb3; border: 1px solid #00ffb3; }
+        .estado-eliminado { color: #ff5252; border: 1px solid #ff5252; }
+        .estado-podio { color: #ffe600; border: 1px solid #ffe600; font-weight: bold; }
+
+        .input-rep { width: 140px; padding: 4px 6px; background: rgba(0,0,0,0.8); border: 1px solid #ff9100; border-radius: 4px; color: #ff9100; font-size: 12px; outline: none; transition: 0.3s; }
         .input-rep:focus { box-shadow: 0 0 6px #ff9100; }
 
-        .input-votos {
-            width: 75px; padding: 8px; background: rgba(0,0,0,0.9); border: 1.5px solid #00fff2; 
-            border-radius: 6px; color: #ffe600; font-size: 16px; font-weight: bold; text-align: center; outline: none;
-            flex-shrink: 0;
-        }
+        .caja-votos { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; min-width: 80px; text-align: right; }
+        .input-votos { width: 85px; padding: 6px; background: rgba(0,0,0,0.9); border: 1.5px solid #00fff2; border-radius: 6px; color: #fff; font-size: 14px; text-align: center; outline: none; }
         .input-votos:focus { box-shadow: 0 0 10px #ffe600; border-color: #ffe600; }
-        .texto-votos { font-size: 18px; font-weight: bold; color: #ffe600; text-shadow: 0 0 5px #ffe600; flex-shrink: 0; }
+        .preview-puntos { color: #ffe600; font-weight: bold; font-size: 18px; text-shadow: 0 0 5px #ffe600; }
+        .texto-votos-reales { color: #aaa; font-size: 12px; }
 
         .contenedor-ronda { margin: 40px auto; width: 96%; background: rgba(0, 0, 0, 0.6); border: 2px dashed #0051ff; border-radius: 12px; padding: 20px; }
         .titulo-ronda { color: #ffe600; text-align: center; font-size: 30px; text-shadow: 0 0 10px #000; margin-bottom: 20px; }
         .grid-llaves { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        
         .llave-duelo { background: linear-gradient(180deg, rgba(0,20,50,0.9) 0%, rgba(0,0,0,0.95) 100%); border: 2px solid #00c3ff; border-radius: 10px; padding: 15px; position: relative; }
         .vs-badge { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #ff0000; color: #fff; font-weight: bold; font-size: 12px; padding: 4px 8px; border-radius: 20px; box-shadow: 0 0 10px #ff0000; }
 
         .admin-controls { display: none; justify-content: center; gap: 15px; flex-wrap: wrap; margin: 40px auto; width: 96%; }
         .btn-accion { background: linear-gradient(135deg, #00c3ff, #0051ff); color: #fff; font-family: 'Anton', Arial, sans-serif; font-size: clamp(16px, 3vw, 22px); padding: 15px 30px; border: 2px solid #00fff2; border-radius: 10px; cursor: pointer; box-shadow: 0 0 15px rgba(0, 204, 255, 0.5); transition: 0.3s; letter-spacing: 1px; }
         .btn-accion:hover { background: linear-gradient(135deg, #ffe600, #ff8800); color: #000; border-color: #ffe600; transform: scale(1.02); }
-        .btn-peligro { background: rgba(213,0,0,0.3); color: #ff5252; border-color: #ff5252; }
+        .btn-peligro { background: rgb(213 0 0); color: #000000; border-color: #ff5252; }
         .btn-peligro:hover { background: #d50000; color: #fff; box-shadow: 0 0 15px #d50000; }
 
         .footer-admin { text-align: center; margin-top: 50px; }
@@ -207,16 +124,73 @@
         .btn-toggle-admin:hover { filter: grayscale(0%); transform: scale(1.2); }
 
         @media (max-width: 600px) {
-            body { background-position: 50% center !important; }
-            .mega-titulo { font-size: clamp(25px, 11vw, 50px) !important; text-align: center !important; margin: 0 auto !important; width: 90%; }
-            .breadcrumb { text-align: center; }
-            .contenedor-mega-titulo { text-align: center !important; margin-left: 0 !important; width: 100% !important; }
-            .grid-grupos, .grid-llaves { grid-template-columns: 1fr; }
-            .btn-accion { width: 100%; margin-bottom: 10px; }
+            html, body { 
+                overflow-x: hidden; 
+            }
+            body { 
+                background-position: 50% center !important; 
+            }
+            .mega-titulo { 
+                font-size: clamp(25px, 11vw, 50px) !important; 
+                text-align: center !important; 
+                margin: 0 auto !important; 
+                width: 90%; 
+            }
+            .breadcrumb { 
+                text-align: center; 
+            }
+            .contenedor-mega-titulo { 
+                text-align: center !important; 
+                margin-left: 0 !important; 
+                width: 100% !important; 
+            }
+            
+            .grid-grupos, .grid-llaves { 
+                grid-template-columns: minmax(0, 1fr) !important; 
+                width: 100% !important;
+            }
+            
+            .contenedor-ronda { 
+                padding: 12px 6px !important; 
+                width: 98% !important; 
+            }
+            .tarjeta { 
+                padding: 10px 8px !important; 
+            }
+            .fila-participante { 
+                padding: 8px 6px !important; 
+                gap: 6px !important; 
+            }
+            
+            .pos-badge { 
+                margin-right: 0 !important; 
+                min-width: 38px !important; 
+                padding: 4px !important; 
+                font-size: 13px !important; 
+            }
+            .caja-votos { 
+                min-width: 65px !important; 
+            }
+            .input-votos { 
+                width: 65px !important; 
+                padding: 4px !important; 
+            }
+            .preview-puntos { 
+                font-size: 15px !important; 
+            }
+            .input-rep { 
+                width: 100% !important; 
+                max-width: 120px !important; 
+            }
+            
+            .btn-accion { 
+                width: 100%; 
+                margin-bottom: 10px; 
+            }
         }
     </style>
 
-    <!-- SDKs DE FIREBASE CON AUTHENTICATION INTEGRADO -->
+    <!-- SDKs DE FIREBASE -->
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
@@ -233,13 +207,13 @@
     <hr>
 
     <div id="encabezado-fase">
-        <h3 id="titulo-estado">Fase de Grupos - En Vivo</h3>
-        <p id="desc-estado">Sigue en vivo la puntuación de cada participante. Puedes alternar entre la vista por grupos o la lista general de los 84 competidores.</p>
+        <h3 id="titulo-estado">Torneo Galáctico - En Vivo</h3>
+        <p id="desc-estado">Sigue en vivo la puntuación. Puedes alternar entre la vista del historial por rondas o el ranking general acumulado.</p>
     </div>
 
     <div class="selector-vistas" id="selector-vistas">
-        <button class="btn-vista activo" id="btn-modo-grupos" onclick="cambiarModoVista('grupos')">👥 Vista por Grupos</button>
-        <button class="btn-vista" id="btn-modo-lista" onclick="cambiarModoVista('lista')">🏆 Ranking Global (84)</button>
+        <button class="btn-vista activo" id="btn-modo-grupos" onclick="cambiarModoVista('grupos')">👥 Vista por Fases / Historial</button>
+        <button class="btn-vista" id="btn-modo-lista" onclick="cambiarModoVista('lista')">🏆 Ranking Global Acumulado (76)</button>
     </div>
 
     <hr>
@@ -280,40 +254,26 @@
 
         let isAdmin = false;
         let modoVista = "grupos";
+        let torneoGalactico = {};
 
-        // MONITOREAR AUTENTICACIÓN SEGURA DE GOOGLE
         auth.onAuthStateChanged((user) => {
-            if (user) {
-                isAdmin = true;
-                document.getElementById("btn-admin-icon").style.filter = "grayscale(0%)";
-            } else {
-                isAdmin = false;
-                document.getElementById("btn-admin-icon").style.filter = "grayscale(100%)";
-            }
-            renderizarApp();
+            if (user) { isAdmin = true; document.getElementById("btn-admin-icon").style.filter = "grayscale(0%)"; } 
+            else { isAdmin = false; document.getElementById("btn-admin-icon").style.filter = "grayscale(100%)"; }
+            if (Object.keys(torneoGalactico).length > 0) renderizarApp();
         });
 
         function solicitarAccesoAdmin() {
             if (isAdmin) {
-                auth.signOut().then(() => {
-                    alert("🔒 Sesión cerrada. Modo Público activo.");
-                });
+                auth.signOut().then(() => alert("🔒 Sesión cerrada. Modo Público activo."));
             } else {
-                const email = prompt("Ingrese su correo de Administrador:");
-                if (!email) return;
-                const pass = prompt("Ingrese su contraseña de Administrador:");
-                if (!pass) return;
-
-                auth.signInWithEmailAndPassword(email, pass)
-                    .then(() => {
-                        alert("🔓 Autenticado con éxito en los servidores de Google.");
-                    })
-                    .catch((error) => {
-                        alert("❌ Error de acceso: Datos incorrectos o no autorizados.");
-                    });
+                const provider = new firebase.auth.GoogleAuthProvider();
+                auth.signInWithPopup(provider)
+                    .then((result) => alert(`🔓 Bienvenido, ${result.user.displayName}. Modo Administrador activo.`))
+                    .catch((error) => alert("❌ Error de inicio de sesión con Google."));
             }
         }
 
+        // Estructura base limpia: 19 grupos de 4 (76 participantes en total)
         function generarEstructuraBase() {
             return {
                 faseActual: "grupos",
@@ -322,200 +282,28 @@
                 llaves: {},
                 campeon: null,
                 grupos: [
-                    {
-                        id: "g1", nombre: "Estrellas: Clásicos y Brillantes",
-                        participantes: [
-                            { id: "g1p1", nombre: "El Sol", votos: 0, representante: "" },
-                            { id: "g1p2", nombre: "Betelgeuse", votos: 0, representante: "" },
-                            { id: "g1p3", nombre: "Alfa Centauri A", votos: 0, representante: "" },
-                            { id: "g1p4", nombre: "Polaris", votos: 0, representante: "" }
-                        ]
-                    },
-                    {
-                        id: "g2", nombre: "Estrellas: Titanes y Vecinos",
-                        participantes: [
-                            { id: "g2p1", nombre: "Stephenson 2-18", votos: 0, representante: "" },
-                            { id: "g2p2", nombre: "Arturo / Arcturus", votos: 0, representante: "" },
-                            { id: "g2p3", nombre: "Alfa Centauri B", votos: 0, representante: "" },
-                            { id: "g2p4", nombre: "Próxima Centauri", votos: 0, representante: "" }
-                        ]
-                    },
-                    {
-                        id: "g3", nombre: "Estrellas: Monstruos del Cosmos",
-                        participantes: [
-                            { id: "g3p1", nombre: "UY Scuti", votos: 0, representante: "" },
-                            { id: "g3p2", nombre: "Antares", votos: 0, representante: "@DarlenyVerásdeJesús" },
-                            { id: "g3p3", nombre: "Eta Carinae", votos: 0, representante: "" },
-                            { id: "g3p4", nombre: "Aldebarán", votos: 0, representante: "" }
-                        ]
-                    },
-                    {
-                        id: "g4", nombre: "Rocosos: Íntimos del Sol",
-                        participantes: [
-                            { id: "g4p1", nombre: "Mercurio", votos: 0, representante: "@Giovanni-t2b1w" },
-                            { id: "g4p2", nombre: "Venus", votos: 0, representante: "" },
-                            { id: "g4p3", nombre: "La Tierra", votos: 0, representante: "@FaustaanayeliReyesgomez" },
-                            { id: "g4p4", nombre: "Marte", votos: 0, representante: "" }
-                        ]
-                    },
-                    {
-                        id: "g5", nombre: "Gaseosos: Gigantes del Sistema",
-                        participantes: [
-                            { id: "g5p1", nombre: "Júpiter", votos: 0, representante: "" },
-                            { id: "g5p2", nombre: "Saturno", votos: 0, representante: "" },
-                            { id: "g5p3", nombre: "Urano", votos: 0, representante: "" },
-                            { id: "g5p4", nombre: "Neptuno", votos: 0, representante: "@animacionkati123" }
-                        ]
-                    },
-                    {
-                        id: "g6", nombre: "Hipotéticos: Los Fantasmas",
-                        participantes: [
-                            { id: "g6p1", nombre: "Planeta X", votos: 0, representante: "" },
-                            { id: "g6p2", nombre: "Vulcano", votos: 0, representante: "" },
-                            { id: "g6p3", nombre: "Proto-Tierra", votos: 0, representante: "" },
-                            { id: "g6p4", nombre: "Theia / Tea", votos: 0, representante: "" }
-                        ]
-                    },
-                    {
-                        id: "g7", nombre: "Errantes: Vagabundos del Vacío",
-                        participantes: [
-                            { id: "g7p1", nombre: "PSO J318.5-22", votos: 0, representante: "" },
-                            { id: "g7p2", nombre: "WISE 0855−0714", votos: 0, representante: "" },
-                            { id: "g7p3", nombre: "SIMP J01365663", votos: 0, representante: "" },
-                            { id: "g7p4", nombre: "OGLE-2016-BLG", votos: 0, representante: "" }
-                        ]
-                    },
-                    {
-                        id: "g8", nombre: "Exoplanetas: Maravillas Lejanas",
-                        participantes: [
-                            { id: "g8p1", nombre: "Kepler-186f", votos: 0, representante: "" },
-                            { id: "g8p2", nombre: "Próxima Centauri b", votos: 0, representante: "" },
-                            { id: "g8p3", nombre: "Matusalén", votos: 0, representante: "" },
-                            { id: "g8p4", nombre: "WASP-12b", votos: 0, representante: "" }
-                        ]
-                    },
-                    {
-                        id: "g9", nombre: "Lunas 1: Las Gigantes",
-                        participantes: [
-                            { id: "g9p1", nombre: "Ganímedes", votos: 0, representante: "" },
-                            { id: "g9p2", nombre: "Titán", votos: 0, representante: "" },
-                            { id: "g9p3", nombre: "Calisto", votos: 0, representante: "" },
-                            { id: "g9p4", nombre: "Ío", votos: 0, representante: "" }
-                        ]
-                    },
-                    {
-                        id: "g10", nombre: "Lunas 2: Clásicas y Misteriosas",
-                        participantes: [
-                            { id: "g10p1", nombre: "La Luna", votos: 0, representante: "" },
-                            { id: "g10p2", nombre: "Europa", votos: 0, representante: "" },
-                            { id: "g10p3", nombre: "Encélado", votos: 0, representante: "" },
-                            { id: "g10p4", nombre: "Tritón", votos: 0, representante: "" }
-                        ]
-                    },
-                    {
-                        id: "g11", nombre: "Lunas 3: Escuadrón de Saturno",
-                        participantes: [
-                            { id: "g11p1", nombre: "Rea", votos: 0, representante: "" },
-                            { id: "g11p2", nombre: "Jápeto", votos: 0, representante: "" },
-                            { id: "g11p3", nombre: "Dione", votos: 0, representante: "" },
-                            { id: "g11p4", nombre: "Tetis", votos: 0, representante: "" }
-                        ]
-                    },
-                    {
-                        id: "g12", nombre: "Lunas 4: Gélidas de Urano",
-                        participantes: [
-                            { id: "g12p1", nombre: "Titania", votos: 0, representante: "" },
-                            { id: "g12p2", nombre: "Oberón", votos: 0, representante: "" },
-                            { id: "g12p3", nombre: "Umbriel", votos: 0, representante: "" },
-                            { id: "g12p4", nombre: "Ariel", votos: 0, representante: "" }
-                        ]
-                    },
-                    {
-                        id: "g13", nombre: "Lunas 5: Esféricas Pequeñas",
-                        participantes: [
-                            { id: "g13p1", nombre: "Mimas", votos: 0, representante: "" },
-                            { id: "g13p2", nombre: "Miranda", votos: 0, representante: "" },
-                            { id: "g13p3", nombre: "Caronte", votos: 0, representante: "" },
-                            { id: "g13p4", nombre: "Proteo", votos: 0, representante: "" }
-                        ]
-                    },
-                    {
-                        id: "g14", nombre: "Lunas 6: Patatas e Irregulares",
-                        participantes: [
-                            { id: "g14p1", nombre: "Fobos", votos: 0, representante: "" },
-                            { id: "g14p2", nombre: "Deimos", votos: 0, representante: "" },
-                            { id: "g14p3", nombre: "Hiperión", votos: 0, representante: "" },
-                            { id: "g14p4", nombre: "Amaltea", votos: 0, representante: "" }
-                        ]
-                    },
-                    {
-                        id: "g15", nombre: "Lunas 7: Rocas de Júpiter",
-                        participantes: [
-                            { id: "g15p1", nombre: "Tebe", votos: 0, representante: "" },
-                            { id: "g15p2", nombre: "Calícore", votos: 0, representante: "" },
-                            { id: "g15p3", nombre: "Elara", votos: 0, representante: "" },
-                            { id: "g15p4", nombre: "Metis", votos: 0, representante: "" }
-                        ]
-                    },
-                    {
-                        id: "g16", nombre: "Enanos 1: Reyes y Destronado",
-                        participantes: [
-                            { id: "g16p1", nombre: "Plutón", votos: 0, representante: "" },
-                            { id: "g16p2", nombre: "Ceres", votos: 0, representante: "" },
-                            { id: "g16p3", nombre: "Eris", votos: 0, representante: "" },
-                            { id: "g16p4", nombre: "Makemake", votos: 0, representante: "" }
-                        ]
-                    },
-                    {
-                        id: "g17", nombre: "Enanos 2: Extraños y Lejanos",
-                        participantes: [
-                            { id: "g17p1", nombre: "Haumea", votos: 0, representante: "" },
-                            { id: "g17p2", nombre: "Sedna", votos: 0, representante: "" },
-                            { id: "g17p3", nombre: "Gonggong", votos: 0, representante: "" },
-                            { id: "g17p4", nombre: "Quaoar", votos: 0, representante: "" }
-                        ]
-                    },
-                    {
-                        id: "g18", nombre: "Humanos 1: Protagonistas",
-                        participantes: [
-                            { id: "g18p1", nombre: "Astrobola", votos: 0, representante: "" },
-                            { id: "g18p2", nombre: "Cosmo", votos: 0, representante: "" },
-                            { id: "g18p3", nombre: "El Jefe", votos: 0, representante: "" },
-                            { id: "g18p4", nombre: "Sar", votos: 0, representante: "" }
-                        ]
-                    },
-                    {
-                        id: "g19", nombre: "Humanos 2: Familia y Agencia",
-                        participantes: [
-                            { id: "g19p1", nombre: "Junior", votos: 0, representante: "" },
-                            { id: "g19p2", nombre: "Esposa de Astrobola", votos: 0, representante: "" },
-                            { id: "g19p3", nombre: "PlayerRound", votos: 0, representante: "" },
-                            { id: "g19p4", nombre: "La NASA", votos: 0, representante: "" }
-                        ]
-                    },
-                    {
-                        id: "g20", nombre: "Naciones: Países Terrícolas",
-                        participantes: [
-                            { id: "g20p1", nombre: "EEUU / Sr. América", votos: 0, representante: "" },
-                            { id: "g20p2", nombre: "Rusia", votos: 0, representante: "" },
-                            { id: "g20p3", nombre: "Japón", votos: 0, representante: "" },
-                            { id: "g20p4", nombre: "Canadá", votos: 0, representante: "" }
-                        ]
-                    },
-                    {
-                        id: "g21", nombre: "Devoradores: Reyes del Vacío",
-                        participantes: [
-                            { id: "g21p1", nombre: "TON 618", votos: 0, representante: "@PatriciaFlores-kx2vq" },
-                            { id: "g21p2", nombre: "Sagitario A*", votos: 0, representante: "" },
-                            { id: "g21p3", nombre: "Phoenix A", votos: 0, representante: "" },
-                            { id: "g21p4", nombre: "M87*", votos: 0, representante: "" }
-                        ]
-                    }
+                    { id: "g1", nombre: "Estrellas: Clásicos y Brillantes", participantes: [ { id: "g1p1", nombre: "El Sol", votos: 0, representante: "" }, { id: "g1p2", nombre: "Betelgeuse", votos: 0, representante: "" }, { id: "g1p3", nombre: "Alfa Centauri A", votos: 0, representante: "" }, { id: "g1p4", nombre: "Polaris", votos: 0, representante: "" } ] },
+                    { id: "g2", nombre: "Estrellas: Titanes y Vecinos", participantes: [ { id: "g2p1", nombre: "Stephenson 2-18", votos: 0, representante: "" }, { id: "g2p2", nombre: "Arturo / Arcturus", votos: 0, representante: "" }, { id: "g2p3", nombre: "Alfa Centauri B", votos: 0, representante: "" }, { id: "g2p4", nombre: "Próxima Centauri", votos: 0, representante: "" } ] },
+                    { id: "g3", nombre: "Estrellas: Monstruos del Cosmos", participantes: [ { id: "g3p1", nombre: "UY Scuti", votos: 0, representante: "" }, { id: "g3p2", nombre: "Antares", votos: 0, representante: "" }, { id: "g3p3", nombre: "Eta Carinae", votos: 0, representante: "" }, { id: "g3p4", nombre: "Aldebarán", votos: 0, representante: "" } ] },
+                    { id: "g4", nombre: "Rocosos: Íntimos del Sol", participantes: [ { id: "g4p1", nombre: "Mercurio", votos: 0, representante: "" }, { id: "g4p2", nombre: "Venus", votos: 0, representante: "" }, { id: "g4p3", nombre: "La Tierra", votos: 0, representante: "" }, { id: "g4p4", nombre: "Marte", votos: 0, representante: "" } ] },
+                    { id: "g5", nombre: "Gaseosos: Gigantes del Sistema", participantes: [ { id: "g5p1", nombre: "Júpiter", votos: 0, representante: "" }, { id: "g5p2", nombre: "Saturno", votos: 0, representante: "" }, { id: "g5p3", nombre: "Urano", votos: 0, representante: "" }, { id: "g5p4", nombre: "Neptuno", votos: 0, representante: "" } ] },
+                    { id: "g6", nombre: "Hipotéticos: Los Fantasmas", participantes: [ { id: "g6p1", nombre: "Planeta X", votos: 0, representante: "" }, { id: "g6p2", nombre: "Vulcano", votos: 0, representante: "" }, { id: "g6p3", nombre: "Proto-Tierra", votos: 0, representante: "" }, { id: "g6p4", nombre: "Theia / Tea", votos: 0, representante: "" } ] },
+                    { id: "g7", nombre: "Errantes: Vagabundos del Vacío", participantes: [ { id: "g7p1", nombre: "PSO J318.5-22", votos: 0, representante: "" }, { id: "g7p2", nombre: "WISE 0855−0714", votos: 0, representante: "" }, { id: "g7p3", nombre: "SIMP J01365663", votos: 0, representante: "" }, { id: "g7p4", nombre: "OGLE-2016-BLG", votos: 0, representante: "" } ] },
+                    { id: "g8", nombre: "Exoplanetas: Maravillas Lejanas", participantes: [ { id: "g8p1", nombre: "Kepler-186f", votos: 0, representante: "" }, { id: "g8p2", nombre: "Próxima Centauri b", votos: 0, representante: "" }, { id: "g8p3", nombre: "Matusalén", votos: 0, representante: "" }, { id: "g8p4", nombre: "WASP-12b", votos: 0, representante: "" } ] },
+                    { id: "g9", nombre: "Lunas 1: Las Gigantes", participantes: [ { id: "g9p1", nombre: "Ganímedes", votos: 0, representante: "" }, { id: "g9p2", nombre: "Titán", votos: 0, representante: "" }, { id: "g9p3", nombre: "Calisto", votos: 0, representante: "" }, { id: "g9p4", nombre: "Ío", votos: 0, representante: "" } ] },
+                    { id: "g10", nombre: "Lunas 2: Clásicas y Misteriosas", participantes: [ { id: "g10p1", nombre: "La Luna", votos: 0, representante: "" }, { id: "g10p2", nombre: "Europa", votos: 0, representante: "" }, { id: "g10p3", nombre: "Encélado", votos: 0, representante: "" }, { id: "g10p4", nombre: "Tritón", votos: 0, representante: "" } ] },
+                    { id: "g11", nombre: "Lunas 3: Escuadrón de Saturno", participantes: [ { id: "g11p1", nombre: "Rea", votos: 0, representante: "" }, { id: "g11p2", nombre: "Jápeto", votos: 0, representante: "" }, { id: "g11p3", nombre: "Dione", votos: 0, representante: "" }, { id: "g11p4", nombre: "Tetis", votos: 0, representante: "" } ] },
+                    { id: "g12", nombre: "Lunas 4: Gélidas y Marcianas", participantes: [ { id: "g12p1", nombre: "Titania", votos: 0, representante: "" }, { id: "g12p2", nombre: "Oberón", votos: 0, representante: "" }, { id: "g12p3", nombre: "Ariel", votos: 0, representante: "" }, { id: "g12p4", nombre: "Fobos", votos: 0, representante: "" } ] },
+                    { id: "g13", nombre: "Lunas 5: Esféricas Pequeñas", participantes: [ { id: "g13p1", nombre: "Mimas", votos: 0, representante: "" }, { id: "g13p2", nombre: "Miranda", votos: 0, representante: "" }, { id: "g13p3", nombre: "Caronte", votos: 0, representante: "" }, { id: "g13p4", nombre: "Proteo", votos: 0, representante: "" } ] },
+                    { id: "g14", nombre: "Lunas 6: Irregulares y Agencia", participantes: [ { id: "g14p1", nombre: "Deimos", votos: 0, representante: "" }, { id: "g14p2", nombre: "Tebe", votos: 0, representante: "" }, { id: "g14p3", nombre: "Calícore", votos: 0, representante: "" }, { id: "g14p4", nombre: "La NASA", votos: 0, representante: "" } ] },
+                    { id: "g15", nombre: "Enanos 1: Reyes y Destronado", participantes: [ { id: "g15p1", nombre: "Plutón", votos: 0, representante: "" }, { id: "g15p2", nombre: "Ceres", votos: 0, representante: "" }, { id: "g15p3", nombre: "Eris", votos: 0, representante: "" }, { id: "g15p4", nombre: "Makemake", votos: 0, representante: "" } ] },
+                    { id: "g16", nombre: "Enanos 2: Extraños y Lejanos", participantes: [ { id: "g16p1", nombre: "Haumea", votos: 0, representante: "" }, { id: "g16p2", nombre: "Sedna", votos: 0, representante: "" }, { id: "g16p3", nombre: "Gonggong", votos: 0, representante: "" }, { id: "g16p4", nombre: "Quaoar", votos: 0, representante: "" } ] },
+                    { id: "g17", nombre: "Humanos 1: Protagonistas", participantes: [ { id: "g17p1", nombre: "Astrobola", votos: 0, representante: "" }, { id: "g17p2", nombre: "Cosmo", votos: 0, representante: "" }, { id: "g17p3", nombre: "El Jefe de Astrobola", votos: 0, representante: "" }, { id: "g17p4", nombre: "Sar", votos: 0, representante: "" } ] },
+                    { id: "g18", nombre: "Humanos y Naciones: Familia y Potencias", participantes: [ { id: "g18p1", nombre: "Junior", votos: 0, representante: "" }, { id: "g18p2", nombre: "Esposa de Astrobola", votos: 0, representante: "" }, { id: "g18p3", nombre: "Rusia", votos: 0, representante: "" }, { id: "g18p4", nombre: "Canadá", votos: 0, representante: "" } ] },
+                    { id: "g19", nombre: "Devoradores: Reyes del Vacío", participantes: [ { id: "g19p1", nombre: "TON 618", votos: 0, representante: "" }, { id: "g19p2", nombre: "Sagitario A*", votos: 0, representante: "" }, { id: "g19p3", nombre: "Phoenix A", votos: 0, representante: "" }, { id: "g19p4", nombre: "M87*", votos: 0, representante: "" } ] }
                 ]
             };
         }
-
-        let torneoGalactico = {};
 
         function inicializarFirebaseListener() {
             docRef.onSnapshot((doc) => {
@@ -526,18 +314,11 @@
                     guardarDatosEnNube();
                 }
                 renderizarApp();
-            }, (error) => {
-                console.error("Error al conectar con Firestore: ", error);
-            });
+            }, (error) => console.error("Error al conectar con Firestore: ", error));
         }
 
         function guardarDatosEnNube() {
-            docRef.set(torneoGalactico).then(() => {
-                console.log("⚡ Datos sincronizados en la nube de Firebase");
-            }).catch((err) => {
-                console.error("Error al guardar en Firebase: ", err);
-                alert("⚠️ Operación rechazada: No tienes permisos de escritura.");
-            });
+            docRef.set(torneoGalactico).then(() => console.log("⚡ Datos guardados en Firestore")).catch((err) => alert("⚠️ Sin permisos de guardado."));
         }
 
         function cambiarModoVista(modo) {
@@ -547,26 +328,91 @@
             renderizarApp();
         }
 
+        /* ----------------------------------------------------
+           LÓGICA MATEMÁTICA: PUNTOS TOTALES Y ESTADOS
+        ---------------------------------------------------- */
+        function calcularEstadisticasGlobales(torneo) {
+            let stats = {};
+            
+            // 1. Sumar Fase de Grupos
+            torneo.grupos.forEach(g => {
+                let totalG = g.participantes.reduce((sum, p) => sum + p.votos, 0);
+                g.participantes.forEach(p => {
+                    let pts = totalG > 0 ? Math.round((p.votos / totalG) * 1000) : 0;
+                    stats[p.id] = { 
+                        ...p, grupoNombre: g.nombre, puntosTotales: pts,
+                        estado: torneo.faseActual === "grupos" ? "En competencia (Grupos)" : "Eliminado en Fase de Grupos"
+                    };
+                });
+            });
+
+            // 2. Sumar Fases Eliminatorias si ya cerraron los grupos
+            if (torneo.faseActual === "llaves") {
+                torneo.clasificados32.forEach(p => { if(stats[p.id]) stats[p.id].estado = "En competencia (16avos)"; });
+
+                const rondas = [32, 16, 8, 4, 2];
+                let perdedoresSemis = [];
+                
+                rondas.forEach(r => {
+                    if (torneo.llaves[`ronda${r}`]) {
+                        torneo.llaves[`ronda${r}`].forEach(d => {
+                            let totalD = d.votosP1 + d.votosP2;
+                            let ptsP1 = totalD > 0 ? Math.round((d.votosP1 / totalD) * 1000) : 0;
+                            let ptsP2 = totalD > 0 ? Math.round((d.votosP2 / totalD) * 1000) : 0;
+                            
+                            if (stats[d.p1.id]) stats[d.p1.id].puntosTotales += ptsP1;
+                            if (stats[d.p2.id]) stats[d.p2.id].puntosTotales += ptsP2;
+
+                            if (d.ganador) {
+                                let perdedorId = d.ganador.id === d.p1.id ? d.p2.id : d.p1.id;
+                                let ganadorId = d.ganador.id;
+                                
+                                if (r === 32) stats[perdedorId].estado = "Eliminado en 16avos";
+                                else if (r === 16) stats[perdedorId].estado = "Eliminado en Octavos";
+                                else if (r === 8) stats[perdedorId].estado = "Eliminado en Cuartos";
+                                else if (r === 4) perdedoresSemis.push(stats[perdedorId]);
+                                else if (r === 2) {
+                                    stats[perdedorId].estado = "🥈 2.º Lugar (Subcampeón)";
+                                    stats[ganadorId].estado = "👑 CAMPEÓN ABSOLUTO";
+                                }
+
+                                if (r > 2) {
+                                    let nomSig = r===32 ? "Octavos" : r===16 ? "Cuartos" : r===8 ? "Semifinales" : "Final";
+                                    stats[ganadorId].estado = `En competencia (${nomSig})`;
+                                }
+                            } else {
+                                let nomAct = r===32 ? "16avos" : r===16 ? "Octavos" : r===8 ? "Cuartos" : r===4 ? "Semifinales" : "Final";
+                                if(stats[d.p1.id]) stats[d.p1.id].estado = `En competencia (${nomAct})`;
+                                if(stats[d.p2.id]) stats[d.p2.id].estado = `En competencia (${nomAct})`;
+                            }
+                        });
+                    }
+                });
+
+                // Determinar 3.er y 4.º lugar por puntos acumulados
+                if (perdedoresSemis.length === 2) {
+                    perdedoresSemis.sort((a,b) => b.puntosTotales - a.puntosTotales);
+                    perdedoresSemis[0].estado = "🥉 3.er Lugar";
+                    perdedoresSemis[1].estado = "Eliminado en Semifinales (4.º Lugar)";
+                }
+            }
+            return stats;
+        }
+
+        /* ----------------------------------------------------
+           RENDERIZADO Y ESTRUCTURA DE LA PÁGINA
+        ---------------------------------------------------- */
         function renderizarApp() {
             const panelAdmin = document.getElementById("panel-admin");
             const btnCerrar = document.getElementById("btn-cerrar-fase");
-            const selectorVistas = document.getElementById("selector-vistas");
             
             panelAdmin.style.display = isAdmin ? "flex" : "none";
 
             if (torneoGalactico.faseActual === "grupos") {
-                selectorVistas.style.display = "flex";
-                document.getElementById("titulo-estado").innerText = isAdmin ? "Fase de Grupos - MODO ADMINISTRADOR" : "Fase de Grupos - Ranking en Vivo";
-                document.getElementById("desc-estado").innerText = "Sigue en vivo la puntuación de cada participante. Los datos se actualizan automáticamente desde la nube.";
+                document.getElementById("titulo-estado").innerText = isAdmin ? "Fase de Grupos - ADMIN" : "Fase de Grupos - En Vivo";
                 btnCerrar.innerText = "🚀 CERRAR GRUPOS Y CLASIFICAR (Top 32)";
-
-                if (modoVista === "grupos") {
-                    renderizarGrupos();
-                } else {
-                    renderizarListaGlobal84();
-                }
+                btnCerrar.style.display = "block";
             } else {
-                selectorVistas.style.display = "none";
                 if (torneoGalactico.campeon) {
                     document.getElementById("titulo-estado").innerText = "🏆 ¡EL TORNEO HA FINALIZADO!";
                     btnCerrar.style.display = "none";
@@ -575,85 +421,138 @@
                     btnCerrar.innerText = "⚔️ CERRAR RONDA Y AVANZAR GANADORES";
                     btnCerrar.style.display = "block";
                 }
-                renderizarLlaves();
             }
+
+            if (modoVista === "grupos") renderizarHistorialFases();
+            else renderizarListaGlobal76();
         }
 
-        function getRepHtml(p, gId) {
-            if (isAdmin) {
-                return `<input type="text" class="input-rep" value="${p.representante || ''}" placeholder="Rep: @Usuario" data-grupo="${gId}" data-pid="${p.id}">`;
-            } else {
-                return p.representante ? `<span class="rep-tag">🛡️ Rep: ${p.representante}</span>` : '';
-            }
+        function getClaseEstado(estadoStr) {
+            if (estadoStr.includes("En competencia")) return "estado-competencia";
+            if (estadoStr.includes("Lugar") || estadoStr.includes("CAMPEÓN")) return "estado-podio";
+            return "estado-eliminado";
         }
 
-        function renderizarGrupos() {
+        function getRepHtml(p) {
+            if (isAdmin) return `<input type="text" class="input-rep" value="${p.representante || ''}" placeholder="Rep: @Usuario" data-grupo="${p.grupoId || ''}" data-pid="${p.id}">`;
+            return p.representante ? `<span class="rep-tag">🛡️ Rep: ${p.representante}</span>` : '';
+        }
+
+        // VISTA HISTORIAL
+        function renderizarHistorialFases() {
             const contenedor = document.getElementById("contenedor-principal");
-            let html = `<div class="grid-grupos">`;
+            let html = ``;
+
+            // 1. Campeón
+            if (torneoGalactico.campeon) {
+                html += `
+                <div class="contenedor-ronda" style="border-color: #ffe600; box-shadow: 0 0 20px #ffe600;">
+                    <h2 class="titulo-ronda" style="font-size: 40px;">👑 CAMPEÓN ABSOLUTO 👑</h2>
+                    <div style="text-align: center;">
+                        <h2 style="color: #fff; margin-top: 15px; font-size: 40px;">${torneoGalactico.campeon.nombre}</h2>
+                    </div>
+                </div>`;
+            }
+
+            // 2. Llaves Eliminatorias (De la Final hacia los 16avos)
+            const rondas = [2, 4, 8, 16, 32];
+            rondas.forEach(r => {
+                if (torneoGalactico.llaves[`ronda${r}`]) {
+                    const isActiva = (torneoGalactico.rondaLlavesActiva === r && !torneoGalactico.campeon);
+                    const nombreRonda = r === 2 ? "GRAN FINAL" : r === 4 ? "SEMIFINALES" : r === 8 ? "CUARTOS DE FINAL" : r === 16 ? "OCTAVOS DE FINAL" : "DIECISEISAVOS DE FINAL";
+                    
+                    html += `
+                    <div class="contenedor-ronda" style="opacity: ${isActiva ? '1' : '0.6'};">
+                        <h2 class="titulo-ronda">${nombreRonda} ${isActiva ? "(ACTIVA)" : "(FINALIZADA)"}</h2>
+                        <div class="grid-llaves">`;
+                    
+                    torneoGalactico.llaves[`ronda${r}`].forEach(llave => {
+                        let totalDuelo = llave.votosP1 + llave.votosP2;
+                        let pts1 = totalDuelo > 0 ? Math.round((llave.votosP1 / totalDuelo)*1000) : 0;
+                        let pts2 = totalDuelo > 0 ? Math.round((llave.votosP2 / totalDuelo)*1000) : 0;
+                        
+                        const colorP1 = llave.ganador && llave.ganador.id === llave.p1.id ? "#00ff22" : "#fff";
+                        const colorP2 = llave.ganador && llave.ganador.id === llave.p2.id ? "#00ff22" : "#fff";
+
+                        const cajaVotosP1 = isAdmin && isActiva 
+                            ? `<div class="caja-votos"><input type="number" class="input-votos" value="${llave.votosP1}" data-tipo="llave" data-ronda="${r}" data-llave="${llave.id}" data-target="votosP1"><span class="preview-puntos">${pts1} pts</span></div>`
+                            : `<div class="caja-votos"><span class="preview-puntos">${pts1} pts</span><span class="texto-votos-reales">(${llave.votosP1} votos)</span></div>`;
+
+                        const cajaVotosP2 = isAdmin && isActiva 
+                            ? `<div class="caja-votos"><input type="number" class="input-votos" value="${llave.votosP2}" data-tipo="llave" data-ronda="${r}" data-llave="${llave.id}" data-target="votosP2"><span class="preview-puntos">${pts2} pts</span></div>`
+                            : `<div class="caja-votos"><span class="preview-puntos">${pts2} pts</span><span class="texto-votos-reales">(${llave.votosP2} votos)</span></div>`;
+
+                        html += `
+                            <div class="llave-duelo">
+                                <div class="vs-badge">VS</div>
+                                <div class="fila-participante" style="margin-bottom: 25px;">
+                                    <div class="info-participante"><span class="nombre" style="color: ${colorP1}">${llave.p1.nombre}</span></div>
+                                    ${cajaVotosP1}
+                                </div>
+                                <div class="fila-participante" style="margin-bottom: 0;">
+                                    <div class="info-participante"><span class="nombre" style="color: ${colorP2}">${llave.p2.nombre}</span></div>
+                                    ${cajaVotosP2}
+                                </div>
+                            </div>`;
+                    });
+                    html += `</div></div>`;
+                }
+            });
+
+            // 3. Fase de Grupos
+            const isGruposActiva = torneoGalactico.faseActual === "grupos";
+            html += `<div class="contenedor-ronda" style="opacity: ${isGruposActiva ? '1' : '0.6'}; border-color: #00ffb3;">
+                     <h2 class="titulo-ronda">FASE DE GRUPOS ${isGruposActiva ? "(ACTIVA)" : "(FINALIZADA)"}</h2><div class="grid-grupos">`;
 
             torneoGalactico.grupos.forEach(grupo => {
-                const ordenados = [...grupo.participantes].sort((a, b) => b.votos - a.votos);
+                let totalG = grupo.participantes.reduce((sum, p) => sum + p.votos, 0);
+                
+                let ord = grupo.participantes.map(p => ({ ...p, pts: totalG > 0 ? Math.round((p.votos/totalG)*1000) : 0 }))
+                                             .sort((a,b) => b.pts - a.pts);
+
                 html += `<div class="tarjeta"><h3 class="titulo-tarjeta">${grupo.nombre}</h3>`;
-
-                ordenados.forEach((p, idx) => {
-                    const pos = idx + 1;
-                    const inputHtml = isAdmin 
-                        ? `<input type="number" class="input-votos" min="0" value="${p.votos}" data-tipo="grupo" data-grupo="${grupo.id}" data-pid="${p.id}">`
-                        : `<span class="texto-votos">${p.votos} pts</span>`;
+                ord.forEach((p, idx) => {
+                    const cajaVotos = (isAdmin && isGruposActiva)
+                        ? `<div class="caja-votos"><input type="number" class="input-votos" value="${p.votos}" data-tipo="grupo" data-grupo="${grupo.id}" data-pid="${p.id}"><span class="preview-puntos">${p.pts} pts</span></div>`
+                        : `<div class="caja-votos"><span class="preview-puntos">${p.pts} pts</span><span class="texto-votos-reales">(${p.votos} votos)</span></div>`;
                     
-                    const repHtml = getRepHtml(p, grupo.id);
-
                     html += `
                         <div class="fila-participante">
-                            <span class="pos-badge pos-${pos}">${pos}º</span>
+                            <span class="pos-badge pos-${idx+1}">${idx+1}º</span>
                             <div class="info-participante">
                                 <div class="nombre-contenedor">
                                     <span class="nombre">${p.nombre}</span>
-                                    ${repHtml}
+                                    ${getRepHtml({...p, grupoId: grupo.id})}
                                 </div>
                             </div>
-                            ${inputHtml}
+                            ${cajaVotos}
                         </div>`;
                 });
                 html += `</div>`;
             });
 
-            html += `</div>`;
+            html += `</div></div>`;
             contenedor.innerHTML = html;
-            if (isAdmin) {
-                asignarEventosInputsVotos();
-                asignarEventosInputsReps();
-            }
+            if (isAdmin) { asignarEventosInputsVotos(); asignarEventosInputsReps(); }
         }
 
-        function renderizarListaGlobal84() {
+        // VISTA LISTA GLOBAL: 76 participantes
+        function renderizarListaGlobal76() {
             const contenedor = document.getElementById("contenedor-principal");
-            
-            let listaTodos = [];
-            torneoGalactico.grupos.forEach(grupo => {
-                grupo.participantes.forEach(p => {
-                    listaTodos.push({ ...p, grupoNombre: grupo.nombre, grupoId: grupo.id });
-                });
-            });
+            const stats = calcularEstadisticasGlobales(torneoGalactico);
+            let listaTodos = Object.values(stats);
 
-            listaTodos.sort((a, b) => b.votos - a.votos);
+            listaTodos.sort((a, b) => b.puntosTotales - a.puntosTotales);
 
             let html = `
             <div class="contenedor-lista-global">
-                <h3 class="titulo-tarjeta" style="font-size: 26px; margin-bottom: 20px;">RANKING GENERAL - 84 COMPETIDORES</h3>
+                <h3 class="titulo-tarjeta" style="font-size: 26px; margin-bottom: 20px;">RANKING GENERAL - 76 COMPETIDORES</h3>
             `;
 
             listaTodos.forEach((p, idx) => {
                 const pos = idx + 1;
-                let claseBadge = "pos-resto";
-                if (pos <= 21) claseBadge = "pos-top21";
-                else if (pos <= 32) claseBadge = "pos-top32";
-
-                const inputHtml = isAdmin 
-                    ? `<input type="number" class="input-votos" min="0" value="${p.votos}" data-tipo="grupo" data-grupo="${p.grupoId}" data-pid="${p.id}">`
-                    : `<span class="texto-votos">${p.votos} pts</span>`;
-                
-                const repHtml = getRepHtml(p, p.grupoId);
+                let claseBadge = pos <= 19 ? "pos-top19" : pos <= 32 ? "pos-top32" : "pos-resto";
+                let claseEstado = getClaseEstado(p.estado);
 
                 html += `
                     <div class="fila-participante">
@@ -664,96 +563,26 @@
                                     <span class="nombre">${p.nombre}</span>
                                     <span class="tag-grupo">(${p.grupoNombre})</span>
                                 </div>
-                                ${repHtml}
+                                <span class="estado-tag ${claseEstado}">${p.estado}</span>
+                                ${getRepHtml(p)}
                             </div>
                         </div>
-                        ${inputHtml}
+                        <div class="caja-votos"><span class="preview-puntos">${p.puntosTotales} pts</span></div>
                     </div>`;
             });
 
             html += `</div>`;
             contenedor.innerHTML = html;
-            if (isAdmin) {
-                asignarEventosInputsVotos();
-                asignarEventosInputsReps();
-            }
+            if (isAdmin) asignarEventosInputsReps();
         }
 
-        function renderizarLlaves() {
-            const contenedor = document.getElementById("contenedor-principal");
-            let html = ``;
-
-            if (torneoGalactico.campeon) {
-                html += `
-                <div class="contenedor-ronda" style="border-color: #ffe600; box-shadow: 0 0 20px #ffe600;">
-                    <h2 class="titulo-ronda" style="font-size: 40px;">👑 CAMPEÓN ABSOLUTO 👑</h2>
-                    <div style="text-align: center;">
-                        <h2 style="color: #fff; margin-top: 15px; font-size: 40px;">${torneoGalactico.campeon.nombre}</h2>
-                        ${torneoGalactico.campeon.representante ? `<div class="rep-tag" style="font-size:22px; margin-top:10px;">🛡️ Rep: ${torneoGalactico.campeon.representante}</div>` : ''}
-                    </div>
-                </div>`;
-            }
-
-            const rondasPosibles = [1, 2, 4, 8, 16, 32];
-            rondasPosibles.forEach(r => {
-                if (torneoGalactico.llaves[`ronda${r}`]) {
-                    const nombreRonda = r === 2 ? "GRAN FINAL" : r === 4 ? "SEMIFINALES" : r === 8 ? "CUARTOS DE FINAL" : r === 16 ? "OCTAVOS DE FINAL" : "DIECISEISAVOS DE FINAL";
-                    const isActiva = (torneoGalactico.rondaLlavesActiva === r && !torneoGalactico.campeon);
-                    const opacity = isActiva ? "1" : "0.5";
-
-                    html += `
-                    <div class="contenedor-ronda" style="opacity: ${opacity};">
-                        <h2 class="titulo-ronda">${nombreRonda} ${isActiva ? "(ACTIVA)" : "(FINALIZADA)"}</h2>
-                        <div class="grid-llaves">`;
-                    
-                    torneoGalactico.llaves[`ronda${r}`].forEach(llave => {
-                        const htmlVotosP1 = (isAdmin && isActiva) 
-                            ? `<input type="number" class="input-votos" value="${llave.votosP1}" data-tipo="llave" data-ronda="${r}" data-llave="${llave.id}" data-target="votosP1">`
-                            : `<span class="texto-votos">${llave.votosP1}</span>`;
-                            
-                        const htmlVotosP2 = (isAdmin && isActiva) 
-                            ? `<input type="number" class="input-votos" value="${llave.votosP2}" data-tipo="llave" data-ronda="${r}" data-llave="${llave.id}" data-target="votosP2">`
-                            : `<span class="texto-votos">${llave.votosP2}</span>`;
-
-                        const colorP1 = llave.ganador && llave.ganador.id === llave.p1.id ? "#00ff22" : "#fff";
-                        const colorP2 = llave.ganador && llave.ganador.id === llave.p2.id ? "#00ff22" : "#fff";
-
-                        const repP1 = llave.p1.representante ? `<span class="rep-tag">🛡️ Rep: ${llave.p1.representante}</span>` : '';
-                        const repP2 = llave.p2.representante ? `<span class="rep-tag">🛡️ Rep: ${llave.p2.representante}</span>` : '';
-
-                        html += `
-                            <div class="llave-duelo">
-                                <div class="vs-badge">VS</div>
-                                <div class="fila-participante" style="margin-bottom: 25px;">
-                                    <div class="info-participante">
-                                        <div class="nombre-contenedor">
-                                            <span class="nombre" style="color: ${colorP1}">${llave.p1.nombre}</span>
-                                            ${repP1}
-                                        </div>
-                                    </div>
-                                    ${htmlVotosP1}
-                                </div>
-                                <div class="fila-participante" style="margin-bottom: 0;">
-                                    <div class="info-participante">
-                                        <div class="nombre-contenedor">
-                                            <span class="nombre" style="color: ${colorP2}">${llave.p2.nombre}</span>
-                                            ${repP2}
-                                        </div>
-                                    </div>
-                                    ${htmlVotosP2}
-                                </div>
-                            </div>
-                        `;
-                    });
-                    html += `</div></div>`;
-                }
-            });
-            contenedor.innerHTML = html;
-            if (isAdmin) asignarEventosInputsVotos();
-        }
-
+        /* ----------------------------------------------------
+           EVENTOS: CÁLCULO EN VIVO Y GUARDADO EN LA NUBE
+        ---------------------------------------------------- */
         function asignarEventosInputsVotos() {
             document.querySelectorAll(".input-votos").forEach(input => {
+                input.addEventListener("input", (e) => actualizarPuntosVisuales(e.target));
+                
                 input.addEventListener("change", (e) => {
                     let val = parseInt(e.target.value) || 0;
                     if (val < 0) val = 0;
@@ -764,18 +593,33 @@
                         const gId = e.target.getAttribute("data-grupo");
                         const pId = e.target.getAttribute("data-pid");
                         const grupo = torneoGalactico.grupos.find(g => g.id === gId);
-                        const part = grupo.participantes.find(p => p.id === pId);
-                        part.votos = val;
-                        guardarDatosEnNube();
+                        grupo.participantes.find(p => p.id === pId).votos = val;
                     } else if (tipo === "llave") {
                         const r = e.target.getAttribute("data-ronda");
                         const lId = e.target.getAttribute("data-llave");
                         const target = e.target.getAttribute("data-target");
-                        const llave = torneoGalactico.llaves[`ronda${r}`].find(l => l.id === lId);
-                        llave[target] = val;
-                        guardarDatosEnNube();
+                        torneoGalactico.llaves[`ronda${r}`].find(l => l.id === lId)[target] = val;
                     }
+                    guardarDatosEnNube();
                 });
+            });
+        }
+
+        function actualizarPuntosVisuales(inputModificado) {
+            const tipo = inputModificado.getAttribute("data-tipo");
+            let inputsRelacionados = [];
+            
+            if(tipo === "grupo") {
+                inputsRelacionados = document.querySelectorAll(`.input-votos[data-grupo="${inputModificado.getAttribute('data-grupo')}"]`);
+            } else {
+                inputsRelacionados = document.querySelectorAll(`.input-votos[data-llave="${inputModificado.getAttribute('data-llave')}"]`);
+            }
+
+            let total = 0;
+            inputsRelacionados.forEach(inp => total += (parseInt(inp.value)||0));
+            inputsRelacionados.forEach(inp => {
+                let pts = total > 0 ? Math.round(((parseInt(inp.value)||0) / total) * 1000) : 0;
+                inp.parentElement.querySelector(".preview-puntos").innerText = `${pts} pts`;
             });
         }
 
@@ -786,44 +630,60 @@
                     const pId = e.target.getAttribute("data-pid");
                     const grupo = torneoGalactico.grupos.find(g => g.id === gId);
                     if (grupo) {
-                        const part = grupo.participantes.find(p => p.id === pId);
-                        if (part) {
-                            part.representante = e.target.value;
-                            guardarDatosEnNube();
-                        }
+                        grupo.participantes.find(p => p.id === pId).representante = e.target.value;
+                        guardarDatosEnNube();
                     }
                 });
             });
         }
 
-        function botonPrincipalAccion() {
-            if (torneoGalactico.faseActual === "grupos") {
-                cerrarFaseGrupos();
-            } else {
-                avanzarRondaLlaves();
-            }
-        }
+        /* ----------------------------------------------------
+           CERRAR FASE: CIERRE DE GRUPOS Y DESEMPATES
+        ---------------------------------------------------- */
+        document.getElementById("btn-cerrar-fase").addEventListener("click", () => {
+            if (torneoGalactico.faseActual === "grupos") cerrarFaseGrupos();
+            else avanzarRondaLlaves();
+        });
 
         function cerrarFaseGrupos() {
             let directos = [];
             let todosLosSegundos = [];
 
             torneoGalactico.grupos.forEach(grupo => {
-                const ord = [...grupo.participantes].sort((a, b) => b.votos - a.votos);
-                directos.push(ord[0]);
-                if (ord.length > 1) todosLosSegundos.push(ord[1]);
+                let totalG = grupo.participantes.reduce((sum, p) => sum + p.votos, 0);
+                
+                let calculados = grupo.participantes.map(p => ({
+                    ...p, 
+                    ptsCalc: totalG > 0 ? Math.round((p.votos / totalG) * 1000) : 0
+                })).sort((a, b) => b.ptsCalc - a.ptsCalc);
+                
+                if(calculados.length > 1) {
+                    calculados[1].brecha = calculados[1].ptsCalc - (calculados.length > 2 ? calculados[2].ptsCalc : 0);
+                }
+
+                directos.push(calculados[0]);
+                if (calculados.length > 1) todosLosSegundos.push(calculados[1]);
             });
 
-            todosLosSegundos.sort((a, b) => b.votos - a.votos);
-            const mejoresSegundos = todosLosSegundos.slice(0, 11);
+            // Ordenar los 2dos lugares por Puntos y luego por Brecha sobre el 3ero
+            todosLosSegundos.sort((a, b) => {
+                if(b.ptsCalc !== a.ptsCalc) return b.ptsCalc - a.ptsCalc;
+                return b.brecha - a.brecha; 
+            });
 
-            const finalistas = [...directos, ...mejoresSegundos];
-            if (finalistas.length !== 32) return alert("Error: No se lograron 32 finalistas.");
+            // Con 19 grupos: 19 primeros + 13 mejores segundos = 32 clasificados
+            const mejoresSegundos = todosLosSegundos.slice(0, 13);
 
-            if (confirm("🌌 FASE DE GRUPOS CONCLUIDA.\n\nSe seleccionaron 21 líderes y 11 mejores segundos.\n¿Generar llaves eliminatorias?")) {
-                torneoGalactico.clasificados32 = finalistas;
+            if (directos.length + mejoresSegundos.length !== 32) return alert("Error: No se lograron 32 finalistas.");
+
+            if (confirm("🌌 FASE DE GRUPOS CONCLUIDA.\nSe calcularon los puntos normalizados. ¿Generar llaves eliminatorias aleatorias?")) {
+                const finalistasLimpios = [...directos, ...mejoresSegundos].map(f => {
+                    let clean = {...f}; delete clean.ptsCalc; delete clean.brecha; return clean;
+                });
+                
+                torneoGalactico.clasificados32 = finalistasLimpios;
                 torneoGalactico.faseActual = "llaves";
-                generarPrimeraRondaLlaves(finalistas);
+                generarPrimeraRondaLlaves(finalistasLimpios);
             }
         }
 
@@ -840,9 +700,7 @@
             const mezclados = shuffle(lista32);
             const llaves32 = [];
             for (let i = 0; i < 32; i += 2) {
-                llaves32.push({
-                    id: `L32-${i/2}`, p1: mezclados[i], p2: mezclados[i+1], votosP1: 0, votosP2: 0, ganador: null
-                });
+                llaves32.push({ id: `L32-${i/2}`, p1: mezclados[i], p2: mezclados[i+1], votosP1: 0, votosP2: 0, ganador: null });
             }
             torneoGalactico.llaves["ronda32"] = llaves32;
             torneoGalactico.rondaLlavesActiva = 32;
@@ -854,19 +712,14 @@
             const duelos = torneoGalactico.llaves[`ronda${rActiva}`];
 
             for (let duelo of duelos) {
-                if (duelo.votosP1 === duelo.votosP2) {
-                    alert(`⚠️ EMPATE DETECTADO en el duelo de ${duelo.p1.nombre} vs ${duelo.p2.nombre}.\nDebes romper el empate antes de avanzar.`);
-                    return;
+                if (duelo.votosP1 === duelo.votosP2 && (duelo.votosP1 > 0 || duelo.votosP2 > 0)) {
+                    return alert(`⚠️ EMPATE DETECTADO entre ${duelo.p1.nombre} y ${duelo.p2.nombre}.`);
                 }
             }
 
             if (!confirm(`¿Confirmar cierre de la Ronda de ${rActiva} y avanzar a los ganadores?`)) return;
 
-            const ganadores = duelos.map(d => {
-                d.ganador = d.votosP1 > d.votosP2 ? d.p1 : d.p2;
-                return d.ganador;
-            });
-
+            const ganadores = duelos.map(d => { d.ganador = d.votosP1 > d.votosP2 ? d.p1 : d.p2; return d.ganador; });
             const sigRondaNum = rActiva / 2;
 
             if (sigRondaNum < 1) {
@@ -875,30 +728,23 @@
             } else {
                 const nuevasLlaves = [];
                 for (let i = 0; i < ganadores.length; i += 2) {
-                    nuevasLlaves.push({
-                        id: `L${sigRondaNum}-${i/2}`, p1: ganadores[i], p2: ganadores[i+1], votosP1: 0, votosP2: 0, ganador: null
-                    });
+                    nuevasLlaves.push({ id: `L${sigRondaNum}-${i/2}`, p1: ganadores[i], p2: ganadores[i+1], votosP1: 0, votosP2: 0, ganador: null });
                 }
                 torneoGalactico.llaves[`ronda${sigRondaNum}`] = nuevasLlaves;
                 torneoGalactico.rondaLlavesActiva = sigRondaNum;
             }
-
             guardarDatosEnNube();
         }
 
-        function resetearTorneo() {
-            if (confirm("⚠️ ¡ADVERTENCIA CRÍTICA!\n¿Estás absolutamente seguro de querer borrar todos los datos del torneo en la NUBE? Se borrarán todos los votos y se reiniciará la Fase de Grupos.")) {
+        document.getElementById("btn-resetear").addEventListener("click", () => {
+            if (confirm("⚠️ ¡ADVERTENCIA CRÍTICA!\n¿Estás seguro de querer borrar TODO?")) {
                 torneoGalactico = generarEstructuraBase();
                 guardarDatosEnNube();
-                alert("Torneo reiniciado exitosamente en la Nube 🚀.");
             }
-        }
+        });
 
         document.addEventListener("DOMContentLoaded", () => {
             inicializarFirebaseListener();
-
-            document.getElementById("btn-cerrar-fase").addEventListener("click", botonPrincipalAccion);
-            document.getElementById("btn-resetear").addEventListener("click", resetearTorneo);
         });
     </script>
 </body>

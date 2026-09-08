@@ -250,7 +250,8 @@
 
     <hr>
     <h2 class="titulo-video"><strong><em>ÚLTIMO VIDEO DEL CANAL</em></strong></h2>
-    <iframe src="https://www.youtube.com/embed/ht9ibMAhodg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <!-- El reproductor inicia vacío para no cargar 2 veces. El script pondrá el video nuevo. -->
+    <iframe id="iframe-video" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     <hr>
 
     <ul>
@@ -301,9 +302,49 @@
     <hr>
     <p><strong>RIGELCRAFT STUDIO:</strong> <em>Creando historias entre las estrellas. 🚀</em></p>
     <p>© 2026 – Todos los derechos reservados.</p>
-	<p style="color: #00FF00;"><strong>Versión Actual:</strong> <span style="color: #00FF00;">2.2.0</span></p>
+	<p style="color: #00FF00;"><strong>Versión Actual:</strong> <span style="color: #00FF00;">2.3.1</span></p>
 
     <script>
+        // ==========================================
+        // 1. AUTOMATIZACIÓN DEL ÚLTIMO VIDEO (API OFICIAL YOUTUBE)
+        // ==========================================
+        document.addEventListener("DOMContentLoaded", () => {
+            const CHANNEL_ID = "UCyzAeU4uu4lcJDzkUd6Esnw"; 
+            const API_KEY = "AIzaSyBNr-hwGarQxNOKhcHkPm33egsmi4O3DgE"; 
+            const iframe = document.getElementById("iframe-video");
+            
+            const apiUrl = `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=1&type=video`;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    // Si ocurre un error, carga el video de respaldo silenciosamente
+                    if (data.error) {
+                        console.error("Error de API de YouTube:", data.error.message);
+                        iframe.src = "https://www.youtube.com/embed/ht9ibMAhodg";
+                        return;
+                    }
+
+                    if (data.items && data.items.length > 0) {
+                        const videoId = data.items[0].id.videoId;
+                        if (videoId) {
+                            iframe.src = `https://www.youtube.com/embed/${videoId}`;
+                        } else {
+                            iframe.src = "https://www.youtube.com/embed/ht9ibMAhodg";
+                        }
+                    } else {
+                        iframe.src = "https://www.youtube.com/embed/ht9ibMAhodg";
+                    }
+                })
+                .catch(error => {
+                    console.error("Error de red o conexión:", error);
+                    iframe.src = "https://www.youtube.com/embed/ht9ibMAhodg";
+                });
+        });
+
+        // ==========================================
+        // 2. FUNCIONAMIENTO DEL BUZÓN DE SUGERENCIAS
+        // ==========================================
         const form = document.getElementById("buzon-rigelcraft");
         const btnNuevo = document.getElementById("nuevo-mensaje");
         const btnEnviar = form.querySelector('button[type="submit"]');

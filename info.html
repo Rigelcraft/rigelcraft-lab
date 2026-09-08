@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +7,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Angkor&display=swap');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background-image: url("info.png");
@@ -38,25 +34,9 @@
             text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
         }
 
-        .breadcrumb a {
-            color: #00ff15;
-            text-decoration: underline;
-            font-weight: bold;
-            transition: 0.3s;
-            text-shadow: 0 0 5px #000;
-        }
-
-        .breadcrumb a:hover {
-            color: #fff;
-            text-shadow: 0 0 10px #00ff22, 0 0 20px #00ff0d;
-        }
-
-        .breadcrumb span {
-            color: #33ff00;
-            text-decoration: none;
-            font-weight: bold;
-            text-shadow: 0 0 5px #000;
-        }
+        .breadcrumb a { color: #00ff15; text-decoration: underline; font-weight: bold; transition: 0.3s; text-shadow: 0 0 5px #000; }
+        .breadcrumb a:hover { color: #fff; text-shadow: 0 0 10px #00ff22, 0 0 20px #00ff0d; }
+        .breadcrumb span { color: #33ff00; text-decoration: none; font-weight: bold; text-shadow: 0 0 5px #000; }
 
         .contenedor-mega-titulo {
             text-align: left;
@@ -92,43 +72,13 @@
             box-sizing: border-box;
         }
 
-        h3 {
-            color: #e6edf3;
-            font-size: 25px;
-            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
-            margin-left: 2%;
-            text-align: left;
-        }
+        h3, p { color: #e6edf3; margin-left: 2%; text-align: left; text-shadow: 0 0 4px #000; }
+        h3 { font-size: 25px; }
+        p { font-size: 22px; margin-top: 25px; }
 
-        p {
-            color: #e6edf3;
-            font-size: 22px;
-            text-shadow: 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000, 0 0 4px #000;
-            margin-left: 2%;
-            text-align: left;
-            margin-top: 25px;
-        }
+        .infografia-container { max-width: 80%; margin: 0 auto; padding: 20px; }
 
-        .infografia-container {
-            max-width: 80%  ;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .titulo-infografia {
-            font-family: 'Angkor', cursive;
-            font-size: clamp(30px, 8vw, 60px);
-            text-align: center;
-            color: #00ccff;
-            text-shadow: 0 0 10px #00ccff, 0 0 20px #0066aa;
-            margin: 30px 0;
-        }
-
-        .episodio {
-            margin-bottom: 20px;
-            border-radius: 15px;
-            overflow: hidden;
-        }
+        .episodio { margin-bottom: 20px; border-radius: 15px; overflow: hidden; }
 
         .episodio-header {
             padding: 18px 20px;
@@ -142,43 +92,14 @@
             border-left: 5px solid;
         }
 
-        .episodio-header:hover {
-            background: rgba(0, 204, 255, 0.15);
-        }
-
-        .episodio-titulo {
-            font-size: clamp(18px, 5vw, 24px);
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .episodio-numero {
-            color: #00ccff;
-        }
-
-        .episodio-emoji {
-            font-size: 28px;
-        }
-
-        .episodio-estado {
-            font-size: 14px;
-            padding: 4px 12px;
-            border-radius: 20px;
-            background: rgba(0,0,0,0.5);
-        }
-
-        .flecha {
-            font-size: 24px;
-            transition: transform 0.3s;
-            color: #00ccff;
-        }
-
-        .episodio.abierto .flecha {
-            transform: rotate(180deg);
-        }
+        .episodio-header:hover { background: rgba(0, 204, 255, 0.15); }
+        .episodio-titulo { font-size: clamp(18px, 5vw, 24px); font-weight: bold; display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .episodio-numero { color: #00ccff; }
+        .episodio-emoji { font-size: 28px; }
+        .episodio-estado { font-size: 14px; padding: 4px 12px; border-radius: 20px; background: rgba(0,0,0,0.5); }
+        
+        .flecha { font-size: 24px; transition: transform 0.3s; color: #00ccff; }
+        .episodio.abierto .flecha { transform: rotate(180deg); }
 
         .episodio-contenido {
             max-height: 0;
@@ -189,200 +110,47 @@
             margin-top: 5px;
         }
 
-        .episodio.abierto .episodio-contenido {
-            max-height: 1200px;
-            padding: 20px;
-        }
+        .episodio.abierto .episodio-contenido { max-height: 2500px; padding: 20px; overflow-y: auto;}
 
-        .categorias {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
+        .categorias { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+        .categoria { display: grid; grid-template-columns: 140px 1fr 60px; align-items: center; gap: 10px; }
+        
+        .categoria-nombre { font-size: 14px; font-weight: bold; color: #ddd; line-height: 1.3; }
+        .categoria-barra { background-color: #333; border-radius: 20px; height: 25px; overflow: hidden; width: 100%; }
+        .categoria-lleno { height: 100%; border-radius: 20px; text-align: center; color: white; font-size: 12px; line-height: 25px; font-weight: bold; transition: width 0.5s; }
+        .categoria-porcentaje { text-align: right; font-weight: bold; font-size: 14px; }
 
-        .categoria {
-            display: grid;
-            grid-template-columns: 140px 1fr 60px;
-            align-items: center;
-            gap: 0;
-        }
+        .total-container { margin: 20px 0; padding-top: 15px; border-top: 2px solid rgba(0,204,255,0.3); }
+        .total-label { font-size: 20px; font-weight: bold; margin-bottom: 10px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; color: white; }
+        .total-barra-fondo { background-color: #333; border-radius: 25px; height: 35px; overflow: hidden; }
+        .total-barra-lleno { height: 100%; border-radius: 25px; text-align: center; color: white; font-size: 16px; line-height: 35px; font-weight: bold; transition: width 0.5s; }
 
-        .categoria-nombre {
-            font-size: 14px;
-            font-weight: bold;
-            color: #ddd;
-            white-space: normal;
-            word-break: break-word;
-            line-height: 1.3;
-        }
+        .video-container { position: relative; width: 100%; padding-bottom: 56.25%; margin-top: 20px; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 10px; border: 2px solid #00ccff; }
+        
+        .mensaje-video { margin-top: 20px; padding: 15px; text-align: center; background: rgba(0,0,0,0.5); border-radius: 10px; font-weight: bold; font-size: 18px; }
+        .mensaje-video.proceso { color: #F57F17; border: 4px solid #F57F17; }
+        .mensaje-video.proximo { color: #D50000; border: 4px solid #D50000; }
 
-        .categoria-barra {
-            background-color: #333;
-            border-radius: 20px;
-            height: 25px;
-            overflow: hidden;
-            width: 100%;
-        }
-
-        .categoria-lleno {
-            height: 100%;
-            border-radius: 20px;
-            text-align: center;
-            color: white;
-            font-size: 12px;
-            line-height: 25px;
-            font-weight: bold;
-            transition: width 0.5s;
-            white-space: nowrap;
-            padding: 0 8px;
-        }
-
-        .categoria-porcentaje {
-            text-align: right;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .total-container {
-            margin: 20px 0;
-            padding-top: 15px;
-            border-top: 2px solid rgba(0,204,255,0.3);
-        }
-
-        .total-label {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 10px;
-            color: white;
-        }
-
-        .total-barra-fondo {
-            background-color: #333;
-            border-radius: 25px;
-            height: 35px;
-            overflow: hidden;
-        }
-
-        .total-barra-lleno {
-            height: 100%;
-            border-radius: 25px;
-            text-align: center;
-            color: white;
-            font-size: 16px;
-            line-height: 35px;
-            font-weight: bold;
-            transition: width 0.5s;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%;
-            margin-top: 20px;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 10px;
-            border: 2px solid #00ccff;
-        }
-
-        .mensaje-video {
-            margin-top: 20px;
-            padding: 15px;
-            text-align: center;
-            background: rgba(0,0,0,0.5);
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 18px;
-        }
-        .mensaje-video.terminado {
-            color: #00c853;
-            border: 4px solid #00c853;
-        }
-
-        .mensaje-video.proceso {
-            color: #F57F17;
-            border: 4px solid #F57F17;
-        }
-
-        .mensaje-video.proximo {
-            color: #D50000;
-            border: 4px solid #D50000;
-        }
+        /* ESTILOS DE MODO ADMINISTRADOR */
+        .admin-input-num { width: 60px; padding: 5px; background: #111; color: #00ff15; border: 1px solid #00ff15; border-radius: 5px; text-align: center; font-weight: bold; }
+        .admin-input-text { width: 100%; padding: 8px; background: #111; color: #fff; border: 1px solid #00ccff; border-radius: 5px; margin-top: 10px; }
+        .footer-admin { text-align: center; margin-top: 50px; }
+        .btn-toggle-admin { background: transparent; border: none; font-size: 24px; cursor: pointer; filter: grayscale(100%); transition: 0.3s; }
+        .btn-toggle-admin:hover { filter: grayscale(0%); transform: scale(1.2); }
 
         @media (max-width: 600px) {
-            .infografia-container {
-                padding: 10px;
-            }
-            .episodio-header {
-                padding: 12px 15px;
-            }
-            .episodio.abierto .episodio-contenido {
-                padding: 12px;
-            }
-            .categoria {
-                grid-template-columns: 110px 1fr 50px;
-                gap: 8px;
-            }
-            .categoria-nombre {
-                font-size: 11px;
-            }
-            .categoria-lleno {
-                font-size: 10px;
-                white-space: nowrap;
-            }
-            .categoria-porcentaje {
-                font-size: 11px;
-            }
-        }
-        @media (max-width: 600px) {
-            body { 
-                background-attachment: fixed; 
-				background-position: 50% center !important;
-            }
-            .mega-titulo {
-				font-size: clamp(25px, 12vw, 50px) !important; 
-		        -webkit-text-stroke: 1px #150050;
-		        text-align: center !important;
-		        margin: 0 auto !important;
-		        display: block;
-				background-size: 250px;
-		        width: 90%;
-            }
-            .breadcrumb {
-                font-size: 16px !important;
-                margin-left: 4% !important;
-            }
-            p, h3, .texto {
-                font-size: 18px !important;
-                margin-left: 5% !important;
-                margin-right: 5% !important;
-            }
-            .slider-wrapper {
-                width: 95%;
-            }
-            .flecha {
-                font-size: 25px;
-                padding: 5px 12px;
-            }
-            .flecha-izquierda {
-                left: 2px;
-            }
-            .flecha-derecha {
-                right: 2px;
-            }
+            body { background-position: 50% center !important; }
+            .mega-titulo { font-size: clamp(25px, 12vw, 50px) !important; text-align: center !important; margin: 0 auto !important; width: 90%; }
+            .infografia-container { padding: 10px; max-width: 95%; }
+            .categoria { grid-template-columns: 110px 1fr 65px; gap: 5px; }
         }
     </style>
+
+    <!-- SDKs DE FIREBASE -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
 </head>
 <body>
 <hr>
@@ -393,26 +161,125 @@
         <h1 class="mega-titulo">INFORME DE AVANCE</h1>
     </div>
 <hr>
-<h3>Mantente al tanto del progreso de nuestra producción principal. En esta sección publicamos actualizaciones periódicas sobre el estado de RIGELCRAFT: LA SERIE.</h3>
-<p>Aquí detallamos en qué fase nos encontramos: desde la finalización de guiones y grabación de voces, hasta el porcentaje de renderizado y edición final de cada episodio. Nuestro objetivo es la transparencia total con nuestra comunidad sobre el tiempo y esfuerzo dedicado a cada minuto de animación.</p>
-<p><strong>Nota importante:</strong> Las fechas y porcentajes son estimaciones de producción y están sujetos a cambios dependiendo de la complejidad técnica de cada escena.</p>
-<p><strong>Última modificación: 11 / Julio / 2026</strong></p>
+<h3>Mantente al tanto del progreso de nuestra producción principal.</h3>
+<p>Aquí detallamos en qué fase nos encontramos: desde la finalización de guiones y grabación de voces, hasta el porcentaje de renderizado y edición final de cada episodio. Los datos se actualizan en vivo.</p>
+
+<!-- AQUÍ ESTÁ LA FECHA QUE AHORA SE ACTUALIZA SOLA -->
+<p><strong>Última modificación: <span id="fecha-modificacion" style="color: #00ff15;">Cargando...</span></strong></p>
+
+<p id="estado-conexion" style="color: #00c3ff; text-align: center; font-weight: bold; margin-top: 20px;">🌌 Conectando con la base de datos de Rigelcraft...</p>
 <hr>
 <div class="infografia-container">
     <div id="episodios-container"></div>
 </div>
 <hr>
 <div class="breadcrumb">
-        <a href="index.html">Inicio</a><span> / Avances</span>
-    </div>
+    <a href="index.html">Inicio</a><span> / Avances</span>
+</div>
+
+<div class="footer-admin">
+    <button class="btn-toggle-admin" id="btn-admin-icon" onclick="solicitarAccesoAdmin()" title="Modo Administrador">⚙️</button>
+</div>
+
 <script>
-    const PESOS = {
-        guion: 10,
-        voces: 10,
-        animacion: 60,
-        edicion: 15,
-        miniatura: 5
+    // 1. CONFIGURACIÓN DE FIREBASE
+    const firebaseConfig = {
+        apiKey: "AIzaSyBNr-hwGarQxNOKhcHkPm33egsmi4O3DgE",
+        authDomain: "rigelcraft-studio.firebaseapp.com",
+        projectId: "rigelcraft-studio",
+        storageBucket: "rigelcraft-studio.firebasestorage.app",
+        messagingSenderId: "1044676614155",
+        appId: "1:1044676614155:web:50b8f77a4101fa5c650f0e"
     };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    const auth = firebase.auth();
+    const docRef = db.collection("rigelcraft_info").doc("avance_episodios");
+
+    let isAdmin = false;
+    let episodiosData = [];
+    let fechaUltimaModificacion = "";
+    const openEpisodes = new Set(); // Para recordar qué pestañas estaban abiertas
+
+    const PESOS = { guion: 10, voces: 10, animacion: 60, edicion: 15, miniatura: 5 };
+
+    // 2. MONITOREO DE ADMINISTRADOR
+    auth.onAuthStateChanged((user) => {
+        if (user) {
+            isAdmin = true;
+            document.getElementById("btn-admin-icon").style.filter = "grayscale(0%)";
+        } else {
+            isAdmin = false;
+            document.getElementById("btn-admin-icon").style.filter = "grayscale(100%)";
+        }
+        renderizarEpisodios();
+    });
+
+    function solicitarAccesoAdmin() {
+        if (isAdmin) {
+            auth.signOut().then(() => alert("🔒 Sesión cerrada. Modo Público activo."));
+        } else {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            auth.signInWithPopup(provider)
+                .then((result) => alert(`🔓 Bienvenido, Admin. Puedes editar el progreso.`))
+                .catch((error) => alert("❌ Error de inicio de sesión."));
+        }
+    }
+
+    // GENERADOR DE FECHA AUTOMÁTICA
+    function obtenerFechaActual() {
+        const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+        const hoy = new Date();
+        return `${hoy.getDate()} / ${meses[hoy.getMonth()]} / ${hoy.getFullYear()}`;
+    }
+
+    // 3. ESTRUCTURA BASE
+    function generarEstructuraBase() {
+        let base = [];
+        for(let i=1; i<=12; i++) {
+            base.push({
+                numero: i, titulo: "", 
+                guion: i<=4 ? 100 : (i===5 ? 100 : 0), 
+                voces: i<=4 ? 100 : (i===5 ? 100 : (i===6 ? 8 : 0)), 
+                animacion: i<=4 ? 100 : (i===5 ? 47 : 0), 
+                edicion: i<=4 ? 100 : 0, 
+                miniatura: i<=4 ? 100 : 0, 
+                videoId: i===1 ? "M1Pz25Jv9Tg" : (i===2 ? "xE1_MIma-QY" : (i===3 ? "qK-lEr2ykP8" : (i===4 ? "d1DVn2V3mpM" : "")))
+            });
+        }
+        return base;
+    }
+
+    // 4. ESCUCHADOR EN TIEMPO REAL
+    docRef.onSnapshot((doc) => {
+        document.getElementById("estado-conexion").style.display = "none";
+        if (doc.exists) {
+            episodiosData = doc.data().lista;
+            fechaUltimaModificacion = doc.data().ultimaModificacion || obtenerFechaActual();
+        } else {
+            episodiosData = generarEstructuraBase();
+            fechaUltimaModificacion = obtenerFechaActual();
+            guardarEnNube();
+        }
+        
+        // Poner la fecha guardada en el HTML
+        document.getElementById("fecha-modificacion").innerText = fechaUltimaModificacion;
+        renderizarEpisodios();
+    });
+
+    // 5. FUNCIÓN DE GUARDADO (Ahora incluye la actualización de la fecha)
+    function guardarEnNube() {
+        fechaUltimaModificacion = obtenerFechaActual();
+        document.getElementById("fecha-modificacion").innerText = fechaUltimaModificacion;
+        
+        docRef.set({ 
+            lista: episodiosData,
+            ultimaModificacion: fechaUltimaModificacion
+        }).catch(err => alert("⚠️ Sin permisos para guardar."));
+    }
+
+    // --- FUNCIONES VISUALES ---
     function getColorPorPorcentaje(porcentaje) {
         if (porcentaje >= 100) return "#00c853";   
         if (porcentaje >= 91) return "#2e7b30";    
@@ -430,72 +297,27 @@
         return "🔴";                         
     }
 
-    function getEstadoEpisodio(porcentaje) {
-        if (porcentaje === 0) return "PRÓXIMAMENTE";
-        if (porcentaje >= 100) return "TERMINADO";
-        return "EN PROCESO";
-    }
-
-    function getMensajeVideo(porcentaje, videoId) {
-        const estado = getEstadoEpisodio(porcentaje);
-        
-        if (porcentaje >= 100 && videoId && videoId !== "") {
-            return null; // null significa que hay que mostrar el video
-        }
-        
-        if (porcentaje >= 100 && (!videoId || videoId === "")) {
-            return { texto: "🎬 POR ESTRENARSE", clase: "proximo" };
-        }
-        
-        if (estado === "EN PROCESO") {
-            return { texto: "⚙️ EN PROCESO", clase: "proceso" };
-        }
-        
-        return { texto: "⏳ PRÓXIMAMENTE", clase: "proximo" };
-    }
-
-    function getVideoHTML(videoId, porcentaje) {
-        const mensajeConfig = getMensajeVideo(porcentaje, videoId);
-        
-        // Si hay que mostrar un mensaje en lugar del video
-        if (mensajeConfig) {
-            return `
-                <div class="mensaje-video ${mensajeConfig.clase}">
-                    ${mensajeConfig.texto}
-                </div>
-            `;
-        }
-        
-        // Si llegamos aquí, el video se puede mostrar (100% y con videoId)
-        return `
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
-            </div>
-        `;
-    }
-
     function calcularTotalPonderado(ep) {
-        const total = (ep.guion * PESOS.guion +
-                       ep.voces * PESOS.voces +
-                       ep.animacion * PESOS.animacion +
-                       ep.edicion * PESOS.edicion +
-                       ep.miniatura * PESOS.miniatura) / 100;
-        return Math.round(total);
+        return Math.round((ep.guion*PESOS.guion + ep.voces*PESOS.voces + ep.animacion*PESOS.animacion + ep.edicion*PESOS.edicion + ep.miniatura*PESOS.miniatura)/100);
     }
 
-    function crearBarraCategoria(porcentaje, nombre, icono) {
-        const color = porcentaje === 0 ? "#D50000" : getColorPorPorcentaje(porcentaje);
-        const textoPorcentaje = porcentaje === 0 ? "0%" : `${porcentaje}%`;
+    function crearFilaCategoria(epIndex, nombre, icono, campo, valor) {
+        const color = valor === 0 ? "#D50000" : getColorPorPorcentaje(valor);
         
+        let controlHTML = "";
+        if (isAdmin) {
+            controlHTML = `<input type="number" class="admin-input-num" min="0" max="100" data-index="${epIndex}" data-campo="${campo}" value="${valor}">`;
+        } else {
+            controlHTML = `<span class="categoria-porcentaje" style="color: ${color};">${valor}%</span>`;
+        }
+
         return `
             <div class="categoria">
                 <span class="categoria-nombre">${icono} ${nombre}:</span>
                 <div class="categoria-barra">
-                    <div class="categoria-lleno" style="width: ${porcentaje}%; background-color: ${color};">
-                        ${porcentaje > 8 ? textoPorcentaje : ''}
-                    </div>
+                    <div class="categoria-lleno" style="width: ${valor}%; background-color: ${color};"></div>
                 </div>
-                <span class="categoria-porcentaje" style="color: ${color};">${textoPorcentaje}</span>
+                ${controlHTML}
             </div>
         `;
     }
@@ -504,216 +326,100 @@
         const total = calcularTotalPonderado(ep);
         const colorTotal = getColorPorPorcentaje(total);
         const emoji = getEmojiPorPorcentaje(total);
-        const estadoTexto = getEstadoEpisodio(total);
-        
-        // Determinar texto del título
-        let tituloEpisodio = `EPISODIO ${ep.numero}: ${ep.titulo}`;
-        
-        // Categorías con iconos
-        const categoriasHTML = `
-            ${crearBarraCategoria(ep.guion, "Guión", "📝")}
-            ${crearBarraCategoria(ep.voces, "Voces", "🎙️")}
-            ${crearBarraCategoria(ep.animacion, "Animación", "🎬")}
-            ${crearBarraCategoria(ep.edicion, "Edición", "✂️")}
-            ${crearBarraCategoria(ep.miniatura, "Miniatura", "🖼️")}
-        `;
-        
-        let totalHTML = '';
-        if (total === 0) {
-            totalHTML = `
-                <div class="total-container">
-                    <div class="total-label">
-                        <span>🏆 Porcentaje Total del Episodio:</span>
-                        <span style="color: ${colorTotal};">${total}%</span>
-                    </div>
-                    <div style="text-align: center; padding: 15px; background: rgba(0,0,0,0.3); border-radius: 10px; color: #FFD700;">
-                        ⏳ Próximamente
-                    </div>
-                </div>
-            `;
-        } else {
-            totalHTML = `
-                <div class="total-container">
-                    <div class="total-label">
-                        <span>🏆 Porcentaje Total del Episodio:</span>
-                        <span style="color: ${colorTotal};">${total}%</span>
-                    </div>
-                    <div class="total-barra-fondo">
-                        <div class="total-barra-lleno" style="width: ${total}%; background-color: ${colorTotal};">
-                            ${total > 12 ? total + '% Completado' : ''}
-                        </div>
-                    </div>
-                </div>
-            `;
+        const isOpen = openEpisodes.has(index) ? 'abierto' : '';
+
+        let tituloHtml = `EPISODIO ${ep.numero}: ${ep.titulo}`;
+        if (isAdmin) {
+            tituloHtml = `EP ${ep.numero}: <input type="text" class="admin-input-text" style="width:180px; margin-top:0;" placeholder="Título..." data-index="${index}" data-campo="titulo" value="${ep.titulo}">`;
         }
-        
-        const videoHTML = getVideoHTML(ep.videoId, total);
-        
+
+        let videoInputHtml = '';
+        if (isAdmin) {
+            videoInputHtml = `<input type="text" class="admin-input-text" placeholder="ID de YouTube (Ej: M1Pz25Jv9Tg)" data-index="${index}" data-campo="videoId" value="${ep.videoId}">`;
+        }
+
+        let reproductorHtml = '';
+        if (total >= 100 && ep.videoId) {
+            reproductorHtml = `<div class="video-container"><iframe src="https://www.youtube.com/embed/${ep.videoId}" frameborder="0" allowfullscreen></iframe></div>`;
+        } else if (total > 0) {
+            reproductorHtml = `<div class="mensaje-video proceso">⚙️ EN PROCESO</div>`;
+        } else {
+            reproductorHtml = `<div class="mensaje-video proximo">⏳ PRÓXIMAMENTE</div>`;
+        }
+
         return `
-            <div class="episodio" data-episodio="${ep.numero}">
+            <div class="episodio ${isOpen}" data-index="${index}">
                 <div class="episodio-header" style="border-left-color: ${colorTotal};">
                     <div class="episodio-titulo">
-                        <span class="episodio-numero">${tituloEpisodio}</span>
+                        <span class="episodio-numero">${tituloHtml}</span>
                         <span class="episodio-emoji">${emoji}</span>
-                        <span class="episodio-estado" style="color: ${colorTotal};">${estadoTexto}</span>
                     </div>
                     <span class="flecha">▼</span>
                 </div>
                 <div class="episodio-contenido">
                     <div class="categorias">
-                        ${categoriasHTML}
+                        ${crearFilaCategoria(index, "Guión", "📝", "guion", ep.guion)}
+                        ${crearFilaCategoria(index, "Voces", "🎙️", "voces", ep.voces)}
+                        ${crearFilaCategoria(index, "Animación", "🎬", "animacion", ep.animacion)}
+                        ${crearFilaCategoria(index, "Edición", "✂️", "edicion", ep.edicion)}
+                        ${crearFilaCategoria(index, "Miniatura", "🖼️", "miniatura", ep.miniatura)}
                     </div>
-                    ${totalHTML}
-                    ${videoHTML}
+                    <div class="total-container">
+                        <div class="total-label">
+                            <span>🏆 Total del Episodio:</span>
+                            <span style="color: ${colorTotal};">${total}%</span>
+                        </div>
+                        <div class="total-barra-fondo">
+                            <div class="total-barra-lleno" style="width: ${total}%; background-color: ${colorTotal};"></div>
+                        </div>
+                    </div>
+                    ${videoInputHtml}
+                    ${reproductorHtml}
                 </div>
             </div>
         `;
     }
 
-    const episodios = [
-        {
-            numero: 1,
-            titulo: "",
-            guion: 100,
-            voces: 100,
-            animacion: 100,
-            edicion: 100,
-            miniatura: 100,
-            videoId: "M1Pz25Jv9Tg"
-        },
-        {
-            numero: 2,
-            titulo: "",
-            guion: 100,
-            voces: 100,
-            animacion: 100,
-            edicion: 100,
-            miniatura: 100,
-            videoId: "xE1_MIma-QY"
-        },
-        {
-            numero: 3,
-            titulo: "",
-            guion: 100,
-            voces: 100,
-            animacion: 100,
-            edicion: 100,
-            miniatura: 100,
-            videoId: "qK-lEr2ykP8"
-        },
-        {
-            numero: 4,
-            titulo: "",
-            guion: 100,
-            voces: 100,
-            animacion: 100,
-            edicion: 100,
-            miniatura: 100,
-            videoId: "d1DVn2V3mpM"
-        },
-        {
-            numero: 5,
-            titulo: "",
-            guion: 100,
-            voces: 100,
-            animacion: 47,
-            edicion: 0,
-            miniatura: 0,
-            videoId: ""
-        },
-        {
-            numero: 6,
-            titulo: "",
-            guion: 100,
-            voces: 08,
-            animacion: 0,
-            edicion: 0,
-            miniatura: 0,
-            videoId: ""
-        },
-       {
-            numero: 7,
-            titulo: "",
-            guion: 0,
-            voces: 0,
-            animacion: 0,
-            edicion: 0,
-            miniatura: 0,
-            videoId: ""
-        },
-       {
-            numero: 8,
-            titulo: "",
-            guion: 0,
-            voces: 0,
-            animacion: 0,
-            edicion: 0,
-            miniatura: 0,
-            videoId: ""
-        },
-       {
-            numero: 9,
-            titulo: "",
-            guion: 0,
-            voces: 0,
-            animacion: 0,
-            edicion: 0,
-            miniatura: 0,
-            videoId: ""
-        },
-       {
-            numero: 10,
-            titulo: "",
-            guion: 0,
-            voces: 0,
-            animacion: 0,
-            edicion: 0,
-            miniatura: 0,
-            videoId: ""
-        },
-       {
-            numero: 11,
-            titulo: "",
-            guion: 0,
-            voces: 0,
-            animacion: 0,
-            edicion: 0,
-            miniatura: 0,
-            videoId: ""
-        },
-       {
-            numero: 12,
-            titulo: "",
-            guion: 0,
-            voces: 0,
-            animacion: 0,
-            edicion: 0,
-            miniatura: 0,
-            videoId: ""
-        }
-    ];
-
     function renderizarEpisodios() {
         const container = document.getElementById('episodios-container');
         if (!container) return;
         
-        let html = '';
-        episodios.forEach((ep, i) => {
-            html += generarEpisodioHTML(ep, i);
-        });
+        container.innerHTML = episodiosData.map((ep, i) => generarEpisodioHTML(ep, i)).join('');
         
-        container.innerHTML = html;
-        
-        // Eventos para acordeón
         document.querySelectorAll('.episodio-header').forEach(header => {
-            header.addEventListener('click', () => {
+            header.addEventListener('click', (e) => {
+                if(e.target.tagName === 'INPUT') return; 
                 const episodio = header.closest('.episodio');
-                episodio.classList.toggle('abierto');
+                const idx = parseInt(episodio.getAttribute('data-index'));
+                if(episodio.classList.contains('abierto')) {
+                    episodio.classList.remove('abierto');
+                    openEpisodes.delete(idx);
+                } else {
+                    episodio.classList.add('abierto');
+                    openEpisodes.add(idx);
+                }
             });
         });
-    }
 
-    renderizarEpisodios();
+        if (isAdmin) {
+            document.querySelectorAll('.admin-input-num, .admin-input-text').forEach(input => {
+                input.addEventListener('change', (e) => {
+                    const idx = e.target.getAttribute('data-index');
+                    const campo = e.target.getAttribute('data-campo');
+                    let valor = e.target.value;
+                    
+                    if(e.target.type === 'number') {
+                        valor = parseInt(valor) || 0;
+                        if(valor > 100) valor = 100;
+                        if(valor < 0) valor = 0;
+                    }
+
+                    episodiosData[idx][campo] = valor;
+                    guardarEnNube(); 
+                });
+            });
+        }
+    }
 </script>
 </body>
 </html>
