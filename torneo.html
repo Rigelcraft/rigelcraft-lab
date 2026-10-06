@@ -345,7 +345,7 @@
                             let ptsP1 = totalD > 0 ? Math.round((d.votosP1 / totalD) * 1000) : 0;
                             let ptsP2 = totalD > 0 ? Math.round((d.votosP2 / totalD) * 1000) : 0;
                             
-                            // EXCLUSIÓN: La Final (ronda 2) no suma puntos.
+                            // EXCLUSIÓN: La Final (ronda 2) no suma puntos globales.
                             if (r > 2) {
                                 if (stats[d.p1.id]) stats[d.p1.id].puntosTotales += ptsP1;
                                 if (stats[d.p2.id]) stats[d.p2.id].puntosTotales += ptsP2;
@@ -369,7 +369,7 @@
                                     stats[ganadorId].estado = `En competencia (${nomSig})`;
                                 }
                                 
-                                // Ya no están en un duelo en vivo, reseteamos el flag
+                                // Ya no están en un duelo en vivo, reseteamos el flag de peligro
                                 stats[perdedorId].perdiendoMatch = false;
                                 stats[ganadorId].perdiendoMatch = false;
                                 
@@ -391,7 +391,7 @@
                 if (perdedoresSemis.length === 2) {
                     perdedoresSemis.sort((a,b) => b.puntosTotales - a.puntosTotales);
                     perdedoresSemis[0].estado = "🥉 3.er Lugar";
-                    perdedoresSemis[1].estado = "Eliminado en Semifinales (4.º Lugar)";
+                    perdedoresSemis[1].estado = "Eliminado en Semifinales (4.º Lugar)"; // Pasa a ser eliminado
                 }
             }
             return stats;
@@ -572,7 +572,7 @@
             if (isAdmin) { asignarEventosInputsVotos(); asignarEventosInputsReps(); }
         }
 
-        // VISTA LISTA GLOBAL: 76 participantes ordenados (Vivos arriba, Eliminados abajo)
+        // VISTA LISTA GLOBAL: Dividida por categorías y ordenada por puntos internamente
         function renderizarListaGlobal76() {
             const contenedor = document.getElementById("contenedor-principal");
             const stats = calcularEstadisticasGlobales(torneoGalactico);
@@ -587,82 +587,118 @@
             
             let esBicampeon = (idCampeon && idCampeon === idLiderPuntos);
 
-            // 2. Ordenamiento Visual: VIVOS primero, ELIMINADOS después. (Ordenados por puntos dentro de cada bloque)
-            listaTodos.sort((a, b) => {
-                let vivoA = a.estado.includes("competencia") || a.estado.includes("CAMPEÓN");
-                let vivoB = b.estado.includes("competencia") || b.estado.includes("CAMPEÓN");
-                
-                if (vivoA && !vivoB) return -1;
-                if (!vivoA && vivoB) return 1;
-                
-                return b.puntosTotales - a.puntosTotales;
+            // 2. Clasificar a todos en las Categorías Solicitadas
+            let catCampeon = [];
+            let catSegundo = [];
+            let catTercero = [];
+            let catCompetencia = [];
+            let catEliminados = [];
+
+            listaTodos.forEach(p => {
+                if (p.estado.includes("CAMPEÓN")) {
+                    catCampeon.push(p);
+                } else if (p.estado.includes("2.º Lugar") || p.estado.includes("Subcampeón")) {
+                    catSegundo.push(p);
+                } else if (p.estado.includes("3.er Lugar")) {
+                    catTercero.push(p);
+                } else if (p.estado.includes("competencia") || p.estado.includes("espera")) {
+                    catCompetencia.push(p); // Los que siguen vivos en llaves o grupos
+                } else {
+                    catEliminados.push(p); // Todos los eliminados de cualquier fase
+                }
             });
+
+            // 3. Ordenar cada categoría internamente por puntos acumulados
+            const sortPts = (a, b) => b.puntosTotales - a.puntosTotales;
+            catCampeon.sort(sortPts);
+            catSegundo.sort(sortPts);
+            catTercero.sort(sortPts);
+            catCompetencia.sort(sortPts);
+            catEliminados.sort(sortPts);
+
+            // 4. Estructurar Jerarquía de Bloques (Se imprimen en este orden)
+            let listaJerarquica = [
+                { titulo: "🏆 PRIMER LUGAR (CAMPEÓN)", color: "#ffe600", datos: catCampeon },
+                { titulo: "🥈 SEGUNDO LUGAR", color: "#ff9100", datos: catSegundo },
+                { titulo: "🥉 TERCER LUGAR", color: "#ff5100", datos: catTercero },
+                { titulo: "⚔️ EN COMPETENCIA (VIVOS)", color: "#00ffb3", datos: catCompetencia },
+                { titulo: "❌ ELIMINADOS DEL TORNEO", color: "#ff5252", datos: catEliminados }
+            ];
 
             let html = `
             <div class="contenedor-lista-global">
-                <h3 class="titulo-tarjeta" style="font-size: 26px; margin-bottom: 20px;">RANKING GENERAL POR PUNTOS - 76 COMPETIDORES</h3>
+                <h3 class="titulo-tarjeta" style="font-size: 26px; margin-bottom: 25px; text-align: center; text-transform: uppercase;">RANKING GENERAL POR CATEGORÍAS (76)</h3>
             `;
 
-            listaTodos.forEach((p, idx) => {
-                const pos = idx + 1;
-                let vivo = p.estado.includes("competencia") || p.estado.includes("CAMPEÓN");
-                
-                // ASIGNACIÓN DINÁMICA DE COLORES
-                let claseBadge = "pos-resto";
-                
-                if (torneoGalactico.faseActual === "grupos") {
-                    // Si estamos en Fase de Grupos
-                    if (pos <= 19) claseBadge = "pos-top19";
-                    else if (pos <= 32) claseBadge = "pos-top32";
-                    
-                    if (p.estado.includes("Eliminado")) claseBadge = "pos-eliminado";
-                } else {
-                    // Si ya estamos en las Eliminatorias (16avos, Octavos, etc.)
-                    if (vivo) {
-                        if (p.perdiendoMatch) claseBadge = "pos-top32"; // Va perdiendo = Naranja
-                        else claseBadge = "pos-vivo"; // Va ganando o empatando = Verde
-                    } else {
-                        claseBadge = "pos-eliminado"; // Eliminado = Rojo
-                    }
-                    // Si es subcampeón o tercer lugar (Podio final)
-                    if (p.estado.includes("2.º Lugar") || p.estado.includes("3.er Lugar")) {
-                        claseBadge = "pos-top32"; 
-                    }
-                }
+            let posGlobal = 1; // Contador absoluto del 1 al 76
 
-                let claseEstado = getClaseEstado(p.estado);
-                
-                let etiquetaLider = "";
-
-                // Regla de Bicampeón y Premio Heredado
-                if (esBicampeon) {
-                    if (p.id === idCampeon && p.puntosTotales > 0) {
-                        etiquetaLider = `<span class="estado-tag estado-bicampeon">👑🏆 BICAMPEÓN (Torneo + Puntos)</span>`;
-                    } else if (p.id === idSegundoPuntos && p.puntosTotales > 0) {
-                        etiquetaLider = `<span class="estado-tag estado-heredado">🌟 2.º EN PUNTOS (Premio Heredado)</span>`;
-                    }
-                } else {
-                    if (p.id === idLiderPuntos && p.puntosTotales > 0) {
-                        etiquetaLider = `<span class="estado-tag estado-lider">🌟 LÍDER EN PUNTOS</span>`;
-                    }
-                }
+            listaJerarquica.forEach(categoria => {
+                if (categoria.datos.length === 0) return; // Si la categoría está vacía (ej. aún no hay campeón), no se dibuja.
 
                 html += `
-                    <div class="fila-participante">
-                        <span class="pos-badge ${claseBadge}">${pos}º</span>
-                        <div class="info-participante">
-                            <div class="nombre-contenedor">
-                                <div style="display:flex; align-items:center; flex-wrap: wrap; gap: 6px;">
-                                    <span class="nombre" style="${vivo ? '' : 'opacity:0.8;'}">${p.nombre}</span>
-                                    <span class="tag-grupo">(${p.grupoNombre})</span>
-                                    ${etiquetaLider}
+                <div style="border: 2px dashed ${categoria.color}; border-radius: 12px; padding: 15px; margin-bottom: 25px; background: rgba(0,0,0,0.5);">
+                    <h4 style="color: ${categoria.color}; text-align: center; margin-bottom: 15px; font-size: 20px; text-shadow: 0 0 8px #000; letter-spacing: 1px;">${categoria.titulo}</h4>
+                `;
+
+                categoria.datos.forEach((p) => {
+                    let vivo = p.estado.includes("competencia") || p.estado.includes("CAMPEÓN");
+                    
+                    // Asignación Dinámica de Colores según Fase y Estado (para el numerito)
+                    let claseBadge = "pos-resto"; // Por defecto rojo
+                    
+                    if (torneoGalactico.faseActual === "grupos") {
+                        if (posGlobal <= 19) claseBadge = "pos-top19"; // Verde
+                        else if (posGlobal <= 32) claseBadge = "pos-top32"; // Naranja
+                        if (p.estado.includes("Eliminado")) claseBadge = "pos-eliminado"; // Rojo
+                    } else {
+                        if (vivo) {
+                            if (p.perdiendoMatch) claseBadge = "pos-top32"; // Va perdiendo = Naranja
+                            else claseBadge = "pos-vivo"; // Va ganando o empatando = Verde
+                        } else {
+                            claseBadge = "pos-eliminado"; // Eliminado = Rojo
+                        }
+                        if (p.estado.includes("2.º Lugar") || p.estado.includes("3.er Lugar")) {
+                            claseBadge = "pos-top32"; // Naranja dorado para el podio
+                        }
+                    }
+
+                    let claseEstado = getClaseEstado(p.estado);
+                    let etiquetaLider = "";
+
+                    // Regla de Bicampeón y Premio Heredado
+                    if (esBicampeon) {
+                        if (p.id === idCampeon && p.puntosTotales > 0) {
+                            etiquetaLider = `<span class="estado-tag estado-bicampeon">👑🏆 BICAMPEÓN (Torneo + Puntos)</span>`;
+                        } else if (p.id === idSegundoPuntos && p.puntosTotales > 0) {
+                            etiquetaLider = `<span class="estado-tag estado-heredado">🌟 2.º EN PUNTOS (Premio Heredado)</span>`;
+                        }
+                    } else {
+                        if (p.id === idLiderPuntos && p.puntosTotales > 0) {
+                            etiquetaLider = `<span class="estado-tag estado-lider">🌟 LÍDER EN PUNTOS</span>`;
+                        }
+                    }
+
+                    html += `
+                        <div class="fila-participante">
+                            <span class="pos-badge ${claseBadge}">${posGlobal}º</span>
+                            <div class="info-participante">
+                                <div class="nombre-contenedor">
+                                    <div style="display:flex; align-items:center; flex-wrap: wrap; gap: 6px;">
+                                        <span class="nombre" style="${vivo ? '' : 'opacity:0.8;'}">${p.nombre}</span>
+                                        <span class="tag-grupo">(${p.grupoNombre})</span>
+                                        ${etiquetaLider}
+                                    </div>
+                                    <span class="estado-tag ${claseEstado}">${p.estado}</span>
+                                    ${getRepHtml(p)}
                                 </div>
-                                <span class="estado-tag ${claseEstado}">${p.estado}</span>
-                                ${getRepHtml(p)}
                             </div>
-                        </div>
-                        <div class="caja-votos"><span class="preview-puntos">${p.puntosTotales} pts</span></div>
-                    </div>`;
+                            <div class="caja-votos"><span class="preview-puntos">${p.puntosTotales} pts</span></div>
+                        </div>`;
+                    
+                    posGlobal++; // Incrementar el ranking global absoluto
+                });
+
+                html += `</div>`; // Cierre del contenedor de la categoría
             });
 
             html += `</div>`;
@@ -750,7 +786,7 @@
             }
         }
 
-        // NUEVA FUNCIÓN: Cerrar un enfrentamiento (llave) individual
+        // FUNCIÓN PARA CERRAR UN ENFRENTAMIENTO INDIVIDUAL (BOTÓN NUEVO DE LLAVES)
         window.cerrarLlaveIndividual = function(ronda, llaveId) {
             let llave = torneoGalactico.llaves[`ronda${ronda}`].find(l => l.id === llaveId);
             if (!llave) return;
