@@ -77,7 +77,7 @@
         .tarjeta { background: rgba(0, 0, 0, 0.85); border: 2px solid #00ccff; border-radius: 12px; padding: 18px; box-shadow: 0 0 12px rgba(0, 204, 255, 0.3); transition: transform 0.3s; }
         .tarjeta:hover { box-shadow: 0 0 22px rgba(0, 204, 255, 0.6); transform: translateY(-3px); }
         
-        /* Botón para cerrar grupos */
+        /* Botones para cerrar grupos y enfrentamientos */
         .btn-cerrar-grupo { background: rgba(213,0,0,0.2); color: #ff5252; border: 1px solid #ff5252; padding: 6px 10px; border-radius: 6px; cursor: pointer; float: right; font-size: 13px; font-weight: bold; transition: 0.3s; }
         .btn-cerrar-grupo:hover { background: #d50000; color: #fff; }
 
@@ -91,7 +91,7 @@
         .pos-2 { background-color: #ff9100; box-shadow: 0 0 8px #ff9100; }
         .pos-3, .pos-4 { background-color: #d50000; box-shadow: 0 0 6px #d50000; }
         
-        /* Colores para el Ranking Global */
+        /* Colores para el Ranking Global Dinámico */
         .pos-vivo { background-color: #00c853; box-shadow: 0 0 8px #00c853; }
         .pos-eliminado { background-color: #d50000; box-shadow: 0 0 6px #d50000; }
         .pos-top19 { background-color: #00c853; box-shadow: 0 0 8px #00c853; }
@@ -127,7 +127,7 @@
         .titulo-ronda { color: #ffe600; text-align: center; font-size: 30px; text-shadow: 0 0 10px #000; margin-bottom: 20px; }
         .grid-llaves { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         .llave-duelo { background: linear-gradient(180deg, rgba(0,20,50,0.9) 0%, rgba(0,0,0,0.95) 100%); border: 2px solid #00c3ff; border-radius: 10px; padding: 15px; position: relative; }
-        .vs-badge { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #ff0000; color: #fff; font-weight: bold; font-size: 12px; padding: 4px 8px; border-radius: 20px; box-shadow: 0 0 10px #ff0000; }
+        .vs-badge { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #ff0000; color: #fff; font-weight: bold; font-size: 12px; padding: 4px 8px; border-radius: 20px; box-shadow: 0 0 10px #ff0000; z-index: 5; }
 
         .admin-controls { display: none; justify-content: center; gap: 15px; flex-wrap: wrap; margin: 40px auto; width: 96%; }
         .btn-accion { background: linear-gradient(135deg, #00c3ff, #0051ff); color: #fff; font-family: 'Anton', Arial, sans-serif; font-size: clamp(16px, 3vw, 22px); padding: 15px 30px; border: 2px solid #00fff2; border-radius: 10px; cursor: pointer; box-shadow: 0 0 15px rgba(0, 204, 255, 0.5); transition: 0.3s; letter-spacing: 1px; }
@@ -324,7 +324,7 @@
                     }
 
                     stats[p.id] = { 
-                        ...p, grupoNombre: g.nombre, puntosTotales: pts, estado: estadoStr
+                        ...p, grupoNombre: g.nombre, puntosTotales: pts, estado: estadoStr, perdiendoMatch: false
                     };
                 });
             });
@@ -351,7 +351,7 @@
                                 if (stats[d.p2.id]) stats[d.p2.id].puntosTotales += ptsP2;
                             }
 
-                            if (d.ganador) {
+                            if (d.ganador) { // EL ENFRENTAMIENTO FUE CERRADO
                                 let perdedorId = d.ganador.id === d.p1.id ? d.p2.id : d.p1.id;
                                 let ganadorId = d.ganador.id;
                                 
@@ -368,10 +368,21 @@
                                     let nomSig = r===32 ? "Octavos" : r===16 ? "Cuartos" : r===8 ? "Semifinales" : "Final";
                                     stats[ganadorId].estado = `En competencia (${nomSig})`;
                                 }
-                            } else {
+                                
+                                // Ya no están en un duelo en vivo, reseteamos el flag
+                                stats[perdedorId].perdiendoMatch = false;
+                                stats[ganadorId].perdiendoMatch = false;
+                                
+                            } else { // EL ENFRENTAMIENTO SIGUE VIVO
                                 let nomAct = r===32 ? "16avos" : r===16 ? "Octavos" : r===8 ? "Cuartos" : r===4 ? "Semifinales" : "Final";
-                                if(stats[d.p1.id]) stats[d.p1.id].estado = `En competencia (${nomAct})`;
-                                if(stats[d.p2.id]) stats[d.p2.id].estado = `En competencia (${nomAct})`;
+                                if(stats[d.p1.id]) {
+                                    stats[d.p1.id].estado = `En competencia (${nomAct})`;
+                                    stats[d.p1.id].perdiendoMatch = d.votosP2 > d.votosP1; // Lógica de peligro (naranja)
+                                }
+                                if(stats[d.p2.id]) {
+                                    stats[d.p2.id].estado = `En competencia (${nomAct})`;
+                                    stats[d.p2.id].perdiendoMatch = d.votosP1 > d.votosP2; // Lógica de peligro (naranja)
+                                }
                             }
                         });
                     }
@@ -466,17 +477,27 @@
                         const textoPts1 = r === 2 ? `${Math.round((llave.votosP1 / (totalDuelo||1))*100)}%` : `${pts1} pts`;
                         const textoPts2 = r === 2 ? `${Math.round((llave.votosP2 / (totalDuelo||1))*100)}%` : `${pts2} pts`;
 
-                        const cajaVotosP1 = isAdmin && isActiva 
+                        let btnCerrarLlaveHtml = (isAdmin && isActiva && !llave.ganador) 
+                            ? `<div style="text-align: right; margin-bottom: 15px;"><button class="btn-cerrar-grupo" style="float: none; display: inline-block;" onclick="cerrarLlaveIndividual(${r}, '${llave.id}')">🔒 Cerrar Enfrentamiento</button></div>` 
+                            : '';
+                        
+                        let subTituloCerradoLlave = llave.ganador 
+                            ? `<div style="text-align: center; color:#ff5252; font-size:12px; font-weight:bold; margin-bottom: 15px; letter-spacing: 1px;">🛑 ENFRENTAMIENTO CERRADO</div>` 
+                            : '';
+
+                        const cajaVotosP1 = isAdmin && isActiva && !llave.ganador 
                             ? `<div class="caja-votos"><input type="number" class="input-votos" value="${llave.votosP1}" data-tipo="llave" data-ronda="${r}" data-llave="${llave.id}" data-target="votosP1"><span class="preview-puntos">${textoPts1}</span></div>`
                             : `<div class="caja-votos"><span class="preview-puntos">${textoPts1}</span><span class="texto-votos-reales">(${llave.votosP1} votos)</span></div>`;
 
-                        const cajaVotosP2 = isAdmin && isActiva 
+                        const cajaVotosP2 = isAdmin && isActiva && !llave.ganador
                             ? `<div class="caja-votos"><input type="number" class="input-votos" value="${llave.votosP2}" data-tipo="llave" data-ronda="${r}" data-llave="${llave.id}" data-target="votosP2"><span class="preview-puntos">${textoPts2}</span></div>`
                             : `<div class="caja-votos"><span class="preview-puntos">${textoPts2}</span><span class="texto-votos-reales">(${llave.votosP2} votos)</span></div>`;
 
                         html += `
                             <div class="llave-duelo">
                                 <div class="vs-badge">VS</div>
+                                ${btnCerrarLlaveHtml}
+                                ${subTituloCerradoLlave}
                                 <div class="fila-participante" style="margin-bottom: 25px;">
                                     <div class="info-participante"><span class="nombre" style="color: ${colorP1}">${llave.p1.nombre}</span></div>
                                     ${cajaVotosP1}
@@ -510,7 +531,6 @@
                     ? `<span style="color:#ff5252; font-size:13px; font-weight:bold; letter-spacing: 1px; margin-top: 5px;">🛑 ENCUESTA FINALIZADA</span>` 
                     : '';
 
-                // Se quitó la clase 'grupo-cerrado' para que no opaque la tarjeta entera
                 html += `<div class="tarjeta">
                          <div style="border-bottom: 2px solid #00ccff; padding-bottom: 8px; margin-bottom: 15px; display: flex; flex-direction: column;">
                             <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -587,7 +607,29 @@
                 const pos = idx + 1;
                 let vivo = p.estado.includes("competencia") || p.estado.includes("CAMPEÓN");
                 
-                let claseBadge = vivo ? "pos-vivo" : "pos-eliminado";
+                // ASIGNACIÓN DINÁMICA DE COLORES
+                let claseBadge = "pos-resto";
+                
+                if (torneoGalactico.faseActual === "grupos") {
+                    // Si estamos en Fase de Grupos
+                    if (pos <= 19) claseBadge = "pos-top19";
+                    else if (pos <= 32) claseBadge = "pos-top32";
+                    
+                    if (p.estado.includes("Eliminado")) claseBadge = "pos-eliminado";
+                } else {
+                    // Si ya estamos en las Eliminatorias (16avos, Octavos, etc.)
+                    if (vivo) {
+                        if (p.perdiendoMatch) claseBadge = "pos-top32"; // Va perdiendo = Naranja
+                        else claseBadge = "pos-vivo"; // Va ganando o empatando = Verde
+                    } else {
+                        claseBadge = "pos-eliminado"; // Eliminado = Rojo
+                    }
+                    // Si es subcampeón o tercer lugar (Podio final)
+                    if (p.estado.includes("2.º Lugar") || p.estado.includes("3.er Lugar")) {
+                        claseBadge = "pos-top32"; 
+                    }
+                }
+
                 let claseEstado = getClaseEstado(p.estado);
                 
                 let etiquetaLider = "";
@@ -671,7 +713,6 @@
             inputsRelacionados.forEach(inp => total += (parseInt(inp.value)||0));
             inputsRelacionados.forEach(inp => {
                 let pts = total > 0 ? Math.round(((parseInt(inp.value)||0) / total) * 1000) : 0;
-                // Si es la llave final (ronda 2) mostrar % en lugar de puntos
                 let r = inp.getAttribute("data-ronda");
                 if(r && parseInt(r) === 2) {
                     let pct = total > 0 ? Math.round(((parseInt(inp.value)||0) / total) * 100) : 0;
@@ -709,6 +750,19 @@
             }
         }
 
+        // NUEVA FUNCIÓN: Cerrar un enfrentamiento (llave) individual
+        window.cerrarLlaveIndividual = function(ronda, llaveId) {
+            let llave = torneoGalactico.llaves[`ronda${ronda}`].find(l => l.id === llaveId);
+            if (!llave) return;
+            if (llave.votosP1 === llave.votosP2 && (llave.votosP1 > 0 || llave.votosP2 > 0)) {
+                return alert("⚠️ No puedes cerrar un enfrentamiento que se encuentra en empate. Resuélvelo primero.");
+            }
+            if (confirm("¿Cerrar definitivamente este enfrentamiento?\nEl perdedor será eliminado del torneo y su color cambiará a rojo en el ranking global. Sus puntos quedarán guardados.")) {
+                llave.ganador = llave.votosP1 > llave.votosP2 ? llave.p1 : llave.p2;
+                guardarDatosEnNube();
+            }
+        }
+
         document.getElementById("btn-cerrar-fase").addEventListener("click", () => {
             if (torneoGalactico.faseActual === "grupos") cerrarFaseGrupos();
             else avanzarRondaLlaves();
@@ -740,13 +794,11 @@
                 if (calculados.length > 1) todosLosSegundos.push(calculados[1]);
             });
 
-            // Ordenar los 2dos lugares por Puntos y luego por Brecha
             todosLosSegundos.sort((a, b) => {
                 if(b.ptsCalc !== a.ptsCalc) return b.ptsCalc - a.ptsCalc;
                 return b.brecha - a.brecha; 
             });
 
-            // Con 19 grupos: 19 primeros + 13 mejores segundos = 32 clasificados
             const mejoresSegundos = todosLosSegundos.slice(0, 13);
 
             if (directos.length + mejoresSegundos.length !== 32) return alert("Error: No se lograron 32 finalistas.");
@@ -786,15 +838,22 @@
             const rActiva = torneoGalactico.rondaLlavesActiva;
             const duelos = torneoGalactico.llaves[`ronda${rActiva}`];
 
-            for (let duelo of duelos) {
-                if (duelo.votosP1 === duelo.votosP2 && (duelo.votosP1 > 0 || duelo.votosP2 > 0)) {
-                    return alert(`⚠️ EMPATE DETECTADO entre ${duelo.p1.nombre} y ${duelo.p2.nombre}.`);
+            // Validar si quedan enfrentamientos sin cerrar
+            let duelosAbiertos = duelos.filter(d => !d.ganador);
+            if (duelosAbiertos.length > 0) {
+                if (!confirm(`Aún hay ${duelosAbiertos.length} enfrentamientos abiertos en esta ronda.\n¿Deseas cerrarlos TODOS y avanzar de ronda?`)) return;
+                
+                for (let duelo of duelosAbiertos) {
+                    if (duelo.votosP1 === duelo.votosP2 && (duelo.votosP1 > 0 || duelo.votosP2 > 0)) {
+                        return alert(`⚠️ EMPATE DETECTADO entre ${duelo.p1.nombre} y ${duelo.p2.nombre}. No se puede avanzar hasta resolverlo.`);
+                    }
+                    duelo.ganador = duelo.votosP1 > duelo.votosP2 ? duelo.p1 : duelo.p2;
                 }
+            } else {
+                if (!confirm(`¿Confirmar avance a la siguiente ronda con los ganadores actuales?`)) return;
             }
 
-            if (!confirm(`¿Confirmar cierre de la Ronda de ${rActiva} y avanzar a los ganadores?`)) return;
-
-            const ganadores = duelos.map(d => { d.ganador = d.votosP1 > d.votosP2 ? d.p1 : d.p2; return d.ganador; });
+            const ganadores = duelos.map(d => d.ganador);
             const sigRondaNum = rActiva / 2;
 
             if (sigRondaNum < 1) {
